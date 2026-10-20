@@ -1,0 +1,81 @@
+{
+  "audit_time": "2026-10-20T21:53:49.738889+07:00",
+  "root": "/Users/justminh/Documents/ChatGPT/CSDLDPT/filtered_output",
+  "files_on_disk": 655,
+  "decoded_files": 655,
+  "classes": 13,
+  "counts": {
+    "agogo": 16,
+    "claves": 13,
+    "conga": 18,
+    "cowbell": 43,
+    "cymbal": 33,
+    "hi_hat": 93,
+    "kick": 151,
+    "marimba": 36,
+    "snare": 141,
+    "tambourine": 12,
+    "tom": 76,
+    "vibraphone": 12,
+    "xylophone": 11
+  },
+  "csv_rows": 655,
+  "missing_csv_paths": [],
+  "unique_file_sha256": 655,
+  "unique_pcm_sha256": 655,
+  "metadata_checks": {
+    "in_accepted_csv": 655,
+    "label_matches_csv": 655,
+    "sha_matches_csv": 655,
+    "pcm_matches_csv": 655
+  },
+  "formats": {
+    "WAV": 655
+  },
+  "subtypes": {
+    "PCM_16": 655
+  },
+  "sample_rates": {
+    "16000": 655
+  },
+  "channels": {
+    "1": 655
+  },
+  "duration_min_s": 0.1074375,
+  "duration_max_s": 20.6146875,
+  "duration_median_s": 0.5340625,
+  "duration_total_s": 1583.157749999999,
+  "total_bytes": 50689868,
+  "duration_under_0_1_s": 0,
+  "duration_at_most_1_s": 514,
+  "peak_dbfs_min": -39.78221315139748,
+  "peak_dbfs_max": 0.0,
+  "flags": {},
+  "verified": {
+    "no": 655
+  },
+  "licenses": {
+    "http://creativecommons.org/licenses/by/3.0/": 269,
+    "http://creativecommons.org/publicdomain/zero/1.0/": 200,
+    "http://creativecommons.org/licenses/sampling+/1.0/": 21,
+    "http://creativecommons.org/licenses/by-nc/3.0/": 23,
+    "https://creativecommons.org/licenses/by-nc-nd/4.0/": 94,
+    "University of Iowa MIS (free, no restrictions)": 48
+  },
+  "source_groups": {
+    "4": 175,
+    "2": 112,
+    "5": 24,
+    "1": 102,
+    "3": 100,
+    "idmt": 94,
+    "iowa-mis": 48
+  },
+  "duplicate_groups": {
+    "sha256": {},
+    "pcm_sha256": {}
+  },
+  "errors": [],
+  "numpy_version": "2.4.6",
+  "soundfile_version": "0.13.1"
+}

@@ -1,0 +1,44 @@
+{
+  "screened_files": 1251,
+  "selected_files": 655,
+  "excluded_files": 596,
+  "classes": 13,
+  "counts": {
+    "agogo": 16,
+    "claves": 13,
+    "conga": 18,
+    "cowbell": 43,
+    "cymbal": 33,
+    "hi_hat": 93,
+    "kick": 151,
+    "marimba": 36,
+    "snare": 141,
+    "tambourine": 12,
+    "tom": 76,
+    "vibraphone": 12,
+    "xylophone": 11
+  },
+  "evidence_counts": {
+    "official_freesound_metadata_and_model_top1": 513,
+    "idmt_official_waveform_and_isolated_or_training_source": 94,
+    "iowa_instrument_source_and_model_top3": 48
+  },
+  "model_top1_agrees": 583,
+  "model_original_in_top3": 617,
+  "unknown_license": 0,
+  "signal_flags": 0,
+  "unresolved_taxonomy": 0,
+  "single_instrument_listening_verified": 0,
+  "thresholds": {
+    "min_duration_s": 0.1,
+    "min_active_s": 0.05,
+    "min_peak_dbfs": -40,
+    "max_start_sample_to_peak": 0.1,
+    "max_candidate_count": 700,
+    "min_class_count": 5
+  },
+  "criteria_note": "Thresholds are conservative selection rules, not assignment requirements. Model and source evidence do not certify human listening or exact instrument count.",
+  "audio_unchanged": true,
+  "metadata_paths_relative_to": "filtered_output",
+  "prior_dataset_archive": "output/dataset_archive_2026-10-20/before_selection"
+}

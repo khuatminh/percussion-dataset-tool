@@ -1,0 +1,5 @@
+# Separate Python 3.11 environment recommended.
+torch>=2.6,<3
+transformers>=4.46,<5
+soundfile>=0.13,<0.14
+scipy>=1.14,<2

@@ -1,0 +1,105 @@
+{
+  "created": "2026-10-20T21:54:24.332468+07:00",
+  "files": 655,
+  "classes": 13,
+  "dimensions": {
+    "A": 21,
+    "B": 39,
+    "C": 60
+  },
+  "finite": true,
+  "input_hashes_match": true,
+  "checks": "gain invariance, tone/noise low-band and flatness passed",
+  "one_active_frame_files": 0,
+  "no_delta_valid_frame_files": 0,
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "soundfile": "0.13.1"
+  },
+  "summaries": [
+    {
+      "feature_set": "A",
+      "dimensions": 21,
+      "within_macro": 0.7314200730936992,
+      "between_macro": 1.269123270322422,
+      "ratio": 1.7351496315303339
+    },
+    {
+      "feature_set": "B",
+      "dimensions": 39,
+      "within_macro": 1.1682145725359223,
+      "between_macro": 1.6072365069037644,
+      "ratio": 1.3758059047447315
+    },
+    {
+      "feature_set": "C",
+      "dimensions": 60,
+      "within_macro": 1.0095832578840032,
+      "between_macro": 1.4872883374447978,
+      "ratio": 1.4731705640226465
+    }
+  ],
+  "top_features": [
+    {
+      "feature_set": "B",
+      "feature": "mfcc01_mean",
+      "between_within_ratio": 8.06160171746603
+    },
+    {
+      "feature_set": "A",
+      "feature": "zcr_mean",
+      "between_within_ratio": 7.487279517299374
+    },
+    {
+      "feature_set": "A",
+      "feature": "entropy_mean",
+      "between_within_ratio": 7.145312373828389
+    },
+    {
+      "feature_set": "A",
+      "feature": "centroid_hz_mean",
+      "between_within_ratio": 7.106539319399737
+    },
+    {
+      "feature_set": "A",
+      "feature": "rolloff85_hz_mean",
+      "between_within_ratio": 6.709294172724769
+    },
+    {
+      "feature_set": "A",
+      "feature": "flux_mean",
+      "between_within_ratio": 5.920956947609142
+    },
+    {
+      "feature_set": "A",
+      "feature": "bandwidth_hz_mean",
+      "between_within_ratio": 4.591136026260838
+    },
+    {
+      "feature_set": "A",
+      "feature": "low500_ratio_mean",
+      "between_within_ratio": 4.217311570752324
+    },
+    {
+      "feature_set": "A",
+      "feature": "flatness_mean",
+      "between_within_ratio": 3.899579896994104
+    },
+    {
+      "feature_set": "A",
+      "feature": "flatness_std",
+      "between_within_ratio": 2.652239434798632
+    },
+    {
+      "feature_set": "B",
+      "feature": "mfcc02_mean",
+      "between_within_ratio": 2.538432608395753
+    },
+    {
+      "feature_set": "B",
+      "feature": "mfcc13_std",
+      "between_within_ratio": 1.9987849840979857
+    }
+  ]
+}

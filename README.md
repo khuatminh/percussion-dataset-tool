@@ -1,6 +1,40 @@
-# Lọc và chia thư mục âm thanh bộ gõ
+# Bộ dữ liệu bộ gõ và báo cáo yêu cầu 1–2
 
-Tool Python chạy offline trên máy, quét thư mục con và **sao chép**, không xóa hay sửa file gốc. Hợp với Freesound One-Shot Percussive Sounds và các bộ có tên nhạc cụ trong tên file/thư mục. Chưa kèm dataset.
+Repo gồm **655 tệp âm thanh / 13 nhóm nhạc cụ**, báo cáo LaTeX/PDF, các bảng đặc trưng và mã xử lý. Đây là phiên bản tuyển chọn ngày 20/10/2026.
+
+## Bắt đầu chỉnh sửa báo cáo
+
+1. Clone repo (cần quyền truy cập vì repo private):
+   ```sh
+   git clone https://github.com/khuatminh/percussion-dataset-tool.git
+   cd percussion-dataset-tool
+   git switch -c chinh-sua-bao-cao
+   ```
+2. Sửa trực tiếp [`bao_cao_bo_go/bao_cao_mmdb_yeu_cau_1_2.tex`](bao_cao_bo_go/bao_cao_mmdb_yeu_cau_1_2.tex). Đây là nguồn báo cáo chính, độc lập và đã nhúng các bảng. Điền `HoTen`, `MSSV`, `Lop` trong phần đầu nếu cần.
+3. Xem [bản PDF hiện tại](bao_cao_bo_go/bao_cao_mmdb_yeu_cau_1_2.pdf). Để biên dịch, dùng **XeLaTeX** với bộ TeX đầy đủ hoặc **Tectonic**; không dùng pdfLaTeX. Có thể tải riêng `.tex` lên Overleaf và chọn XeLaTeX.
+   ```sh
+   tectonic --outdir bao_cao_bo_go bao_cao_bo_go/bao_cao_mmdb_yeu_cau_1_2.tex
+   ```
+4. Commit thay đổi trên nhánh riêng, push và tạo pull request để cùng xem lại. Không cần chạy lại lọc âm thanh khi chỉ sửa văn bản báo cáo.
+
+## Các file cần dùng
+
+| Đường dẫn | Nội dung |
+|---|---|
+| [`bao_cao_bo_go/`](bao_cao_bo_go/README.md) | Báo cáo hiện hành và hướng dẫn tái lập |
+| [`filtered_output/accepted/`](filtered_output/accepted/) | Đủ 655 WAV, chia theo 13 nhãn |
+| [`filtered_output/accepted.csv`](filtered_output/accepted.csv) | Metadata, nguồn, giấy phép và đường dẫn audio |
+| [`filtered_output/evidence/`](filtered_output/evidence/) | Kiểm kê, mã băm, bằng chứng tuyển chọn và danh sách kiểm nghe |
+| [`filtered_output/features/`](filtered_output/features/) | Bộ A 21 chiều, B 39 chiều, C 60 chiều và các thống kê |
+| [`filtered_output/README.md`](filtered_output/README.md) | Quy tắc chọn và giới hạn của dữ liệu |
+
+Repo giữ giấy phép theo từng tệp nguồn, không gán một giấy phép chung mới cho audio. Dữ liệu được sàng lọc kỹ thuật và đối chiếu nguồn; chưa ghi nhận kiểm nghe thủ công toàn bộ 655 tệp. Các đường dẫn tuyệt đối trong hồ sơ lịch sử chỉ ghi nguồn gốc lần chạy, không cần có trên máy người clone; mở audio bằng đường dẫn `output` tương đối từ `filtered_output/`.
+
+## Công cụ lọc dữ liệu nguồn
+
+Phần dưới mô tả công cụ lọc ban đầu. Bộ 655 tệp bàn giao đã qua thêm bước tuyển chọn; không ghi đè `filtered_output/` khi thử công cụ.
+
+Tool Python chạy offline trên máy, quét thư mục con và **sao chép**, không xóa hay sửa file gốc. Hợp với Freesound One-Shot Percussive Sounds và các bộ có tên nhạc cụ trong tên file/thư mục.
 
 ## Cài đặt và chạy
 
@@ -70,7 +104,7 @@ Tên file xuất có tiền tố mã đường dẫn để tránh trùng tên. N
 5. Dò nhãn bằng từ khóa có ranh giới từ trong đường dẫn **tương đối**, tên gốc và tags/nhãn của metadata. Không dùng username hay mô tả tự do làm nhãn. Nhận nhiều nhạc cụ hoặc dấu hiệu drum kit/drum loop → `review`; không có nhãn → `review/unknown`.
 6. So SHA-256 của file và tín hiệu PCM đã giải mã, kèm sample rate/số kênh. Loại trùng chính xác cả khi khác container nhưng PCM giống nhau. Không phát hiện tất cả bản gần trùng, tăng/giảm âm lượng hoặc đã resample. Hai bản trùng nhưng nhãn khác nhau sẽ chuyển đại diện sang `review`.
 
-**Không có mô hình nhận diện nhạc cụ bằng âm thanh trong phiên bản này.** `accepted` là ứng viên đạt kiểm tra kỹ thuật + nhãn văn bản, không bảo đảm có đúng một nhạc cụ hay nhãn hoàn toàn đúng. Mỗi hàng có `single_instrument_verified=no` để không nhầm với dữ liệu đã được nghe xác minh. File tên `snare.wav` nhưng nội dung là guitar vẫn có thể lọt; cần nghe kiểm định trước khi dùng làm dữ liệu chuẩn cho báo cáo.
+**Riêng `percussion_filter.py` không dùng mô hình nhận diện nhạc cụ bằng âm thanh.** `accepted` là ứng viên đạt kiểm tra kỹ thuật + nhãn văn bản, không bảo đảm có đúng một nhạc cụ hay nhãn hoàn toàn đúng. Mỗi hàng có `single_instrument_verified=no` để không nhầm với dữ liệu đã được nghe xác minh. File tên `snare.wav` nhưng nội dung là guitar vẫn có thể lọt; cần nghe kiểm định trước khi dùng làm dữ liệu chuẩn cho báo cáo.
 
 Một file có nhiều lần đánh cùng nhạc cụ vẫn có thể hợp đề. Tool không coi số lần đánh là số nhạc cụ, không tự tách file dãy nốt Iowa, và không đảm bảo loại được mọi bản phối nhiều nhạc cụ. Không dùng tool như bộ phát hiện nhiễu nền hay công cụ xác minh giấy phép.
 
@@ -120,6 +154,37 @@ python percussion_filter.py --input "data/audio" --output "output/lan-2" \
 python -m unittest -v
 ```
 
-Tests dùng âm tổng hợp để kiểm tra đường đi dữ liệu, kiểm tra tín hiệu, metadata, trùng file và an toàn sao chép. Đây **không phải** đánh giá độ chính xác nhận dạng trên dataset thật. Dữ liệu gốc chưa được cung cấp trong dự án nên chưa thể xác nhận số file thực tế đạt yêu cầu.
+Tests dùng âm tổng hợp để kiểm tra đường đi dữ liệu, kiểm tra tín hiệu, metadata, trùng file và an toàn sao chép. Đây **không phải** đánh giá độ chính xác nhận dạng trên dataset thật. Bộ tuyển chọn hiện có 655 tệp; số lượng và giới hạn kiểm chứng được ghi trong `filtered_output/README.md`.
 
 Tài liệu thư viện đọc âm thanh: https://python-soundfile.readthedocs.io/en/latest/
+
+## Đối chiếu nhãn bằng model âm thanh CLAP
+
+`analyze_audio.py` đọc `manifest.csv` từ kết quả lọc và phân tích **audio thực tế** bằng `laion/clap-htsat-unfused`. Model không nhận tên file hoặc nhãn metadata làm đầu vào. Tool chỉ xuất báo cáo; không đổi nhãn, di chuyển, xóa hoặc sao chép lại audio.
+
+Cài môi trường riêng (khuyến nghị Python 3.11):
+
+```sh
+python3.11 -m venv .venv-audio
+.venv-audio/bin/python -m pip install -r requirements-model.txt
+.venv-audio/bin/python analyze_audio.py \
+  --input "/duong/dan/filtered_output" \
+  --output "/duong/dan/filtered_output/clap_pilot"
+```
+
+Mặc định chọn ngẫu nhiên tối đa 25 file ở mỗi nhóm `(status, label)`, riêng `review/unknown` chọn 100 file; seed 42 để tái lập. Thêm `--full` để quét toàn bộ `accepted` và `review`. Folder báo cáo phải chưa tồn tại.
+
+Lần đầu tải model khoảng 600 MB từ Hugging Face; audio được xử lý tại máy. Môi trường có PyTorch hỗ trợ sẽ tự chọn Apple MPS, CUDA hoặc CPU. Sau khi cache đủ model, có thể chạy offline bằng biến môi trường `HF_HUB_OFFLINE=1`. Phiên bản này xử lý đầy đủ các clip dài tối đa 10 giây, báo lỗi riêng nếu dài hơn, không tự cắt bỏ phần còn lại.
+
+Đầu ra:
+
+- `REPORT.md`: báo cáo tiếng Việt và mức đồng thuận theo từng nhãn.
+- `predictions.csv`: nhãn top-3, điểm cosine, chênh lệch top-1/top-2 và thứ hạng nhãn cũ.
+- `listen_first.csv`: các mẫu bất đồng hoặc chưa có nhãn, kèm đường dẫn audio để nghe lại.
+- `label_summary.csv`, `summary.json`: thống kê.
+- `predictions.jsonl`: top-5 và kết quả được ghi dần trong lúc chạy.
+- `run_config.json`, `selected_files.csv`: model revision, phiên bản thư viện, prompts và danh sách đầu vào.
+
+**Điểm cosine không phải xác suất, mức đồng thuận không phải độ chính xác.** Chưa có nhãn chuẩn được nghe xác minh, nên model không tự quyết định “valid” hoặc ghi đè nhãn. Các nhãn gần âm sắc (djembe/conga, castanets/woodblock…) có thể bị nhầm. Các nhóm ngoài nhạc cụ như `object_impact` hoặc `mixed_music` chỉ dùng để gợi ý kiểm tra, không phải bằng chứng chắc chắn để loại file.
+
+Audio được chuyển mono, lấy mẫu lại 48 kHz theo đầu vào CLAP và lượng tử hóa int16. Bộ xử lý `repeatpad` lặp clip ngắn trong biểu diễn đầu vào 10 giây; audio gốc giữ nguyên. **Không dùng phép phân loại này để đếm số nhạc cụ hoặc chứng minh một file chỉ có một nhạc cụ.** Cần nghe một tập đánh giá độc lập, kiểm tra cả các mẫu mà model đồng ý với metadata, trước khi quyết định mức tự động hóa.

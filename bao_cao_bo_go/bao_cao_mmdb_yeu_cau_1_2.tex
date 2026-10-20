@@ -1,0 +1,575 @@
+% !TeX program = xelatex
+% Standalone; current dataset curated-2026-10-20: 655 files, 13 classes.
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{texgyretermes-regular.otf}[BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
+\setsansfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf]
+\setmonofont{lmmono10-regular.otf}[Scale=0.85]
+\usepackage[vietnamese]{babel}
+\addto\captionsvietnamese{\renewcommand{\refname}{Tài liệu tham khảo}}
+\usepackage[margin=2.2cm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,array,longtable}
+\usepackage{graphicx,xcolor,tikz,pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{enumitem,fancyhdr,titlesec,caption}
+\usepackage[unicode,colorlinks=true,linkcolor=navy,urlcolor=teal,citecolor=teal]{hyperref}
+\usepackage{xurl}
+\definecolor{navy}{HTML}{17354C}
+\definecolor{teal}{HTML}{187F83}
+\definecolor{muted}{HTML}{526477}
+\definecolor{pale}{HTML}{EDF5F5}
+\definecolor{orange}{HTML}{BE753A}
+\titleformat{\section}{\Large\sffamily\bfseries\color{navy}}{\thesection.}{.5em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries\color{navy}}{\thesubsection}{.5em}{}
+\titlespacing*{\section}{0pt}{10pt}{8pt}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\baselinestretch}{1.08}
+\setlist{nosep,leftmargin=1.5em,topsep=3pt}
+\renewcommand{\arraystretch}{1.18}
+\captionsetup{font=small,labelfont=bf}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{muted}BỘ DỮ LIỆU ÂM THANH BỘ GÕ}
+\fancyhead[R]{\small\sffamily\color{muted}Yêu cầu 1 và 2}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\newcommand{\metric}[2]{\begin{minipage}[t]{.29\textwidth}\centering{\Huge\sffamily\bfseries\color{teal}#1}\par\small #2\end{minipage}}
+\newcommand{\note}[1]{\par\noindent\colorbox{pale}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\small #1}}\par}
+\newcommand{\HoTen}{\rule{8cm}{.3pt}}
+\newcommand{\MSSV}{\rule{8cm}{.3pt}}
+\newcommand{\Lop}{\rule{8cm}{.3pt}}
+\hypersetup{pdftitle={Hệ CSDL Đa phương tiện: dữ liệu và đặc trưng âm thanh nhạc cụ bộ gõ},pdfauthor={}}
+
+\setlength{\emergencystretch}{2em}
+\setcounter{tocdepth}{1}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\centering
+{\large\sffamily HỆ CƠ SỞ DỮ LIỆU ĐA PHƯƠNG TIỆN}\par
+\vspace{.35cm}
+{\normalsize\sffamily BÁO CÁO YÊU CẦU 1 VÀ 2}\par
+\vspace{1cm}{\color{teal}\rule{\textwidth}{1.2pt}}\par
+\vspace{1.3cm}
+{\Huge\sffamily\bfseries\color{navy}BỘ DỮ LIỆU ÂM THANH\\[9pt]NHẠC CỤ BỘ GÕ}\par
+\vspace{.65cm}
+{\Large Sưu tầm, mô tả và xây dựng các bộ đặc trưng\\[5pt]phục vụ nhận diện và tìm kiếm theo nội dung}\par
+\vspace{1.5cm}
+\metric{655}{tệp âm thanh}\hfill\metric{13}{nhóm nhạc cụ}\hfill\metric{3}{bộ đặc trưng}\par
+\vspace{1.5cm}
+\begin{minipage}{.9\textwidth}
+\textbf{Yêu cầu 1:} xây dựng bộ dữ liệu từ ít nhất 500 tệp và phân tích những điểm giống, khác nhau của tiếng nhạc cụ.\\[7pt]
+\textbf{Yêu cầu 2:} xây dựng các thuộc tính biểu diễn âm thanh, giải thích cách tính và giá trị thông tin đối với sự tương đồng và khác biệt.\\[7pt]
+\textbf{Dữ liệu sử dụng:} phiên bản tuyển chọn ngày 20/10/2026; WAV, PCM 16-bit, mono, 16 kHz.
+\end{minipage}
+\vfill
+\begin{tabular}{ll}
+Họ và tên: & \HoTen\\[10pt]
+Mã sinh viên: & \MSSV\\[10pt]
+Lớp: & \Lop
+\end{tabular}
+\vfill{\large Tháng 10 năm 2026}\par
+\end{titlepage}
+\hypersetup{pageanchor=true}
+\pagenumbering{arabic}
+\section*{Tóm tắt và phạm vi}
+\addcontentsline{toc}{section}{Tóm tắt và phạm vi}
+Báo cáo trình bày bộ dữ liệu 655 tệp âm thanh thuộc 13 nhóm nhạc cụ bộ gõ, được tuyển chọn từ Freesound One-Shot Percussive Sounds, IDMT-SMT-Drums và University of Iowa Musical Instrument Samples. Mỗi tệp được gán một nhãn nhạc cụ, lưu cùng thông tin nguồn và thông số kỹ thuật. Bộ dữ liệu có cả tiếng gõ đơn lẻ và chuỗi tiếng của cùng một nhạc cụ.
+
+Trên bộ dữ liệu này, ba cách biểu diễn được xây dựng: \textbf{A gồm 21 thuộc tính thời gian và phổ}, \textbf{B gồm 39 thuộc tính MFCC} và \textbf{C gồm 60 thuộc tính kết hợp}. Các thuộc tính mô tả mức tập trung năng lượng, độ sáng, độ phân tán phổ, cấu trúc bao phổ và sự biến đổi theo thời gian. Khoảng cách giữa các vector được dùng để lượng hóa mức giống và khác nhau.
+
+Các kết quả thống kê trong báo cáo được tính trên đúng 655 tệp hiện có. Đánh giá khoảng cách là phân tích mô tả của bộ dữ liệu, chưa phải độ chính xác nhận diện trên dữ liệu mới. Việc xác nhận bằng tai cho toàn bộ điều kiện ``mỗi tệp chỉ có một nhạc cụ'' chưa hoàn tất; mức bằng chứng hiện có được trình bày tại Mục~\ref{sec:curation}.
+
+\begin{table}[h]
+\centering\small
+\begin{tabularx}{\textwidth}{p{.27\textwidth}X}
+\toprule
+Nội dung đề bài & Nội dung đáp ứng trong báo cáo\\\midrule
+Ít nhất 500 tệp bộ gõ & Quy mô, nguồn, tổ chức và kiểm tra 655 tệp, Mục 1--3.\\
+Độ dài phù hợp; một nhạc cụ/tệp & Tiêu chí tuyển chọn, sự khác nhau giữa một nhạc cụ và một tiếng gõ, giới hạn kiểm chứng, Mục 2--3.\\
+Mô tả tiếng giống và khác nhau & Mô tả 13 nhóm và bảng so sánh đo trực tiếp, Mục 4--5.\\
+Xây dựng bộ thuộc tính & Quy trình và công thức của A, B, C, Mục 6--10.\\
+Giá trị thông tin của thuộc tính & Giải thích từng đặc trưng, minh họa tương đồng và khác biệt, kết quả định lượng, Mục 7--12.\\\bottomrule
+\end{tabularx}
+\end{table}
+\clearpage
+\tableofcontents
+\clearpage
+
+\section{Yêu cầu 1: xây dựng bộ dữ liệu}
+\subsection{Đối tượng và đơn vị dữ liệu}
+Đối tượng nghiên cứu là âm thanh các nhạc cụ thuộc bộ gõ. Đơn vị lưu trữ và truy vấn là \textbf{một tệp WAV}; đơn vị nhãn là một trong 13 nhóm nhạc cụ. Các nhóm gồm trống màng rung, nhạc cụ kim loại, thanh gõ và nhạc cụ gõ có cao độ. Nhãn biểu thị loại nhạc cụ, không biểu thị người chơi, cao độ hay kỹ thuật biểu diễn.
+
+``Một nhạc cụ'' không đồng nghĩa với ``một lần gõ''. Một tệp hi-hat có nhiều lần đánh vẫn thuộc phạm vi nếu chỉ có tiếng hi-hat. Tương tự, một nhạc cụ có thể tạo ra nhiều thành phần âm: snare có phần thân tiếng trống và phần rè của dây lò xo; tambourine có thể có cả màng và các miếng kim loại. Đây là cấu tạo của cùng một nhạc cụ, khác với bản phối nhiều nhạc cụ.
+
+\subsection{Nguồn sưu tầm và phần được sử dụng}
+\begin{table}[h]
+\centering\small
+\begin{tabularx}{\textwidth}{p{.27\textwidth}rX}
+\toprule
+Nguồn & Số tệp & Vai trò và bằng chứng nguồn\\\midrule
+Freesound One-Shot Percussive Sounds & 513 & Tiếng gõ ngắn, đa dạng âm sắc. Đối chiếu mã âm thanh, tên, người tải lên và giấy phép với metadata chính thức.\\
+IDMT-SMT-Drums & 94 & Kick, snare, hi-hat; gồm 56 bản training và 38 isolated tracks, được đối chiếu dạng sóng với nguồn.\\
+University of Iowa MIS & 48 & Mẫu nhạc cụ từ thư viện theo từng loại; bản đang dùng là các đoạn trích, gồm các nhạc cụ gõ có cao độ.\\\midrule
+\textbf{Tổng} & \textbf{655} & Ba nguồn bổ sung độ đa dạng về nhạc cụ và điều kiện thu.\\\bottomrule
+\end{tabularx}
+\end{table}
+Nguồn Freesound công bố tập tiếng bộ gõ một sự kiện, đã qua sàng lọc của tác giả nguồn~\cite{freesound}. IDMT cung cấp cả dữ liệu trống tổng hợp lẫn các phần riêng từng nhạc cụ; bộ đang dùng lấy phần có bằng chứng nguồn đơn nhạc cụ, không chọn bản phối trống đầy đủ~\cite{idmt}. Iowa tổ chức mẫu theo nhạc cụ, cao độ, cường độ và kỹ thuật chơi~\cite{iowa}.
+
+Thông tin giấy phép được giữ theo từng tệp, không gán một giấy phép chung cho toàn bộ bộ sưu tập. Metadata Freesound có các giấy phép khác nhau; nguồn IDMT ghi CC BY-NC-ND 4.0; Iowa có điều khoản sử dụng trên trang thư viện. Báo cáo ghi nhận nguồn và điều khoản, không coi việc tải được dữ liệu là quyền phân phối lại vô điều kiện.
+
+\subsection{Định dạng và tổ chức lưu trữ}
+Toàn bộ tệp sử dụng WAV/PCM 16-bit, một kênh, tần số lấy mẫu 16.000 Hz. WAV không nén mất dữ liệu, dễ đọc lại và thuận tiện tính đặc trưng. Tần số Nyquist là 8 kHz, đủ để khảo sát nhiều khác biệt trong tập hiện tại nhưng không giữ các thành phần cao hơn 8 kHz của tiếng kim loại.
+
+Thư mục \path{filtered_output/accepted/<label>/} chứa âm thanh theo nhãn. \path{accepted.csv} và \path{manifest.csv} lưu đường dẫn, nhãn, nguồn và mã kiểm tra; \path{evidence/} lưu số liệu kiểm kê; \path{features/} lưu các vector. Tên tệp và nguồn dùng để quản lý dữ liệu, \textbf{không được đưa vào vector âm thanh}.
+\clearpage
+
+\section{Tuyển chọn và kiểm soát chất lượng}\label{sec:curation}
+\subsection{Quy trình áp dụng}
+Quy trình tuyển chọn kết hợp kiểm tra kỹ thuật, bằng chứng nguồn và hỗ trợ nhận diện tự động. Các điều kiện dưới đây là lựa chọn triển khai của bộ dữ liệu này, không phải các ngưỡng bắt buộc trong đề bài.
+\begin{enumerate}
+\item \textbf{Kiểm kê và loại trùng:} đọc tệp, đối chiếu nhãn và đường dẫn, tính SHA-256 cho tệp và chuỗi mẫu PCM. Giữ các bản không trùng theo hai cách kiểm tra này.
+\item \textbf{Kiểm tra tín hiệu:} tệp đọc được, có tín hiệu hữu hạn, không rỗng; thời lượng ít nhất 0,1 s; vùng hoạt động ít nhất 0,05 s; đỉnh không thấp hơn $-40$ dBFS; vượt qua các kiểm tra tự động về biên cắt và tín hiệu của quy trình tuyển chọn.
+\item \textbf{Xác minh nguồn và nhãn:} yêu cầu thông tin nguồn, giấy phép và nhãn không còn xung đột chưa xử lý. Với IDMT, so sánh dạng sóng sau đổi tần số lấy mẫu với phần đơn nhạc cụ trong gói chính thức. Với Freesound, đối chiếu metadata chính thức.
+\item \textbf{Sàng lọc hỗ trợ bằng CLAP:} so sánh âm thanh với mô tả nhạc cụ. Freesound được giữ khi nhãn đầu tiên phù hợp metadata; Iowa dựa trên tên nguồn và hỗ trợ trong ba nhãn đầu; IDMT ưu tiên bằng chứng dạng sóng của nguồn đơn nhạc cụ. Loại các trường hợp mơ hồ theo quy tắc tuyển chọn.
+\item \textbf{Chốt phiên bản và trích xuất lại:} chỉ dùng 655 tệp được giữ để tạo thống kê, bộ chuẩn hóa và các bộ đặc trưng trong báo cáo.
+\end{enumerate}
+CLAP là công cụ hỗ trợ sàng lọc, không phải bộ đặc trưng A, B hay C xây dựng ở Yêu cầu 2. Có 583/655 tệp được CLAP xếp nhãn hiện tại ở vị trí thứ nhất. 72 tệp còn lại có hỗ trợ từ nguồn theo quy tắc riêng; con số 583 không phải số dự đoán đúng trên một tập nhãn đã được kiểm nghe độc lập.
+
+\subsection{Kết quả kiểm tra và giới hạn bằng chứng}
+\begin{table}[h]
+\centering\small
+\begin{tabularx}{\textwidth}{Xr}
+\toprule
+Hạng mục & Kết quả\\\midrule
+Tệp âm thanh đọc được / tệp được giữ & 655 / 655\\
+Số nhóm nhạc cụ & 13\\
+Mã SHA-256 tệp / mã PCM khác nhau & 655 / 655\\
+Tệp thiếu thông tin giấy phép trong metadata & 0\\
+Tệp còn cờ lỗi kỹ thuật theo quy trình tuyển chọn & 0\\
+Tệp đã được xác nhận kiểm nghe thủ công trong hồ sơ & 0\\\bottomrule
+\end{tabularx}
+\end{table}
+Đối chiếu nguồn và mô hình làm tăng độ tin cậy của nhãn, nhưng không thay thế hoàn toàn việc nghe từng tệp. Mã băm khác nhau chỉ loại trùng tuyệt đối, không chứng minh hai bản thu không gần trùng. Không có cờ lỗi tự động cũng không đồng nghĩa với không còn nhiễu, hiệu ứng hay tiếng chồng lớp.
+
+\note{Bộ dữ liệu đạt yêu cầu số lượng và có bằng chứng kỹ thuật, nguồn cho việc tuyển chọn. Điều kiện tuyệt đối ``mỗi tệp chỉ gồm tiếng của một nhạc cụ'' và mức đầy đủ cảm nhận của từng đoạn vẫn cần vòng kiểm nghe để xác nhận trọn vẹn. Báo cáo không ghi nhận vòng kiểm nghe này là đã hoàn thành.}
+\clearpage
+
+\section{Quy mô, thời lượng và độ phù hợp của tệp}
+\begin{table}[h]
+\centering
+\caption{Số lượng và thời lượng đo trực tiếp trên phiên bản 655 tệp. Đơn vị thời lượng: giây.}
+\begin{tabular}{lrrrr}
+\toprule
+Nhãn nhạc cụ & Số tệp & Ngắn nhất & Trung vị & Dài nhất\\\midrule
+agogo & 16 & 0,464 & 0,673 & 0,999 \\
+claves & 13 & 0,163 & 0,209 & 0,511 \\
+conga & 18 & 0,139 & 0,476 & 0,906 \\
+cowbell & 43 & 0,110 & 0,232 & 0,720 \\
+cymbal & 33 & 0,371 & 0,766 & 0,999 \\
+hi\_hat & 93 & 0,108 & 5,647 & 19,249 \\
+kick & 151 & 0,109 & 0,480 & 20,615 \\
+marimba & 36 & 0,712 & 2,000 & 2,000 \\
+snare & 141 & 0,114 & 0,464 & 17,104 \\
+tambourine & 12 & 0,154 & 0,395 & 0,418 \\
+tom & 76 & 0,107 & 0,720 & 0,999 \\
+vibraphone & 12 & 2,000 & 2,000 & 2,000 \\
+xylophone & 11 & 0,283 & 0,510 & 0,958 \\
+\midrule
+\textbf{Tổng} & \textbf{655} & \textbf{0,107} & \textbf{0,534} & \textbf{20,615}\\\bottomrule
+\end{tabular}
+\end{table}
+Tổng thời lượng là \textbf{1.583,158 giây}, tương đương khoảng 26 phút 23 giây. Dung lượng âm thanh là 50.689.868 byte, khoảng 48,34 MiB. Có 514 tệp dài không quá một giây. Lớp ít nhất có 11 tệp (xylophone), nhiều nhất có 151 tệp (kick); dữ liệu không cân bằng giữa các lớp.
+
+\subsection{Vì sao không ép mọi tệp có cùng độ dài?}
+Một đoạn phù hợp cần giữ được những thành phần có ích để phân biệt: thời điểm kích thích ban đầu, phần cộng hưởng và diễn biến suy giảm hoặc lặp lại. Tiếng claves hay cowbell có thể rất ngắn; ép kéo dài bằng im lặng không bổ sung thông tin nhạc cụ. Ngược lại, cắt một chuỗi hi-hat hoặc tiếng ngân theo cùng ngưỡng ngắn có thể làm mất đặc điểm thời gian.
+
+Bộ dữ liệu giữ độ dài khác nhau và chuyển mỗi tệp thành vector có số chiều cố định bằng thống kê theo khung. Ngưỡng 0,1 s chỉ là bước sàng lọc kỹ thuật. Độ phù hợp thực tế còn phụ thuộc tốc độ suy giảm, biên cắt và kỹ thuật biểu diễn; không suy ra chỉ từ thời lượng tổng.
+
+\subsection{Ảnh hưởng của dạng bản ghi}
+IDMT có các chuỗi một nhạc cụ nên một số tệp kick, snare và hi-hat dài nhiều giây. Nhiều đoạn Iowa trong phiên bản này dài đúng 2 s do cách trích đoạn. Vì vậy, tệp hi-hat dài hơn tệp claves không có nghĩa một lần đánh hi-hat luôn ngân lâu hơn. Thời lượng tệp và khoảng chứa 90\% năng lượng phản ánh cả cách cắt, số lần đánh, khoảng nghỉ và bao âm.
+
+Các phép tổng hợp phổ ưu tiên khung có tín hiệu để giảm ảnh hưởng im lặng. Các thuộc tính thời gian vẫn được giữ vì chúng mô tả cấu trúc bản ghi, nhưng phải đọc cùng thông tin nguồn và dạng sự kiện khi giải thích âm sắc.
+\clearpage
+
+\section{Đặc điểm giống và khác nhau của tiếng nhạc cụ}
+\subsection{Những đặc điểm chung}
+Các tiếng bộ gõ thường có sự kích thích nhanh rồi cộng hưởng hoặc suy giảm; một tệp có thể chứa nhiều lần kích thích. Phổ của âm gồm các vùng tập trung năng lượng và thành phần trải rộng với tỷ lệ khác nhau. Vật liệu, cấu tạo, vị trí đánh, lực đánh và cách hãm rung tạo nên khác biệt về độ trầm, độ sáng, độ rè và thời gian tồn tại của tiếng.
+
+Hai tệp cùng nhạc cụ không nhất thiết giống hệt nhau; hai nhạc cụ khác nhau cũng có thể chia sẻ một thuộc tính. Chẳng hạn, kick, conga và tom đều có thể giàu năng lượng thấp; hi-hat và tambourine cùng có nhiều năng lượng cao. Do đó, nhận diện cần một tập thuộc tính bổ sung cho nhau thay vì một ngưỡng đơn lẻ.
+
+\subsection{Mô tả 13 nhóm và các dấu hiệu cần quan sát}
+Bảng dưới nêu các dấu hiệu âm học dự kiến theo loại nhạc cụ, được đối chiếu với số đo ở Mục 5. Đây không phải biên bản đã nghe toàn bộ tệp, và dấu hiệu có thể thay đổi theo cách chơi hoặc xử lý bản thu.
+\begin{table}[h]
+\centering\small
+\begin{tabularx}{\textwidth}{p{.15\textwidth}X}
+\toprule
+Nhạc cụ & Đặc điểm và điểm so sánh đáng chú ý\\\midrule
+Kick & Thân tiếng trầm, xung năng lượng mạnh. Dễ gần tom/conga ở phổ thấp; khác nhau còn ở bao phổ và diễn biến năng lượng.\\
+Tom & Cộng hưởng màng trống, có thân tiếng và đuôi suy giảm. Có thể gần conga; phổ và độ biến thiên giúp bổ sung cho năng lượng thấp.\\
+Conga & Tiếng trống tay, thay đổi theo cách đánh mở, hãm hoặc vỗ. Phần trầm có thể gần tom, phần đầu tiếng thay đổi mạnh theo kỹ thuật.\\
+Snare & Kết hợp thân tiếng với thành phần rè của dây lò xo. Phổ thường phân tán hơn các tiếng trống trầm, có thể gần cymbal ở thành phần nhiễu.\\
+Hi-hat & Tiếng kim loại sáng, dạng đóng/mở và cách đánh tạo mức ngân khác nhau. Gần tambourine ở vùng cao, cần thêm cấu trúc phổ và thời gian.\\
+Cymbal & Nhiều thành phần kim loại và phổ trải rộng; kiểu đánh hoặc hãm tạo đuôi tiếng khác nhau. Có thể chia sẻ tính nhiễu với hi-hat/snare.\\
+Tambourine & Các miếng kim loại tạo tiếng lách cách, leng keng; nhịp kích thích và phần màng tùy mẫu. Trong tập hiện tại có trọng tâm phổ cao.\\
+Cowbell & Tiếng chuông kim loại với các vùng cộng hưởng nổi bật. Cùng họ dấu hiệu cộng hưởng với agogo nhưng phân bố năng lượng khác nhau.\\
+Agogo & Tiếng chuông gõ, các vùng cộng hưởng tập trung; cỡ chuông và lực đánh thay đổi phổ. Cần bao phổ để phân biệt với cowbell.\\
+Claves & Tiếng va chạm thanh gõ, thường ngắn và sắc. Cùng có kích thích rõ với các nhạc cụ khác nhưng đuôi tiếng ngắn và phổ khác.\\
+Marimba & Thanh gõ có cao độ, năng lượng tập trung vào các thành phần cộng hưởng; cao độ và lực đánh làm thay đổi phổ.\\
+Vibraphone & Thanh kim loại có cao độ, đặc điểm ngân phụ thuộc hãm âm và kỹ thuật. Có thể gần marimba theo độ tập trung phổ.\\
+Xylophone & Thanh gõ có cao độ, phần kích thích rõ; trong tập này trọng tâm phổ cao hơn marimba và vibraphone.\\\bottomrule
+\end{tabularx}
+\end{table}
+\clearpage
+
+\section{So sánh định lượng tiếng nhạc cụ}
+\subsection{Quy ước đọc số liệu}
+Mỗi tệp được chia khung, tính đặc trưng trên khung có tín hiệu rồi lấy trung bình trong tệp. Bảng~\ref{tab:acoustic} là \textbf{trung vị của các giá trị trung bình theo tệp trong từng lớp}. Đây không phải phổ của một tệp đại diện, không phải trung bình trên toàn bộ mẫu âm thanh và không thể mô tả hết biến thiên trong lớp. Công thức và cách chọn khung được nêu ở Mục 6--8.
+\begin{table}[h]
+\centering\small
+\caption{Các đại lượng phổ đo trên bộ dữ liệu. $C$: trọng tâm phổ; $F$: độ phẳng; $H$: entropy; $L$: tỷ lệ năng lượng dưới 500 Hz; $\Phi$: flux.}\label{tab:acoustic}
+\begin{tabular}{lrrrrr}
+\toprule
+Nhãn & $C$ (Hz) & $F$ & $H$ & $L$ (\%) & $\Phi$\\\midrule
+agogo & 1261,3 & 0,0015 & 0,272 & 0,00 & 0,045 \\
+claves & 2668,7 & 0,0121 & 0,458 & 0,00 & 0,363 \\
+conga & 240,6 & 0,0001 & 0,256 & 99,61 & 0,117 \\
+cowbell & 720,6 & 0,0036 & 0,252 & 42,04 & 0,141 \\
+cymbal & 2838,4 & 0,0910 & 0,710 & 3,38 & 0,338 \\
+hi\_hat & 4429,7 & 0,2945 & 0,839 & 9,23 & 0,403 \\
+kick & 60,3 & 0,0002 & 0,229 & 99,84 & 0,188 \\
+marimba & 245,2 & 0,0002 & 0,219 & 78,91 & 0,059 \\
+snare & 1749,6 & 0,1661 & 0,696 & 29,89 & 0,353 \\
+tambourine & 5766,8 & 0,0211 & 0,584 & 0,01 & 0,397 \\
+tom & 144,0 & 0,0007 & 0,234 & 99,20 & 0,088 \\
+vibraphone & 307,9 & 0,0003 & 0,198 & 76,85 & 0,053 \\
+xylophone & 1889,3 & 0,0003 & 0,254 & 5,85 & 0,070 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\subsection{Những tương đồng và khác biệt quan sát được}
+\textbf{Nhóm trống trầm:} kick, tom và conga có tỷ lệ năng lượng dưới 500 Hz xấp xỉ 99,84\%, 99,20\% và 99,61\%. Chúng tương đồng theo dấu hiệu năng lượng thấp. Trọng tâm phổ lần lượt khoảng 60,3; 144,0 và 240,6 Hz cho thấy vẫn tồn tại khác biệt về vị trí phân bố năng lượng. Tuy nhiên, sự chồng lấp từng tệp không được thể hiện đầy đủ bởi ba trung vị này.
+
+\textbf{Nhóm phổ phân tán:} hi-hat có entropy 0,839, cymbal 0,710 và snare 0,696; các giá trị này cao hơn nhóm trống trầm. Hi-hat và tambourine cùng sáng (trọng tâm khoảng 4.429,7 và 5.766,8 Hz), nhưng độ phẳng lần lượt 0,2945 và 0,0211: nhiều năng lượng cao không đồng nghĩa với phổ phẳng. Sự kết hợp trọng tâm và độ phẳng giúp tránh nhầm hai khái niệm này.
+
+\textbf{Nhóm có các vùng cộng hưởng tập trung:} marimba và vibraphone đều có độ phẳng rất thấp, entropy lần lượt 0,219 và 0,198. Đây là điểm giống nhau cần được phản ánh khi tìm âm tương tự. Xylophone có trọng tâm 1.889,3 Hz trong tập này, khác rõ trung vị marimba 245,2 Hz và vibraphone 307,9 Hz. Khoảng cao độ và cách trích mẫu có thể góp phần tạo chênh lệch, nên không coi các số này là hằng số của nhạc cụ.
+
+\textbf{Agogo và cowbell:} cùng có phổ tập trung nhưng tỷ lệ năng lượng thấp khác đáng kể: agogo khoảng 0,002\%, cowbell 42,04\%. Kết hợp tỷ lệ năng lượng thấp với hình dạng bao phổ có ích hơn việc chỉ gọi cả hai là ``tiếng chuông kim loại''.
+\clearpage
+
+\section{Yêu cầu 2: quy trình biểu diễn âm thanh}
+\subsection{Từ tệp âm thanh đến vector đặc trưng}
+Quy trình chung là: \textbf{đọc WAV $\rightarrow$ bỏ DC và chuẩn hóa đỉnh $\rightarrow$ xác định vùng hoạt động $\rightarrow$ chia khung $\rightarrow$ tính thời gian/phổ/MFCC $\rightarrow$ tổng hợp theo tệp $\rightarrow$ chuẩn hóa thuộc tính $\rightarrow$ tính khoảng cách}. Mục tiêu là đưa tệp dài ngắn khác nhau về biểu diễn có số chiều cố định, có thể lưu trong cơ sở dữ liệu và so sánh theo nội dung.
+
+Gọi $x[n]$ là mẫu tín hiệu và $N$ là số mẫu. Tín hiệu dùng khi tính đặc trưng là
+\[
+y[n]=\frac{x[n]-\bar{x}}{\max_n|x[n]-\bar{x}|},\qquad
+\bar{x}=\frac{1}{N}\sum_{n=0}^{N-1}x[n].
+\]
+Việc trừ trung bình loại thành phần DC; chia đỉnh làm giảm ảnh hưởng của hệ số khuếch đại toàn tệp. Tệp im lặng bị loại. Không dùng biên độ thu tuyệt đối làm dấu hiệu nhạc cụ, vì khoảng cách micro và gain có thể tạo khác biệt không liên quan đến âm sắc. Chuẩn hóa không khôi phục được thông tin mất do méo hoặc cắt ngọn.
+
+\begin{table}[h]
+\centering\small
+\begin{tabularx}{\textwidth}{p{.31\textwidth}X}
+\toprule
+Thành phần & Thiết lập đã dùng\\\midrule
+Tín hiệu đầu vào & Mono, $f_s=16.000$ Hz; tính toán số thực 64-bit.\\
+Bao RMS cho thời gian & Các khối 160 mẫu (10 ms), không chồng; khối cuối có thể ngắn hơn. Khối hoạt động khi RMS $>0,01$ sau chuẩn hóa đỉnh.\\
+Khung phân tích phổ & 400 mẫu (25 ms), bước 160 mẫu (10 ms); bổ sung số 0 ở cuối để đủ khung.\\
+Khung phổ hợp lệ & RMS trước áp cửa sổ $>0,01$. Cửa sổ Hann dạng tuần hoàn.\\
+Biến đổi phổ & FFT 512 điểm; 257 bin từ 0 đến 8 kHz. Bước bin 31,25 Hz.\\
+Tổng hợp & Trung bình và độ lệch chuẩn tổng thể (ddof = 0) trên khung hợp lệ; flux và delta dùng điều kiện hợp lệ riêng.\\\bottomrule
+\end{tabularx}
+\end{table}
+Với khung $t$, gọi $P_t[k]=|\mathrm{FFT}(y_t w)[k]|^2$, $f_k=16000k/512$, $k=0,\ldots,256$. Phân bố công suất chuẩn hóa là
+\[
+q_t[k]=\frac{P_t[k]}{\sum_{j=0}^{256}P_t[j]}.
+\]
+Mẫu số được chặn dưới ở $10^{-30}$ trong chương trình. Các công thức phổ trong báo cáo dùng \textbf{công suất}, không dùng trực tiếp biên độ phổ, trừ flux có bước lấy căn. FFT được đệm từ 400 lên 512 điểm để có lưới tần số thuận tiện; việc đệm không làm tăng độ phân giải vật lý của khung 25 ms.
+
+\subsection{Ba bộ đặc trưng được xây dựng}
+\textbf{A:} 5 thuộc tính thời gian và 16 thuộc tính phổ, dễ diễn giải trực tiếp. \textbf{B:} 39 thuộc tính từ MFCC, mô tả hình dạng bao phổ và biến thiên. \textbf{C:} ghép A và B sau chuẩn hóa, cân bằng trọng số hai khối. Tất cả đều được tính từ nội dung âm thanh; nhãn chỉ dùng để phân tích kết quả.
+\clearpage
+
+\section{Bộ A: năm thuộc tính thời gian}
+Đặt $\mathcal A$ là tập mẫu thuộc các khối 10 ms hoạt động; $n_0,n_1$ là mẫu hoạt động đầu và cuối. $T_a=|\mathcal A|/f_s$ là tổng thời gian hoạt động và $T_s=(n_1-n_0+1)/f_s$ là độ dài từ đầu đến cuối vùng hoạt động, kể cả khoảng nghỉ ở giữa.
+
+\subsection{Thời lượng hoạt động và khoảng chứa 90\% năng lượng}
+Hai thuộc tính đầu tiên là
+\[
+a_1=\ln(1+T_a),\qquad a_2=\ln(1+D_{90}),\qquad
+D_{90}=\frac{n_{95}-n_{05}}{f_s},
+\]
+trong đó thời gian được biểu diễn bằng giây; $n_p$ là vị trí đầu tiên năng lượng tích lũy đạt $p\%$ tổng năng lượng $\sum_n y[n]^2$. Logarit tự nhiên nén khoảng biến thiên, tránh để một chuỗi dài chi phối quá mạnh so với tiếng gõ ngắn.
+
+\textbf{Giá trị thông tin:} $T_a$ cho biết lượng tín hiệu thực sự xuất hiện; $D_{90}$ cho biết năng lượng tập trung trong khoảng ngắn hay trải trên khoảng dài. Hai tệp cùng dạng kích thích và suy giảm có thể gần nhau theo các giá trị này. Khác biệt về độ ngân, hãm âm hay chuỗi tiếng lặp có thể làm chúng xa nhau. $D_{90}$ của cả tệp không phải thời gian suy giảm của một lần đánh và không được gọi là hằng số decay của nhạc cụ.
+
+\subsection{Hệ số đỉnh trên vùng hoạt động}
+\[
+a_3=20\log_{10}\left(\frac{1}{\sqrt{|\mathcal A|^{-1}\sum_{n\in\mathcal A}y[n]^2}}\right)\quad\text{(dB)}.
+\]
+Đỉnh toàn tệp đã chuẩn hóa bằng 1. Crest lớn biểu thị đỉnh nổi bật so với mức RMS vùng hoạt động; crest nhỏ biểu thị năng lượng được duy trì đều hơn. Thuộc tính này bổ sung sự khác biệt giữa xung gõ nhọn và âm kéo dài, nhưng cũng chịu ảnh hưởng của nén động học, cách chơi và nhiều sự kiện trong tệp.
+
+\subsection{Tỷ lệ hoạt động và vị trí đỉnh bao RMS}
+\[
+a_4=\frac{T_a}{T_s},\qquad
+ a_5=\operatorname{clip}_{[0,1]}\left(\frac{160b_{\max}-n_0}{\max(n_1-n_0,1)}\right),
+\]
+trong đó $b_{\max}$ là chỉ số khối 10 ms có RMS lớn nhất. $a_4$ gần 1 khi phần giữa vùng hoạt động tương đối liên tục, nhỏ hơn khi có khoảng nghỉ. $a_5$ gần 0 khi khối mạnh nhất nằm đầu vùng hoạt động; giá trị lớn hơn cho thấy cực đại đến muộn.
+
+\textbf{Giá trị thông tin:} tỷ lệ hoạt động mô tả tính liên tục; vị trí đỉnh mô tả phân bố năng lượng theo trục thời gian. Chúng có ích cho sự tương đồng về cấu trúc bản ghi và một phần bao âm. Vị trí đỉnh không phải phép đo chính xác thời gian attack của từng nốt; chuỗi nhiều lần đánh có thể đạt cực đại ở bất cứ vị trí nào.
+
+\note{Nhóm thời gian trả lời ``năng lượng xuất hiện như thế nào theo thời gian''. Nhóm phổ ở phần tiếp theo trả lời ``năng lượng nằm ở những vùng tần số nào''. Hai nhóm bổ sung nhau, nhưng đều cần xét ảnh hưởng của cách ghi và cắt tệp.}
+\clearpage
+
+\section{Bộ A: tám đại lượng phổ và cách tổng hợp}
+\subsection{Vị trí và độ trải rộng năng lượng}
+\textbf{Trọng tâm phổ} và \textbf{độ rộng phổ} được tính theo
+\[
+C_t=\sum_k f_kq_t[k],\qquad W_t=\sqrt{\sum_k(f_k-C_t)^2q_t[k]}.
+\]
+Cả hai có đơn vị Hz. $C_t$ mô tả vị trí trung bình năng lượng, thường liên hệ độ sáng; $W_t$ mô tả mức trải rộng quanh trọng tâm. Hai âm cùng trọng tâm vẫn có thể có độ rộng khác nhau. $C_t$ không phải tần số cơ bản hay cao độ của âm.
+
+\textbf{Rolloff 85\%} là tần số $R_t=f_{k^*}$ với $k^*=\min\{k:\sum_{j=0}^kq_t[j]\geq0,85\}$. Nó cho biết phần lớn năng lượng đã nằm dưới tần số nào. Rolloff và trọng tâm có thể tương quan nhưng không trùng ý nghĩa: một đại lượng là phân vị năng lượng, một đại lượng là trung bình có trọng số.
+
+\textbf{Tỷ lệ năng lượng thấp} $L_t=\sum_{f_k<500\,\mathrm{Hz}}q_t[k]$ nằm trong $[0,1]$. Giá trị cao liên kết các tiếng giàu âm trầm; giá trị thấp giúp phân biệt với nhiều tiếng kim loại sáng. Ngưỡng sử dụng là \emph{nhỏ hơn} 500 Hz. Đây là tỷ lệ nên giảm phụ thuộc vào mức âm lượng.
+
+\subsection{Độ tập trung và tính nhiễu của phổ}
+\textbf{Độ phẳng phổ:}
+\[
+F_t=\frac{\exp\left(\frac{1}{K}\sum_k\ln\widetilde P_t[k]\right)}{\frac{1}{K}\sum_k\widetilde P_t[k]},\qquad K=257,
+\]
+trong đó $\widetilde P_t[k]=\max(P_t[k],10^{-12}\max(\max_jP_t[j],10^{-30}))$. Giá trị gần 0 biểu thị phổ có các đỉnh nổi bật, gần 1 biểu thị công suất đều hơn giữa các bin. Nó giúp phân biệt phổ tập trung và phổ giống nhiễu; không trực tiếp xác định vật liệu nhạc cụ.
+
+\textbf{Entropy phổ chuẩn hóa:} $H_t=-\sum_kq_t[k]\ln q_t[k]/\ln K$, với quy ước $0\ln0=0$. Giá trị cao biểu thị năng lượng phân tán trên nhiều bin. Entropy và flatness đều liên quan phân tán nhưng nhạy khác nhau với các bin có năng lượng nhỏ; giữ cả hai để khảo sát tính bổ sung thay vì giả định chúng độc lập.
+
+\subsection{Mức dao động và thay đổi giữa các khung}
+\textbf{ZCR:} $Z_t=\frac{1}{399}\sum_{n=1}^{399}\mathbf1[\operatorname{sgnbit}(y_t[n])\ne\operatorname{sgnbit}(y_t[n-1])]$. Tính trên khung trước cửa sổ. Nhiều lần đổi dấu thường đi cùng thành phần cao hoặc nhiễu; ZCR không phải ước lượng cao độ đáng tin cho tiếng bộ gõ phức tạp.
+
+\textbf{Flux dương:} $\Phi_t=\sqrt{\sum_k[\max(\sqrt{q_t[k]}-\sqrt{q_{t-1}[k]},0)]^2}$. Chỉ tính khi hai khung liền nhau đều hợp lệ; không nối qua vùng im lặng. Flux mô tả thay đổi hình dạng phổ khi âm khởi phát hoặc biến đổi, bổ sung cho các thống kê của từng khung riêng.
+
+\subsection{Từ tám chuỗi giá trị thành 16 thuộc tính}
+Mỗi chuỗi $v_t$ trong tám đại lượng trên được lấy trung bình $\mu_v$ và độ lệch chuẩn $\sigma_v$. Công thức là $\sigma_v=\sqrt{M^{-1}\sum_t(v_t-\mu_v)^2}$, với $M$ giá trị hợp lệ. Trung bình mô tả trạng thái điển hình; độ lệch chuẩn mô tả mức biến thiên. Kết hợp 16 giá trị này với 5 giá trị thời gian tạo \textbf{bộ A có 21 chiều}.
+\clearpage
+
+\section{Bộ B: MFCC và thông tin về bao phổ}
+\subsection{Từ phổ công suất đến hệ số cepstrum}
+Các đại lượng trong A là những tóm tắt riêng của phổ. MFCC (Mel-frequency cepstral coefficients) bổ sung một biểu diễn gọn của \textbf{hình dạng năng lượng theo các dải tần Mel}, giúp phân biệt hai âm có trọng tâm gần nhau nhưng phân bố năng lượng khác nhau.
+
+Chương trình sử dụng 40 bộ lọc tam giác, các điểm biên cách đều theo thang Mel HTK từ 20 Hz đến 8 kHz:
+\[
+m(f)=2595\log_{10}(1+f/700).
+\]
+Có 42 điểm biên tạo 40 tam giác; trọng số của mỗi bộ lọc được chuẩn hóa để tổng trọng số trên lưới FFT bằng 1. Năng lượng và log năng lượng dải $b$ là
+\[
+E_t[b]=\sum_k H_b[k]P_t[k],\qquad \ell_t[b]=\ln\max(E_t[b],10^{-10}),\quad b=0,\ldots,39.
+\]
+Áp dụng DCT loại II, chuẩn trực giao, giữ các hệ số $r=1,\ldots,13$:
+\[
+c_t[r]=\sqrt{\frac{2}{40}}\sum_{b=0}^{39}\ell_t[b]\cos\left[\frac{\pi r}{40}\left(b+\frac12\right)\right].
+\]
+Hệ số $c_0$ không được giữ. Phép DCT được thực hiện bằng \texttt{scipy.fft.dct}, \texttt{type=2}, \texttt{norm='ortho'}~\cite{dct}. Các quy ước về Mel, log, chuẩn hóa bộ lọc và hệ số được nêu rõ vì thư viện hoặc thiết lập khác có thể cho giá trị khác.
+
+\subsection{Ba nhóm thống kê, tổng cộng 39 chiều}
+Với từng hệ số từ 1 đến 13, lấy \textbf{trung bình} và \textbf{độ lệch chuẩn} trên khung hợp lệ, thu được 26 giá trị. Tiếp theo tính sai phân theo thời gian:
+\[
+\Delta c_t[r]=\frac{c_{t+1}[r]-c_{t-1}[r]+2(c_{t+2}[r]-c_{t-2}[r])}{10}.
+\]
+Biên chuỗi được mở rộng bằng cách lặp giá trị đầu/cuối. Một delta chỉ được dùng khi cả năm vị trí trong cửa sổ, sau quy tắc mở rộng biên, đều hợp lệ. Lấy \textbf{độ lệch chuẩn của delta} cho 13 hệ số để có thêm 13 giá trị. Bộ B có $13+13+13=39$ chiều; không thêm trung bình delta hay delta-delta.
+
+\subsection{Giá trị thông tin và giới hạn}
+\textbf{Trung bình MFCC} mô tả dạng bao phổ điển hình. Hai tệp cùng nhạc cụ có thể gần nhau dù âm lượng gốc khác, nhờ chuẩn hóa đỉnh và bỏ $c_0$. \textbf{Độ lệch chuẩn MFCC} cho biết bao phổ ổn định hay thay đổi trong tệp. \textbf{Độ lệch chuẩn delta} bổ sung mức biến đổi cục bộ theo thời gian, hữu ích cho các đoạn kích thích nhanh, cộng hưởng và chuyển tiếp.
+
+MFCC có thể phân biệt những trường hợp cùng giàu trầm hoặc cùng có phổ tập trung nhưng khác phân bố giữa các dải. Tuy nhiên, từng hệ số không mang một ý nghĩa vật lý đơn giản như ``Hz'' hoặc ``giây''. MFCC không trực tiếp cho biết nhạc cụ, không đo riêng cao độ cơ bản và có thể chịu ảnh hưởng của cách thu, equalizer, cao độ chơi và nguồn dữ liệu. Lấy trung bình/độ lệch chuẩn cũng làm mất thứ tự chính xác của các sự kiện.
+\clearpage
+
+\section{Bộ C và phép đo tương đồng}
+\subsection{Chuẩn hóa để so sánh các thuộc tính khác đơn vị}
+Không thể cộng trực tiếp chênh lệch Hz, giây và các tỷ lệ trong $[0,1]$. Với thuộc tính $j$, chuẩn hóa theo
+\[
+z_j(x)=\frac{x_j-\mu_j}{s_j},
+\]
+trong đó $\mu_j,s_j$ là trung bình và độ lệch chuẩn trên 655 tệp. Nếu $s_j<10^{-12}$, thay bằng 1 để tránh chia cho 0. Các tham số được lưu để dùng lại khi tính vector truy vấn. Chuẩn hóa theo từng thuộc tính không bảo đảm các thuộc tính độc lập, cũng không tự loại được ảnh hưởng của nguồn thu.
+
+Đặt $z_A\in\mathbb R^{21}$ và $z_B\in\mathbb R^{39}$. Các vector dùng để tính khoảng cách là
+\[
+u_A=\frac{z_A}{\sqrt{21}},\qquad
+u_B=\frac{z_B}{\sqrt{39}},\qquad
+u_C=\left[\frac{z_A}{\sqrt{42}},\frac{z_B}{\sqrt{78}}\right].
+\]
+Việc chia theo căn số chiều giúp hai bộ riêng có thang đo dễ so sánh hơn. Bộ C có \textbf{60 chiều} và cân bằng hai khối: mỗi khối đóng góp một nửa theo khoảng cách bình phương đã chuẩn hóa kích thước, thay vì để B có trọng số lớn chỉ vì nhiều chiều hơn.
+
+\subsection{Khoảng cách biểu diễn cả giống và khác nhau}
+Với hai tệp $x,y$, dùng khoảng cách Euclid
+\[
+d_S(x,y)=\|u_S(x)-u_S(y)\|_2,\qquad S\in\{A,B,C\}.
+\]
+Khoảng cách nhỏ biểu thị tương đồng theo bộ thuộc tính đã chọn; khoảng cách lớn biểu thị khác biệt. Từ định nghĩa bộ C suy ra
+\[
+\boxed{d_C^2(x,y)=\tfrac12d_A^2(x,y)+\tfrac12d_B^2(x,y).}
+\]
+Đẳng thức này áp dụng cho từng cặp tệp, không áp dụng trực tiếp bằng cách bình phương các khoảng cách trung bình ở bảng kết quả. Để hiển thị một điểm tương đồng trong $(0,1]$, có thể dùng $s=1/(1+d)$; đây chỉ là biến đổi đơn điệu, không phải xác suất hai tệp cùng nhạc cụ.
+
+\subsection{Sử dụng trong cơ sở dữ liệu đa phương tiện}
+Mỗi đối tượng lưu mã tệp, nhãn, đường dẫn, metadata nguồn và vector đặc trưng. Khi có âm thanh truy vấn, áp dụng cùng quy trình xử lý và bộ chuẩn hóa, tính khoảng cách đến các vector trong kho, rồi sắp tăng dần để trả về các âm tương tự. Nếu truy vấn là tệp đã có trong kho, cần loại chính tệp đó khỏi kết quả.
+
+Cách biểu diễn này hỗ trợ tìm theo nội dung âm thanh thay vì chỉ tìm bằng tên. A thuận tiện giải thích vì có thể chỉ ra âm giống nhau ở năng lượng trầm, độ sáng hay độ phân tán; B bổ sung hình dạng bao phổ; C cho phép dùng đồng thời hai loại thông tin. Việc gán nhãn tự động bằng láng giềng gần hoặc bộ phân lớp là bước phát triển tiếp theo, chưa được coi là kết quả thực nghiệm trong báo cáo.
+
+Khi triển khai đánh giá trên dữ liệu mới, chỉ ước lượng $\mu_j,s_j$ từ tập huấn luyện và dùng nguyên các tham số ấy cho tập kiểm tra. Các thống kê hiện tại dùng toàn bộ dữ liệu để mô tả, không phải một thử nghiệm huấn luyện/kiểm tra tách biệt.
+\clearpage
+
+\section{Giá trị thông tin thể hiện qua số liệu}
+\subsection{So sánh khoảng cách trong lớp và giữa lớp}
+Gọi $\mathcal D_c$ là tập tệp có nhãn $c$, $n_c=|\mathcal D_c|$ và $G=13$. Khoảng cách trong lớp được tính bằng trung bình trên mọi cặp không thứ tự, rồi trung bình đều giữa các lớp:
+\[
+D_{\rm trong}=\frac1G\sum_c\frac{2}{n_c(n_c-1)}\sum_{i<j;\ i,j\in\mathcal D_c}d(i,j).
+\]
+Khoảng cách giữa lớp được tính bằng trung bình mọi cặp tệp của từng cặp lớp, rồi trung bình đều trên $\binom{13}{2}=78$ cặp lớp:
+\[
+D_{\rm ngoài}=\frac{1}{\binom G2}\sum_{c<d}\frac{1}{n_cn_d}\sum_{i\in\mathcal D_c}\sum_{j\in\mathcal D_d}d(i,j).
+\]
+Tỷ số $Q=D_{\rm ngoài}/D_{\rm trong}$ biểu thị mức tách biệt trung bình. Trung bình đều theo lớp giảm việc kick/snare có nhiều tệp lấn át các nhóm ít mẫu ở bước tổng hợp này; bước chuẩn hóa trước đó vẫn tính theo toàn bộ tệp.
+\begin{table}[h]
+\centering
+\caption{Kết quả mô tả trên toàn bộ 655 tệp; không phải độ chính xác phân loại.}
+\begin{tabular}{lrrrr}
+\toprule
+Bộ & Số chiều & $D_{\rm trong}$ & $D_{\rm ngoài}$ & $Q$\\\midrule
+A & 21 & 0,731 & 1,269 & 1,735 \\
+B & 39 & 1,168 & 1,607 & 1,376 \\
+C & 60 & 1,010 & 1,487 & 1,473 \\
+\bottomrule
+\end{tabular}
+\end{table}
+Cả ba bộ đều có khoảng cách giữa lớp trung bình lớn hơn trong lớp. \textbf{A có tỷ số cao nhất (1,735) theo phép đo này}. C đạt 1,473, thấp hơn A dù nhiều chiều hơn. Vì vậy, không kết luận rằng thêm MFCC luôn cải thiện khả năng nhận diện; cần xem cấu trúc từng cặp lớp và đánh giá trên tập độc lập trước khi chọn bộ tối ưu.
+
+\subsection{Ví dụ các cặp nhạc cụ}
+\begin{table}[h]
+\centering\small
+\caption{Khoảng cách trung bình giữa mọi cặp tệp thuộc hai lớp được nêu.}
+\begin{tabular}{lrrr}
+\toprule
+Cặp nhạc cụ & Bộ A & Bộ B & Bộ C\\\midrule
+conga / tom & 0,487 & 0,952 & 0,769 \\
+kick / tom & 0,789 & 1,062 & 0,974 \\
+snare / cymbal & 0,996 & 0,941 & 0,986 \\
+hi\_hat / tambourine & 1,307 & 0,838 & 1,130 \\
+agogo / cowbell & 0,923 & 2,013 & 1,586 \\
+marimba / vibraphone & 0,923 & 2,148 & 1,661 \\
+kick / tambourine & 1,642 & 1,188 & 1,450 \\
+\bottomrule
+\end{tabular}
+\end{table}
+Trong A, conga/tom gần nhau (0,487), phù hợp với điểm chung giàu năng lượng thấp; kick/tambourine xa hơn (1,642), phù hợp khác biệt trầm/sáng. Trong B, hi-hat/tambourine gần hơn agogo/cowbell và marimba/vibraphone. Hai bộ do đó nhấn mạnh những mặt khác nhau của âm thanh. Khoảng cách trung bình nhỏ không chứng minh mọi tệp của hai lớp đều gần nhau, và khoảng cách lớn cũng không bảo đảm phân lớp không lỗi.
+\clearpage
+
+\section{Đóng góp của thuộc tính và cách diễn giải}
+\subsection{Thước đo thông tin phân biệt từng thuộc tính}
+Để khảo sát thuộc tính $j$, gọi $\mu_{cj},\sigma^2_{cj}$ là trung bình và phương sai trong lớp $c$. Dùng chỉ số mô tả
+\[
+J_j=\frac{\operatorname{Var}_{c}(\mu_{cj})}{\frac1{13}\sum_c\sigma^2_{cj}},
+\]
+với phương sai tổng thể, trọng số lớp bằng nhau và mẫu số chặn dưới ở $10^{-12}$. $J_j$ lớn cho thấy trung bình các lớp khác nhau tương đối nhiều so với dao động nội lớp. Đây không phải kiểm định ý nghĩa thống kê hay lượng thông tin tính bằng bit.
+\begin{table}[h]
+\centering\small
+\caption{Chín thuộc tính có $J_j$ cao nhất trong 60 thuộc tính gốc của A và B.}
+\begin{tabular}{lcr}
+\toprule
+Thuộc tính & Bộ & $J_j$\\\midrule
+MFCC 1, trung bình & B & 8,062 \\
+ZCR, trung bình & A & 7,487 \\
+Entropy phổ, trung bình & A & 7,145 \\
+Trọng tâm phổ, trung bình & A & 7,107 \\
+Rolloff 85\%, trung bình & A & 6,709 \\
+Flux, trung bình & A & 5,921 \\
+Độ rộng phổ, trung bình & A & 4,591 \\
+Tỷ lệ năng lượng thấp, trung bình & A & 4,217 \\
+Độ phẳng phổ, trung bình & A & 3,900 \\
+\bottomrule
+\end{tabular}
+\end{table}
+Kết quả gợi ý rằng hình dạng bao phổ (MFCC 1), mức đổi dấu, độ phân tán và vị trí năng lượng có giá trị phân biệt trên bộ hiện tại. ZCR, trọng tâm và rolloff đều có thể tăng khi âm nhiều thành phần cao nên các chỉ số cao không có nghĩa đóng góp độc lập. Một thuộc tính có $J_j$ thấp vẫn có thể hữu ích cho một cặp lớp cụ thể hoặc khi kết hợp với thuộc tính khác.
+
+\subsection{Liên hệ với mục tiêu tương đồng và khác biệt}
+\begin{table}[h]
+\centering\small
+\begin{tabularx}{\textwidth}{p{.24\textwidth}XX}
+\toprule
+Nhóm thông tin & Dùng để tìm tương đồng & Dùng để tìm khác biệt\\\midrule
+Thời gian, crest & Tệp có kiểu tập trung năng lượng, tính liên tục và bao âm gần nhau. & Xung ngắn so với năng lượng kéo dài; đỉnh rõ so với nền duy trì.\\
+Trọng tâm, rolloff, $L$ & Cùng giàu trầm hoặc cùng sáng. & Trống trầm so với nhiều tiếng kim loại giàu tần số cao.\\
+Độ rộng, flatness, entropy & Cùng phổ tập trung hoặc cùng phổ phân tán. & Cộng hưởng nổi bật so với phổ trải rộng; âm sáng nhưng có đỉnh so với âm sáng dạng nhiễu.\\
+ZCR, flux, các độ lệch chuẩn & Cùng mức dao động và biến đổi theo khung. & Phổ tương đối ổn định so với phổ đổi nhanh theo kích thích.\\
+MFCC và delta & Cùng hình dạng bao phổ và mức biến thiên. & Phổ khác nhau dù trọng tâm hoặc năng lượng thấp tương tự.\\\bottomrule
+\end{tabularx}
+\end{table}
+\clearpage
+
+\section{Kết luận và hướng hoàn thiện}
+\subsection{Kết quả cho hai yêu cầu}
+\textbf{Đối với Yêu cầu 1}, bộ dữ liệu hiện có 655 tệp WAV thuộc 13 nhóm nhạc cụ bộ gõ, vượt mức ít nhất 500 tệp. Báo cáo mô tả nguồn, cách tổ chức, tiêu chí tuyển chọn, số lượng và thời lượng từng nhóm. Các đặc điểm giống và khác nhau được giải thích theo cấu trúc âm và đối chiếu bằng số đo trên dữ liệu thực tế.
+
+\textbf{Đối với Yêu cầu 2}, ba bộ A (21 chiều), B (39 chiều), C (60 chiều) đã được xây dựng và xuất thành bảng đặc trưng cho toàn bộ 655 tệp. Mỗi nhóm thuộc tính có định nghĩa, cách tính, thông tin mang lại và giới hạn diễn giải. Các vector chuẩn hóa cùng khoảng cách Euclid cung cấp cách tìm tương đồng và khác biệt nhất quán giữa những tệp có độ dài khác nhau.
+
+Kết quả mô tả cho thấy A tách lớp trung bình tốt nhất theo tỷ số khoảng cách đã chọn, còn B và C bổ sung cách nhìn về bao phổ. Không có căn cứ để khẳng định độ chính xác nhận diện trên dữ liệu mới hoặc một bộ luôn tốt nhất cho mọi nhạc cụ.
+
+\subsection{Những điểm cần hoàn thiện trước khi khẳng định đầy đủ chất lượng}
+\begin{enumerate}
+\item \textbf{Kiểm nghe điều kiện đơn nhạc cụ và độ dài:} xác nhận nhãn, tiếng phụ, biên đầu/cuối và phần cộng hưởng trong từng tệp; ghi kết quả vào danh sách kiểm nghe. Các kiểm tra tự động hiện có là sàng lọc hỗ trợ.
+\item \textbf{Giảm ảnh hưởng của nguồn và cách chơi:} bổ sung mẫu ở lớp ít dữ liệu, tăng độ đa dạng nguồn trong mỗi lớp, xem xét gần trùng và các đoạn từ cùng bản thu. Không đánh đồng 655 tệp với 655 phiên thu độc lập.
+\item \textbf{Đánh giá nhận diện độc lập khi mở rộng đề tài:} chia theo bản thu gốc/nguồn liên quan để tránh các đoạn gần nhau xuất hiện ở cả tập học và tập kiểm tra; chuẩn hóa từ tập học; báo cáo kết quả theo từng lớp. Những bước này chưa được tính thành kết quả đã thực hiện ở đây.
+\end{enumerate}
+Với dữ liệu mất cân bằng và nhiều nguồn, khoảng cách giữa lớp có thể phản ánh một phần khác biệt thiết bị thu, kỹ thuật chơi và cách trích đoạn. Các phát biểu về đặc điểm âm thanh trong báo cáo vì vậy được giới hạn ở bộ dữ liệu đang khảo sát; số trung vị của lớp không được xem là đặc tính cố định của mọi mẫu nhạc cụ ngoài thực tế.
+
+\subsection{Kiểm tra khả năng tính toán và tái lập}
+Tất cả vector A, B và C có đủ số chiều và giá trị hữu hạn. Mã băm đầu vào khớp hồ sơ kiểm kê. Không có tệp chỉ có một khung phổ hoạt động hoặc thiếu hoàn toàn cửa sổ hợp lệ để tính delta. Các kiểm tra triển khai về bất biến khi thay đổi gain và so sánh năng lượng thấp/độ phẳng giữa âm sin và nhiễu đã đạt.
+
+Môi trường tính đặc trưng ghi nhận NumPy 2.4.6, SciPy 1.17.1 và SoundFile 0.13.1. Các số trong bảng được làm tròn khi trình bày; bảng CSV giữ độ chính xác số thực. Mã nguồn trích xuất và các tham số chuẩn hóa được lưu kèm dự án để tính lại hoặc xử lý tệp truy vấn theo cùng quy ước.
+\clearpage
+
+\section*{Phụ lục: tệp bàn giao và quy ước dữ liệu}
+\addcontentsline{toc}{section}{Phụ lục: tệp bàn giao và quy ước dữ liệu}
+Các đường dẫn dưới đây tính từ thư mục gốc dự án. Dữ liệu và kết quả của phiên bản đang báo cáo nằm trong \path{filtered_output/}; các bảng cũ thuộc phiên bản trước không được dùng trong báo cáo này.
+\begin{table}[h]
+\centering\small
+\begin{tabularx}{\textwidth}{p{.53\textwidth}X}
+\toprule
+Tệp/thư mục & Nội dung\\\midrule
+\path{filtered_output/accepted/} & 655 tệp WAV chia theo 13 nhãn.\\
+\path{filtered_output/accepted.csv} & Nhãn, đường dẫn, metadata và bằng chứng tuyển chọn.\\
+\path{filtered_output/evidence/inventory.csv} & Kiểm kê tệp, thời lượng và mã băm.\\
+\path{filtered_output/evidence/class_statistics.csv} & Thống kê số lượng, thời lượng từng lớp.\\
+\path{filtered_output/evidence/listening_checklist.csv} & Danh sách phục vụ xác nhận bằng tai.\\
+\path{filtered_output/features/features_A.csv} & Mã tệp, nhãn và 21 thuộc tính chưa z-score.\\
+\path{filtered_output/features/features_B.csv} & Mã tệp, nhãn và 39 thuộc tính chưa z-score.\\
+\path{filtered_output/features/features_C_standardized.csv} & Mã tệp, nhãn và 60 giá trị đã chuẩn hóa, cân bằng khối.\\
+\path{filtered_output/features/scaling.json} & Trung bình/độ lệch chuẩn cho từng cột A và B.\\
+\path{filtered_output/features/set_comparison.csv} & Kết quả khoảng cách trong/giữa lớp.\\
+\path{filtered_output/features/class_pair_distances.csv} & Khoảng cách của từng cặp lớp.\\
+\path{filtered_output/features/feature_ranking.csv} & Chỉ số mô tả $J_j$ từng thuộc tính.\\
+\path{bao_cao_bo_go/trich_xuat_dac_trung.py} & Định nghĩa thuật toán trích xuất đặc trưng.\\
+\path{bao_cao_bo_go/tai_lap_dac_trung_655.py} & Chạy lại thuật toán trên bộ hiện tại.\\\bottomrule
+\end{tabularx}
+\end{table}
+Cột \texttt{sample\_id} trong các bảng đặc trưng nối với cột \texttt{index} của kiểm kê, từ đó xác định tệp âm thanh qua \texttt{relative\_path}. Nhãn không được tính vào số chiều đặc trưng. Các đường dẫn \texttt{output} trong danh mục tệp được hiểu tương đối so với \path{filtered_output/}.
+
+Trong A, năm cột thời gian là \texttt{log1p\_active\_s}, \texttt{log1p\_energy90\_s}, \texttt{crest\_db}, \texttt{active\_fraction}, \texttt{peak\_position}. Tám đại lượng phổ có hậu tố \texttt{\_mean} và \texttt{\_std}. Trong B, \texttt{mfcc01} đến \texttt{mfcc13} có các hậu tố \texttt{\_mean}, \texttt{\_std}, \texttt{\_delta\_std}.
+
+Bảng số đo âm học ở Mục 5 sử dụng \path{features/class_feature_medians.csv}. Trọng tâm phổ trong bảng này là trung vị của trung bình theo khung, khác phép tính phổ tích hợp toàn tệp trong kiểm kê. Không dùng lẫn hai đại lượng dù cùng mang đơn vị Hz.
+
+Để tái lập bảng đặc trưng trên phiên bản hiện tại, chạy trong thư mục gốc dự án: \texttt{.venv-audio/bin/python bao\_cao\_bo\_go/tai\_lap\_dac\_trung\_655.py}. Lệnh kiểm tra đúng tập tệp và mã băm trước khi ghi lại các bảng trong \path{filtered_output/features/}.
+\clearpage
+
+\begin{thebibliography}{9}
+\addcontentsline{toc}{section}{Tài liệu tham khảo}
+\bibitem{freesound} A. Ramires, P. Chandna, X. Favory, E. Gómez và X. Serra. \emph{Freesound One-Shot Percussive Sounds}, Version 1.0, Zenodo. DOI: 10.5281/zenodo.4687854. \url{https://zenodo.org/records/4687854}. Nguồn dữ liệu và metadata; truy cập 20/10/2026.
+\bibitem{idmt} Fraunhofer IDMT. \emph{IDMT-SMT-Drums}. \url{https://www.idmt.fraunhofer.de/en/publications/datasets/drums.html}. Gói dữ liệu: \url{https://zenodo.org/records/7544164}. Nguồn dữ liệu và mô tả training/isolated tracks; truy cập 20/10/2026.
+\bibitem{iowa} L. Fritts, University of Iowa Electronic Music Studios. \emph{Musical Instrument Samples}. \url{https://theremin.music.uiowa.edu/MIS.html}. Thư viện mẫu nhạc cụ và thông tin thu âm; truy cập 20/10/2026.
+\bibitem{dct} SciPy Developers. \emph{scipy.fft.dct}. \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.dct.html}. Định nghĩa DCT loại II và chuẩn trực giao; truy cập 20/10/2026. Phiên bản SciPy dùng khi tính dữ liệu: 1.17.1.
+\end{thebibliography}
+\vspace{1em}
+\note{Các thống kê số lượng, thời lượng, đặc trưng và khoảng cách trong báo cáo là kết quả tính từ phiên bản dữ liệu địa phương ngày 20/10/2026. Tài liệu nguồn được dùng để xác định nguồn sưu tầm và quy ước phương pháp, không thay cho số đo trên các tệp đang bàn giao.}
+\end{document}

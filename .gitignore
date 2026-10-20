@@ -1,5 +1,34 @@
 .venv/
+.venv-audio/
+model_cache/
 __pycache__/
 data/
 output/
 .DS_Store
+
+# Local build products, caches, credentials and historical exports.
+tmp/
+.env
+.env.*
+!.env.example
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+/MMDB slides/
+/bao_cao_bo_go 2/
+/bao_cao_*.zip
+/bao_cao_bo_go/evidence/
+/bao_cao_bo_go/features/
+/bao_cao_bo_go/evidence_checksums.json
+/bao_cao_bo_go/bao_cao_bo_go.tex
+/bao_cao_bo_go/bao_cao_bo_go.pdf
+/bao_cao_bo_go/bao_cao_am_thanh_*.tex
+/bao_cao_bo_go/bao_cao_am_thanh_*.pdf
+/bao_cao_bo_go/tao_bao_cao.py
+/bao_cao_bo_go/tao_bao_cao_yeu_cau_1_2.py
+/bao_cao_bo_go/tao_bao_cao_655.py
+/bao_cao_bo_go/cap_nhat_bao_cao_mmdb.py
