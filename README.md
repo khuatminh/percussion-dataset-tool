@@ -27,6 +27,7 @@ Repo gồm **655 tệp âm thanh / 13 nhóm nhạc cụ**, báo cáo LaTeX/PDF, 
 | [`filtered_output/evidence/`](filtered_output/evidence/) | Kiểm kê, mã băm, bằng chứng tuyển chọn và danh sách kiểm nghe |
 | [`filtered_output/features/`](filtered_output/features/) | Bộ A 21 chiều, B 39 chiều, C 60 chiều và các thống kê |
 | [`filtered_output/README.md`](filtered_output/README.md) | Quy tắc chọn và giới hạn của dữ liệu |
+| [`csdl_tim_kiem/`](csdl_tim_kiem/README.md) | Yêu cầu 3–4: CSDL SQLite đặc trưng A/B/C và tìm 5 tệp tương đồng |
 
 Repo giữ giấy phép theo từng tệp nguồn, không gán một giấy phép chung mới cho audio. Dữ liệu được sàng lọc kỹ thuật và đối chiếu nguồn; chưa ghi nhận kiểm nghe thủ công toàn bộ 655 tệp. Các đường dẫn tuyệt đối trong hồ sơ lịch sử chỉ ghi nguồn gốc lần chạy, không cần có trên máy người clone; mở audio bằng đường dẫn `output` tương đối từ `filtered_output/`.
 
