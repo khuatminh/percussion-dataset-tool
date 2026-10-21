@@ -1,0 +1,170 @@
+{
+  "kiem_chung": {
+    "sai_so_tuong_doi_lon_nhat_so_voi_bang_bao_cao": 1.4532307848829896e-11,
+    "cay_kd_so_voi_vet_can": {
+      "A": {
+        "truy_van_khop": 655,
+        "tong": 655,
+        "phep_tinh_tb": 357.63969465648853
+      },
+      "B": {
+        "truy_van_khop": 655,
+        "tong": 655,
+        "phep_tinh_tb": 640.5251908396947
+      },
+      "C": {
+        "truy_van_khop": 655,
+        "tong": 655,
+        "phep_tinh_tb": 640.8290076335878
+      }
+    }
+  },
+  "bo_mot_ra": {
+    "A": {
+      "p5_moi_truy_van": 0.799083969465649,
+      "p5_trung_binh_lop": 0.6740060013781901,
+      "top1_moi_truy_van": 0.8625954198473282,
+      "top1_trung_binh_lop": 0.8050924863368281,
+      "bau_moi_truy_van": 0.8427480916030534,
+      "bau_trung_binh_lop": 0.7173170030567249,
+      "so_truy_van": 655
+    },
+    "B": {
+      "p5_moi_truy_van": 0.730381679389313,
+      "p5_trung_binh_lop": 0.621963004751498,
+      "top1_moi_truy_van": 0.815267175572519,
+      "top1_trung_binh_lop": 0.7663450972917899,
+      "bau_moi_truy_van": 0.7954198473282442,
+      "bau_trung_binh_lop": 0.6700204554069127,
+      "so_truy_van": 655
+    },
+    "C": {
+      "p5_moi_truy_van": 0.8317557251908396,
+      "p5_trung_binh_lop": 0.7414667904882573,
+      "top1_moi_truy_van": 0.8961832061068702,
+      "top1_trung_binh_lop": 0.8693410957172453,
+      "bau_moi_truy_van": 0.8656488549618321,
+      "bau_trung_binh_lop": 0.7776199041985525,
+      "so_truy_van": 655
+    }
+  },
+  "theo_nhom_ban_thu": {
+    "A": {
+      "p5_moi_truy_van": 0.621283255086072,
+      "p5_trung_binh_lop": 0.44608417949288376,
+      "top1_moi_truy_van": 0.6838810641627543,
+      "top1_trung_binh_lop": 0.5617839446139118,
+      "bau_moi_truy_van": 0.6557120500782473,
+      "bau_trung_binh_lop": 0.44118877180995303,
+      "so_truy_van": 639
+    },
+    "B": {
+      "p5_moi_truy_van": 0.5708920187793428,
+      "p5_trung_binh_lop": 0.42389708498914525,
+      "top1_moi_truy_van": 0.6494522691705791,
+      "top1_trung_binh_lop": 0.5598457643540473,
+      "bau_moi_truy_van": 0.6103286384976526,
+      "bau_trung_binh_lop": 0.46065741136632715,
+      "so_truy_van": 639
+    },
+    "C": {
+      "p5_moi_truy_van": 0.6663536776212833,
+      "p5_trung_binh_lop": 0.5213922819057202,
+      "top1_moi_truy_van": 0.7276995305164319,
+      "top1_trung_binh_lop": 0.6543376284018876,
+      "bau_moi_truy_van": 0.6948356807511737,
+      "bau_trung_binh_lop": 0.5354590993730486,
+      "so_truy_van": 639
+    },
+    "so_tep_moi_phan": [
+      131,
+      131,
+      131,
+      131,
+      131
+    ],
+    "so_nhom_ban_thu": 136,
+    "truy_van_bi_bo_vi_lop_khong_co_trong_kho": {
+      "agogo": 16
+    }
+  },
+  "do_ben": {
+    "giam_20dB": {
+      "A": {
+        "ban_goc_o_hang_1": 0.9862595419847329,
+        "ban_goc_trong_top5": 0.9938931297709923,
+        "p5_khong_tinh_ban_goc": 0.7981679389312977
+      },
+      "B": {
+        "ban_goc_o_hang_1": 0.9679389312977099,
+        "ban_goc_trong_top5": 0.9908396946564886,
+        "p5_khong_tinh_ban_goc": 0.7245801526717558
+      },
+      "C": {
+        "ban_goc_o_hang_1": 0.9862595419847329,
+        "ban_goc_trong_top5": 0.9923664122137404,
+        "p5_khong_tinh_ban_goc": 0.8296183206106872
+      },
+      "loi_doc_ghi": 0
+    },
+    "stereo_44k1": {
+      "A": {
+        "ban_goc_o_hang_1": 0.9938931297709923,
+        "ban_goc_trong_top5": 0.9969465648854962,
+        "p5_khong_tinh_ban_goc": 0.7954198473282442
+      },
+      "B": {
+        "ban_goc_o_hang_1": 0.9984732824427481,
+        "ban_goc_trong_top5": 1.0,
+        "p5_khong_tinh_ban_goc": 0.7294656488549618
+      },
+      "C": {
+        "ban_goc_o_hang_1": 0.9969465648854962,
+        "ban_goc_trong_top5": 1.0,
+        "p5_khong_tinh_ban_goc": 0.8320610687022901
+      },
+      "loi_doc_ghi": 0
+    },
+    "nhieu_30dB": {
+      "A": {
+        "ban_goc_o_hang_1": 0.5267175572519084,
+        "ban_goc_trong_top5": 0.6549618320610687,
+        "p5_khong_tinh_ban_goc": 0.6
+      },
+      "B": {
+        "ban_goc_o_hang_1": 0.5801526717557252,
+        "ban_goc_trong_top5": 0.716030534351145,
+        "p5_khong_tinh_ban_goc": 0.6235114503816793
+      },
+      "C": {
+        "ban_goc_o_hang_1": 0.6412213740458015,
+        "ban_goc_trong_top5": 0.732824427480916,
+        "p5_khong_tinh_ban_goc": 0.6827480916030535
+      },
+      "loi_doc_ghi": 0
+    },
+    "mp3_44k1": {
+      "A": {
+        "ban_goc_o_hang_1": 0.9725190839694656,
+        "ban_goc_trong_top5": 0.9877862595419847,
+        "p5_khong_tinh_ban_goc": 0.793587786259542
+      },
+      "B": {
+        "ban_goc_o_hang_1": 0.7923664122137405,
+        "ban_goc_trong_top5": 0.8595419847328244,
+        "p5_khong_tinh_ban_goc": 0.6964885496183206
+      },
+      "C": {
+        "ban_goc_o_hang_1": 0.8488549618320611,
+        "ban_goc_trong_top5": 0.916030534351145,
+        "p5_khong_tinh_ban_goc": 0.8091603053435115
+      },
+      "loi_doc_ghi": 0
+    }
+  },
+  "thoi_gian_moi_truy_van_ms": {
+    "A": 5.3,
+    "B": 5.1,
+    "C": 5.2
+  }
+}
