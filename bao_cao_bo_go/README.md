@@ -1,12 +1,12 @@
 # Báo cáo yêu cầu 1 và 2 — phiên bản 655 tệp
 
-Bản hiện hành gồm **18 trang**, cập nhật ngày 20/10/2026, dùng **655 tệp / 13 nhóm nhạc cụ** trong `../filtered_output/accepted/`.
+Bản hiện hành gồm **24 trang** (4 trang đầu đánh số La Mã), cập nhật ngày 20/10/2026, dùng **655 tệp / 13 nhóm nhạc cụ** trong `../filtered_output/accepted/`. Bản trước khi sửa theo review là commit `1f94ebc` trên nhánh `main`; ghi chú review và tóm tắt chỉnh sửa nằm trong `../review/`.
 
 ## Chỉnh sửa và biên dịch
 
-- Sửa trực tiếp [`bao_cao_mmdb_yeu_cau_1_2.tex`](bao_cao_mmdb_yeu_cau_1_2.tex). Đây là nguồn chính, độc lập; các bảng đã được nhúng, không cần ảnh, bảng CSV hay file LaTeX phụ để biên dịch.
+- Sửa trực tiếp [`bao_cao_mmdb_yeu_cau_1_2.tex`](bao_cao_mmdb_yeu_cau_1_2.tex). Đây là nguồn chính; các bảng đã được nhúng. Hai hình nằm trong `hinh/` và phải đi kèm tệp `.tex` khi biên dịch (trên Overleaf, tải lên cả thư mục `hinh/`).
 - [`bao_cao_mmdb_yeu_cau_1_2.pdf`](bao_cao_mmdb_yeu_cau_1_2.pdf) là bản PDF tương ứng khi bàn giao. Khi sửa nội dung, biên dịch và cập nhật PDF nếu muốn đồng bộ bản xem trước trong repo.
-- Điền `HoTen`, `MSSV`, `Lop` ở đầu nguồn.
+- Trang bìa (Nhóm 07, lớp D23 - Lớp 04), Lời nói đầu và trang Đề bài đã được điền sẵn; logo PTIT nằm ở `hinh/logo_ptit.png`.
 - Dùng XeLaTeX hoặc Tectonic; với Overleaf, chọn compiler XeLaTeX. Không dùng pdfLaTeX vì tài liệu có `fontspec` và Unicode tiếng Việt.
 
 Từ thư mục gốc repo, nếu đã cài Tectonic:
@@ -22,7 +22,7 @@ xelatex -interaction=nonstopmode -halt-on-error -output-directory=bao_cao_bo_go 
 xelatex -interaction=nonstopmode -halt-on-error -output-directory=bao_cao_bo_go bao_cao_bo_go/bao_cao_mmdb_yeu_cau_1_2.tex
 ```
 
-Báo cáo tập trung vào nguồn, định dạng, số lượng, độ dài và điểm giống/khác của 13 nhóm nhạc cụ; ba bộ A (21 chiều), B (39 chiều), C (60 chiều), công thức, giá trị thông tin và kết quả đo. Không trích dẫn slide giảng viên. Nội dung phân biệt sàng lọc tự động có bằng chứng nguồn với kiểm nghe toàn bộ; không tuyên bố đã có độ chính xác trên tập kiểm tra độc lập.
+Báo cáo tập trung vào nguồn, định dạng, số lượng, độ dài và điểm giống/khác của 13 nhóm nhạc cụ; ba bộ A (21 chiều), B (39 chiều), C (60 chiều), công thức, giá trị thông tin và kết quả đo. Không trích dẫn slide giảng viên. Theo yêu cầu của nhóm, báo cáo không nêu thông tin giấy phép, việc kiểm nghe thủ công hay số tệp đã loại; báo cáo cũng không tuyên bố đã có độ chính xác trên tập kiểm tra độc lập.
 
 ## Tái lập đặc trưng (không cần khi chỉ sửa văn bản)
 
@@ -31,6 +31,8 @@ Số liệu hiện hành nằm trong `../filtered_output/evidence/` và `../filt
 - `trich_xuat_dac_trung.py`: định nghĩa thuật toán.
 - `tai_lap_dac_trung_655.py`: điểm vào để chạy lại trên bộ 655 tệp hiện hành; tự tìm thư mục theo vị trí repo, không phụ thuộc đường dẫn của người tạo.
 - `kiem_ke_am_thanh.py`: kiểm kê vào thư mục đầu ra do người chạy chỉ định.
+- `phan_tich_bo_sung.py`: tính các tỷ số Q theo khối thuộc tính, trên tập tệp ≤ 2 s và khoảng cách trong lớp (Mục 11), ghi `filtered_output/features/supplementary_analysis.json`.
+- `ve_hinh_minh_hoa.py`: vẽ lại hai hình trong `hinh/` (cần thêm `matplotlib`).
 - `requirements-audit.txt`: phiên bản thư viện đã dùng.
 
 Từ thư mục gốc repo, dùng Python 3.11 trở lên:
