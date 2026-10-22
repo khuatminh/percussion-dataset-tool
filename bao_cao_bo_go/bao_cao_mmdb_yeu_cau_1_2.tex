@@ -148,7 +148,7 @@ Giá trị thông tin của đặc trưng & Giải thích từng thuộc tính v
 \clearpage
 \pagenumbering{arabic}
 
-\phan{Yêu cầu 1: Bộ dữ liệu âm thanh nhạc cụ bộ gõ}
+\phan{Bộ dữ liệu âm thanh nhạc cụ bộ gõ}
 \section{Đối tượng, nguồn và định dạng dữ liệu}\label{sec:nguon}
 \subsection{Đối tượng, đơn vị dữ liệu và nhãn}
 Đối tượng của bộ dữ liệu là âm thanh của các nhạc cụ bộ gõ. Mỗi bản ghi trong bộ dữ liệu là \textbf{một tệp WAV}, và đây cũng là đơn vị được trả về khi tìm kiếm. Mỗi tệp có đúng một nhãn cho biết đó là nhạc cụ nào trong 13 nhóm. Nhãn không ghi người chơi, cao độ hay kỹ thuật đánh. Trong báo cáo, mỗi nhóm nhạc cụ còn được gọi là một \emph{lớp}, theo cách gọi quen thuộc trong phân loại dữ liệu. Bảng~\ref{tab:phanloai} chia 13 nhóm thành bốn họ theo cách nhạc cụ tạo ra âm thanh, và các phần so sánh về sau đều dùng cách chia này.
@@ -355,7 +355,7 @@ xylophone & 1.889,3 & 0,0003 & 0,254 & 5,85 & 0,070 \\
 \textbf{Agogo và cowbell:} cả hai đều có phổ tập trung vào vài vạch, nhưng tỷ lệ năng lượng dưới 500 Hz rất khác nhau: agogo chỉ khoảng 0,002\%, còn cowbell là 42,04\%. Số liệu này khớp với phổ đồ, nơi vạch của cowbell nằm thấp hơn. Vì vậy, nếu chỉ coi cả hai là ``tiếng chuông kim loại'' thì sẽ bỏ sót khác biệt; cần thêm các thuộc tính về năng lượng thấp và hình dạng phổ để phân biệt chúng.
 \clearpage
 
-\phan{Yêu cầu 2: Các bộ đặc trưng nhận diện âm thanh}
+\phan{Các bộ đặc trưng nhận diện âm thanh}
 \section{Quy trình biểu diễn âm thanh}\label{sec:quytrinh}
 \subsection{Từ tệp âm thanh đến vector đặc trưng}
 Không thể so sánh trực tiếp hai tệp âm thanh với nhau, vì mỗi tệp là một chuỗi hàng nghìn mẫu và các tệp dài ngắn khác nhau. Vì vậy, mỗi tệp được biến thành một \emph{vector đặc trưng}: một dãy số có độ dài cố định, trong đó mỗi số (mỗi \emph{chiều}) là một \emph{thuộc tính} đo một tính chất của âm, chẳng hạn độ sáng hay thời gian ngân. Một \emph{bộ đặc trưng} là một cách chọn các thuộc tính đó. Mọi tệp đều đi qua cùng một quy trình gồm tám bước:
