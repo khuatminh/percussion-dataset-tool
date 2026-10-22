@@ -1,6 +1,6 @@
 # Báo cáo yêu cầu 1 và 2 — phiên bản 655 tệp
 
-Bản hiện hành gồm **27 trang** (4 trang đầu đánh số La Mã), cập nhật ngày 22/10/2026, dùng **655 tệp / 13 nhóm nhạc cụ** trong `../filtered_output/accepted/`. Bản trước khi sửa theo review là commit `1f94ebc` trên nhánh `main`; ghi chú review và tóm tắt chỉnh sửa nằm trong `../review/`.
+Bản hiện hành gồm **26 trang** (4 trang đầu đánh số La Mã), cập nhật ngày 22/10/2026, dùng **655 tệp / 13 nhóm nhạc cụ** trong `../filtered_output/accepted/`. Bản trước khi sửa theo review là commit `1f94ebc` trên nhánh `main`; ghi chú review và tóm tắt chỉnh sửa nằm trong `../review/`.
 
 ## Chỉnh sửa và biên dịch
 

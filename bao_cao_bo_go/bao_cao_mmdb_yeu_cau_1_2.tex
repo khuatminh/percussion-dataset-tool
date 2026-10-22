@@ -411,7 +411,7 @@ Tài liệu về đặc trưng âm thanh thường chia đặc trưng thành nh�
 \begin{itemize}
 \item \textbf{Miền thời gian:} gồm tỷ lệ đổi dấu (ZCR, ký hiệu $Z$), tỷ lệ có tín hiệu $a_4$ (bằng 1 trừ tỷ lệ im lặng), hệ số đỉnh $a_3$ và khoảng chứa 90\% năng lượng $a_2$. ZCR tính trên dạng sóng nhưng theo cùng khung 25 ms với các đại lượng phổ, nên trong bộ A nó được xếp chung với 16 thuộc tính tính theo khung (gọi tắt là \emph{khối phổ}). Năng lượng trung bình không được dùng vì phụ thuộc vào mức khuếch đại khi thu.
 \item \textbf{Miền tần số:} gồm trọng tâm $C$, tần số cắt $R$, tỷ lệ năng lượng thấp $L$ và các hệ số MFCC, cho biết năng lượng nằm ở đâu theo tần số; độ rộng phổ $W$, cho biết năng lượng trải rộng bao xa; độ phẳng $F$ và entropy $H$, cho biết phổ tập trung hay phân tán.
-\item \textbf{Cao độ và độ hài hòa (pitch, harmonicity):} không có trong ba bộ hiện tại, vì hai lý do. Thứ nhất, 10/13 nhóm không có cao độ xác định; ngay cả chuông và thanh gõ cũng có các vạch không theo tỷ lệ bội số (phổ không hài hòa), nên khó ước lượng tần số cơ bản một cách ổn định. Thứ hai, với ba nhạc cụ có cao độ, tần số cơ bản đổi theo nốt được chơi, nên giúp phân biệt các nốt hơn là phân biệt các nhạc cụ. Tính chất ``phổ có vạch rõ hay giống nhiễu'' đã được thể hiện một phần qua độ phẳng và entropy. Bổ sung độ hài hòa là một hướng mở rộng (Mục~\ref{sec:ketluan}).
+\item \textbf{Cao độ và độ hài hòa (pitch, harmonicity):} không có trong ba bộ hiện tại, vì hai lý do. Thứ nhất, 10/13 nhóm không có cao độ xác định; ngay cả chuông và thanh gõ cũng có các vạch không theo tỷ lệ bội số (phổ không hài hòa), nên khó ước lượng tần số cơ bản một cách ổn định. Thứ hai, với ba nhạc cụ có cao độ, tần số cơ bản đổi theo nốt được chơi, nên giúp phân biệt các nốt hơn là phân biệt các nhạc cụ. Tính chất ``phổ có vạch rõ hay giống nhiễu'' đã được thể hiện một phần qua độ phẳng và entropy. Bổ sung độ hài hòa là một hướng mở rộng.
 \end{itemize}
 
 \section{Bộ A: năm thuộc tính thời gian}\label{sec:boA-tg}
@@ -686,19 +686,6 @@ Khi so sánh các nhạc cụ với nhau, nhóm nhận thấy chúng giống và
 Đối với yêu cầu thứ hai, nhóm xây dựng ba bộ đặc trưng để biến mỗi tệp âm thanh thành một dãy số. Bộ A gồm 21 thuộc tính dễ hình dung, cho biết tiếng kéo dài bao lâu, trầm hay sáng, tập trung hay giống nhiễu. Bộ B gồm 39 thuộc tính MFCC, mô tả hình dạng chung của phổ. Bộ C ghép hai bộ này lại thành 60 thuộc tính. Hai âm thanh càng giống nhau thì khoảng cách giữa hai dãy số càng nhỏ, nên chỉ cần một phép đo là vừa tìm được âm tương tự, vừa chỉ ra được chỗ khác biệt. Trên dữ liệu hiện có, bộ A phân biệt các nhạc cụ tốt nhất, chủ yếu nhờ các thuộc tính về phổ, còn bộ B và C bổ sung thêm thông tin về hình dạng phổ.
 
 Quy trình tính đặc trưng, cách chuẩn hóa và cách đo khoảng cách trong báo cáo sẽ được dùng lại nguyên vẹn khi nhóm xây dựng cơ sở dữ liệu và chức năng tìm kiếm ở các yêu cầu tiếp theo. Mục~\ref{sec:sudung} đã tóm tắt sẵn những việc cần làm với một âm thanh truy vấn mới.
-
-\subsection{Giới hạn}
-\begin{itemize}
-\item \textbf{Dạng bản ghi và cân bằng lớp:} 92 tệp là chuỗi nhiều lần gõ, làm lớp hi-hat tách thành hai cụm. Số tệp giữa các lớp chênh lệch lớn, từ 11 đến 151. Ngoài ra, 655 tệp không tương ứng với 655 lần thu độc lập, vì một số tệp có thể đến từ cùng một buổi thu.
-\item \textbf{Phạm vi kết luận:} các số liệu trong báo cáo mô tả bộ dữ liệu hiện có, chưa phải độ chính xác khi nhận diện hay tìm kiếm trên dữ liệu mới. Khoảng cách giữa các lớp có thể phản ánh một phần khác biệt về nguồn thu, cách chơi và cách cắt đoạn, chứ không chỉ do nhạc cụ. Trung vị của mỗi lớp cũng chỉ đại diện cho dữ liệu đã thu thập, không phải đặc tính cố định của nhạc cụ đó ngoài thực tế.
-\end{itemize}
-
-\subsection{Hướng hoàn thiện}
-\begin{enumerate}
-\item Tách các chuỗi IDMT thành từng tiếng gõ đơn bằng cách phát hiện thời điểm bắt đầu tiếng gõ (onset detection), bổ sung mẫu cho các lớp ít dữ liệu và kiểm tra các bản thu gần trùng.
-\item Thử bổ sung thuộc tính độ hài hòa cho các nhạc cụ có cao độ.
-\item Khi đánh giá ở Yêu cầu 4, chia dữ liệu thành phần dùng để xây dựng và phần dùng để kiểm tra theo bản thu gốc, để hai đoạn cắt từ cùng một bản thu không rơi vào cả hai phần. Tham số chuẩn hóa chỉ tính trên phần xây dựng, và kết quả được báo cáo theo từng lớp.
-\end{enumerate}
 
 \subsection{Kiểm tra tính toán}
 Nhóm đã kiểm tra kết quả tính toán như sau:
