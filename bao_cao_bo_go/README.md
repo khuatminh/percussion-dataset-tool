@@ -1,11 +1,11 @@
 # Báo cáo yêu cầu 1 và 2 — phiên bản 655 tệp
 
-Bản hiện hành gồm **26 trang** (4 trang đầu đánh số La Mã), cập nhật ngày 22/10/2026, dùng **655 tệp / 13 nhóm nhạc cụ** trong `../filtered_output/accepted/`. Bản trước khi sửa theo review là commit `1f94ebc` trên nhánh `main`; ghi chú review và tóm tắt chỉnh sửa nằm trong `../review/`.
+Bản đã nộp gồm **22 trang**, cập nhật ngày 22/10/2026, dùng **655 tệp / 13 nhóm nhạc cụ** trong `../filtered_output/accepted/`. Bản trước khi sửa theo review là commit `1f94ebc` trên nhánh `main`; ghi chú review và tóm tắt chỉnh sửa nằm trong `../review/`.
 
 ## Chỉnh sửa và biên dịch
 
 - Sửa trực tiếp [`bao_cao_mmdb_yeu_cau_1_2.tex`](bao_cao_mmdb_yeu_cau_1_2.tex). Đây là nguồn chính; các bảng đã được nhúng. Hai hình nằm trong `hinh/` và phải đi kèm tệp `.tex` khi biên dịch (trên Overleaf, tải lên cả thư mục `hinh/`).
-- [`bao_cao_mmdb_yeu_cau_1_2.pdf`](bao_cao_mmdb_yeu_cau_1_2.pdf) là bản PDF tương ứng khi bàn giao. Khi sửa nội dung, biên dịch và cập nhật PDF nếu muốn đồng bộ bản xem trước trong repo.
+- [`[D23 - Lớp 4] Nhóm 7 - Yêu cầu 1 - 2.pdf`](<[D23 - Lớp 4] Nhóm 7 - Yêu cầu 1 - 2.pdf>) là bản PDF đã nộp, biên dịch từ `.tex` hiện hành. Khi sửa nội dung, biên dịch và cập nhật PDF nếu muốn đồng bộ bản xem trước trong repo.
 - Trang bìa (Nhóm 07, lớp D23 - Lớp 04), Lời nói đầu và trang Đề bài đã được điền sẵn; logo PTIT nằm ở `hinh/logo_ptit.png`.
 - Dùng XeLaTeX hoặc Tectonic; với Overleaf, chọn compiler XeLaTeX. Không dùng pdfLaTeX vì tài liệu có `fontspec` và Unicode tiếng Việt.
 

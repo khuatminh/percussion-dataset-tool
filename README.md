@@ -11,7 +11,7 @@ Repo gồm **655 tệp âm thanh / 13 nhóm nhạc cụ**, báo cáo LaTeX/PDF, 
    git switch -c chinh-sua-bao-cao
    ```
 2. Sửa trực tiếp [`bao_cao_bo_go/bao_cao_mmdb_yeu_cau_1_2.tex`](bao_cao_bo_go/bao_cao_mmdb_yeu_cau_1_2.tex). Đây là nguồn báo cáo chính, độc lập và đã nhúng các bảng. Điền `HoTen`, `MSSV`, `Lop` trong phần đầu nếu cần.
-3. Xem [bản PDF hiện tại](bao_cao_bo_go/bao_cao_mmdb_yeu_cau_1_2.pdf). Để biên dịch, dùng **XeLaTeX** với bộ TeX đầy đủ hoặc **Tectonic**; không dùng pdfLaTeX. Có thể tải riêng `.tex` lên Overleaf và chọn XeLaTeX.
+3. Xem [bản PDF đã nộp](<bao_cao_bo_go/[D23 - Lớp 4] Nhóm 7 - Yêu cầu 1 - 2.pdf>). Để biên dịch, dùng **XeLaTeX** với bộ TeX đầy đủ hoặc **Tectonic**; không dùng pdfLaTeX. Có thể tải riêng `.tex` lên Overleaf và chọn XeLaTeX.
    ```sh
    tectonic --outdir bao_cao_bo_go bao_cao_bo_go/bao_cao_mmdb_yeu_cau_1_2.tex
    ```
