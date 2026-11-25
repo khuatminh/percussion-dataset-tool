@@ -1,4 +1,4 @@
-# Bộ dữ liệu bộ gõ và báo cáo yêu cầu 1–2
+# Bộ dữ liệu bộ gõ, CSDL tìm kiếm và báo cáo yêu cầu 1–4
 
 Repo gồm **655 tệp âm thanh / 13 nhóm nhạc cụ**, báo cáo LaTeX/PDF, các bảng đặc trưng và mã xử lý. Đây là phiên bản tuyển chọn ngày 20/10/2026.
 
@@ -27,7 +27,9 @@ Repo gồm **655 tệp âm thanh / 13 nhóm nhạc cụ**, báo cáo LaTeX/PDF, 
 | [`filtered_output/evidence/`](filtered_output/evidence/) | Kiểm kê, mã băm, bằng chứng tuyển chọn và danh sách kiểm nghe |
 | [`filtered_output/features/`](filtered_output/features/) | Bộ A 21 chiều, B 39 chiều, C 60 chiều và các thống kê |
 | [`filtered_output/README.md`](filtered_output/README.md) | Quy tắc chọn và giới hạn của dữ liệu |
-| [`csdl_tim_kiem/`](csdl_tim_kiem/README.md) | Yêu cầu 3–4: CSDL SQLite đặc trưng A/B/C và tìm 5 tệp tương đồng |
+| [`csdl_tim_kiem/`](csdl_tim_kiem/README.md) | Yêu cầu 3–5: CSDL PostgreSQL + pgvector đặc trưng A/B/C, tìm 5 tệp tương đồng, giao diện demo |
+| [`bao_cao_bo_go/bao_cao_mmdb.tex`](bao_cao_bo_go/bao_cao_mmdb.tex) | Báo cáo Yêu cầu 1–4 ([PDF](bao_cao_bo_go/bao_cao_mmdb.pdf)); Phần I–II giữ nội dung bản 1–2 đã nộp |
+| [`bao_cao_bo_go/bao_cao_mmdb_yeu_cau_3_4.tex`](bao_cao_bo_go/bao_cao_mmdb_yeu_cau_3_4.tex) | Báo cáo riêng Yêu cầu 3–4 ([PDF](bao_cao_bo_go/bao_cao_mmdb_yeu_cau_3_4.pdf)): Phần III–IV của bản 1–4, đánh số tiếp bản 1–2 (Mục 14, Bảng 12, Hình 3) |
 
 Repo giữ giấy phép theo từng tệp nguồn, không gán một giấy phép chung mới cho audio. Dữ liệu được sàng lọc kỹ thuật và đối chiếu nguồn; chưa ghi nhận kiểm nghe thủ công toàn bộ 655 tệp. Các đường dẫn tuyệt đối trong hồ sơ lịch sử chỉ ghi nguồn gốc lần chạy, không cần có trên máy người clone; mở audio bằng đường dẫn `output` tương đối từ `filtered_output/`.
 

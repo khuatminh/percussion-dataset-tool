@@ -1,6 +1,7 @@
 {
   "kiem_chung": {
-    "sai_so_tuong_doi_lon_nhat_so_voi_bang_bao_cao": 1.4532307848829896e-11,
+    "sai_so_tuong_doi_lon_nhat_so_voi_bang_bao_cao": 0.0,
+    "sai_so_lon_nhat_u_C_so_voi_bang_C": 0.0,
     "cay_kd_so_voi_vet_can": {
       "A": {
         "truy_van_khop": 655,
@@ -16,6 +17,23 @@
         "truy_van_khop": 655,
         "tong": 655,
         "phep_tinh_tb": 640.8290076335878
+      }
+    },
+    "pgvector_so_voi_vet_can": {
+      "A": {
+        "cung_thu_tu": 655,
+        "cung_tap_5_tep": 655,
+        "tong": 655
+      },
+      "B": {
+        "cung_thu_tu": 655,
+        "cung_tap_5_tep": 655,
+        "tong": 655
+      },
+      "C": {
+        "cung_thu_tu": 655,
+        "cung_tap_5_tep": 655,
+        "tong": 655
       }
     }
   },
@@ -91,21 +109,21 @@
   "do_ben": {
     "giam_20dB": {
       "A": {
-        "ban_goc_o_hang_1": 0.9862595419847329,
-        "ban_goc_trong_top5": 0.9938931297709923,
-        "p5_khong_tinh_ban_goc": 0.7981679389312977
+        "ban_goc_o_hang_1": 0.9967948717948718,
+        "ban_goc_trong_top5": 1.0,
+        "p5_khong_tinh_ban_goc": 0.801923076923077
       },
       "B": {
-        "ban_goc_o_hang_1": 0.9679389312977099,
-        "ban_goc_trong_top5": 0.9908396946564886,
-        "p5_khong_tinh_ban_goc": 0.7245801526717558
+        "ban_goc_o_hang_1": 0.9727564102564102,
+        "ban_goc_trong_top5": 0.9951923076923077,
+        "p5_khong_tinh_ban_goc": 0.7355769230769231
       },
       "C": {
-        "ban_goc_o_hang_1": 0.9862595419847329,
-        "ban_goc_trong_top5": 0.9923664122137404,
-        "p5_khong_tinh_ban_goc": 0.8296183206106872
+        "ban_goc_o_hang_1": 0.9903846153846154,
+        "ban_goc_trong_top5": 0.9951923076923077,
+        "p5_khong_tinh_ban_goc": 0.8400641025641027
       },
-      "loi_doc_ghi": 0
+      "loi_doc_ghi": 31
     },
     "stereo_44k1": {
       "A": {
@@ -127,21 +145,21 @@
     },
     "nhieu_30dB": {
       "A": {
-        "ban_goc_o_hang_1": 0.5267175572519084,
-        "ban_goc_trong_top5": 0.6549618320610687,
-        "p5_khong_tinh_ban_goc": 0.6
+        "ban_goc_o_hang_1": 0.5275229357798165,
+        "ban_goc_trong_top5": 0.6559633027522935,
+        "p5_khong_tinh_ban_goc": 0.6006116207951071
       },
       "B": {
-        "ban_goc_o_hang_1": 0.5801526717557252,
-        "ban_goc_trong_top5": 0.716030534351145,
-        "p5_khong_tinh_ban_goc": 0.6235114503816793
+        "ban_goc_o_hang_1": 0.581039755351682,
+        "ban_goc_trong_top5": 0.7171253822629969,
+        "p5_khong_tinh_ban_goc": 0.6229357798165137
       },
       "C": {
-        "ban_goc_o_hang_1": 0.6412213740458015,
-        "ban_goc_trong_top5": 0.732824427480916,
-        "p5_khong_tinh_ban_goc": 0.6827480916030535
+        "ban_goc_o_hang_1": 0.6422018348623854,
+        "ban_goc_trong_top5": 0.7339449541284404,
+        "p5_khong_tinh_ban_goc": 0.6828746177370031
       },
-      "loi_doc_ghi": 0
+      "loi_doc_ghi": 1
     },
     "mp3_44k1": {
       "A": {
@@ -152,19 +170,311 @@
       "B": {
         "ban_goc_o_hang_1": 0.7923664122137405,
         "ban_goc_trong_top5": 0.8595419847328244,
-        "p5_khong_tinh_ban_goc": 0.6964885496183206
+        "p5_khong_tinh_ban_goc": 0.6967938931297709
       },
       "C": {
         "ban_goc_o_hang_1": 0.8488549618320611,
         "ban_goc_trong_top5": 0.916030534351145,
-        "p5_khong_tinh_ban_goc": 0.8091603053435115
+        "p5_khong_tinh_ban_goc": 0.8094656488549618
       },
       "loi_doc_ghi": 0
     }
   },
-  "thoi_gian_moi_truy_van_ms": {
-    "A": 5.3,
-    "B": 5.1,
-    "C": 5.2
+  "hnsw_bat_buoc": {
+    "A": 1.0,
+    "B": 0.9990839694656488,
+    "C": 0.9984732824427481,
+    "ke_hoach": "Index Scan using idx_hnsw_u_c on vector_dac_trung  (cost=108.17..369.10 rows=655 width=12)",
+    "ke_hoach_mac_dinh": "Seq Scan on vector_dac_trung  (cost=0.00..52.19 rows=655 width=12)"
+  },
+  "ngoai_kho": {
+    "so_tep": 73,
+    "bi_tu_choi": {
+      "ngoai_kho/cabasa/fs75834.wav": "Không đạt điều kiện chất lượng (Mục 2): dài 0,077 s < 0,1 s",
+      "ngoai_kho/maracas/fs9697.wav": "Không đạt điều kiện chất lượng (Mục 2): dài 0,036 s < 0,1 s; phần có tiếng 0,030 s < 0,05 s",
+      "ngoai_kho/maracas/fs388443.wav": "Không đạt điều kiện chất lượng (Mục 2): dài 0,070 s < 0,1 s",
+      "ngoai_kho/shaker/fs4350.wav": "Không đạt điều kiện chất lượng (Mục 2): dài 0,052 s < 0,1 s"
+    },
+    "theo_nhac_cu": {
+      "bongo": {
+        "so_truy_van": 7,
+        "ho": "mang_rung",
+        "nhan_A": {
+          "tom": 12,
+          "cowbell": 10,
+          "kick": 5,
+          "snare": 5,
+          "conga": 3
+        },
+        "cung_ho_A": 0.7142857142857143,
+        "nhan_B": {
+          "snare": 21,
+          "cymbal": 5,
+          "hi_hat": 5,
+          "tom": 2,
+          "conga": 2
+        },
+        "cung_ho_B": 0.7142857142857143,
+        "nhan_C": {
+          "conga": 11,
+          "snare": 11,
+          "tom": 10,
+          "kick": 2,
+          "cymbal": 1
+        },
+        "cung_ho_C": 0.9714285714285714
+      },
+      "cajon": {
+        "so_truy_van": 3,
+        "ho": "go",
+        "nhan_A": {
+          "kick": 6,
+          "tom": 4,
+          "snare": 2,
+          "cowbell": 2,
+          "cymbal": 1
+        },
+        "cung_ho_A": 0.0,
+        "nhan_B": {
+          "tom": 6,
+          "kick": 5,
+          "snare": 2,
+          "cymbal": 1,
+          "hi_hat": 1
+        },
+        "cung_ho_B": 0.0,
+        "nhan_C": {
+          "tom": 8,
+          "kick": 5,
+          "cymbal": 1,
+          "snare": 1
+        },
+        "cung_ho_C": 0.0
+      },
+      "castanets": {
+        "so_truy_van": 15,
+        "ho": "go",
+        "nhan_A": {
+          "snare": 34,
+          "cowbell": 23,
+          "claves": 10,
+          "cymbal": 8
+        },
+        "cung_ho_A": 0.13333333333333333,
+        "nhan_B": {
+          "snare": 38,
+          "hi_hat": 20,
+          "cymbal": 10,
+          "claves": 6,
+          "kick": 1
+        },
+        "cung_ho_B": 0.08,
+        "nhan_C": {
+          "snare": 44,
+          "claves": 20,
+          "cymbal": 10,
+          "hi_hat": 1
+        },
+        "cung_ho_C": 0.26666666666666666
+      },
+      "djembe": {
+        "so_truy_van": 24,
+        "ho": "mang_rung",
+        "nhan_A": {
+          "tom": 54,
+          "cowbell": 29,
+          "conga": 16,
+          "kick": 13,
+          "snare": 8
+        },
+        "cung_ho_A": 0.7583333333333333,
+        "nhan_B": {
+          "kick": 66,
+          "tom": 19,
+          "snare": 16,
+          "hi_hat": 10,
+          "cymbal": 4,
+          "cowbell": 2,
+          "conga": 1,
+          "tambourine": 1,
+          "marimba": 1
+        },
+        "cung_ho_B": 0.85,
+        "nhan_C": {
+          "tom": 60,
+          "kick": 41,
+          "cowbell": 9,
+          "conga": 5,
+          "snare": 4,
+          "marimba": 1
+        },
+        "cung_ho_C": 0.9166666666666666
+      },
+      "gong": {
+        "so_truy_van": 8,
+        "ho": "kim_loai",
+        "nhan_A": {
+          "cowbell": 17,
+          "tom": 4,
+          "kick": 4,
+          "conga": 3,
+          "snare": 3,
+          "xylophone": 3,
+          "marimba": 2,
+          "claves": 2,
+          "agogo": 1,
+          "cymbal": 1
+        },
+        "cung_ho_A": 0.475,
+        "nhan_B": {
+          "cymbal": 12,
+          "snare": 11,
+          "hi_hat": 8,
+          "cowbell": 7,
+          "conga": 1,
+          "xylophone": 1
+        },
+        "cung_ho_B": 0.675,
+        "nhan_C": {
+          "cowbell": 15,
+          "snare": 8,
+          "tom": 7,
+          "cymbal": 5,
+          "conga": 3,
+          "claves": 2
+        },
+        "cung_ho_C": 0.5
+      },
+      "maracas": {
+        "so_truy_van": 3,
+        "ho": null,
+        "nhan_A": {
+          "hi_hat": 10,
+          "cymbal": 4,
+          "snare": 1
+        },
+        "nhan_B": {
+          "hi_hat": 6,
+          "kick": 4,
+          "snare": 3,
+          "tambourine": 2
+        },
+        "nhan_C": {
+          "hi_hat": 9,
+          "cymbal": 2,
+          "snare": 2,
+          "tambourine": 2
+        }
+      },
+      "shaker": {
+        "so_truy_van": 1,
+        "ho": null,
+        "nhan_A": {
+          "snare": 5
+        },
+        "nhan_B": {
+          "hi_hat": 3,
+          "snare": 1,
+          "cymbal": 1
+        },
+        "nhan_C": {
+          "snare": 5
+        }
+      },
+      "tabla": {
+        "so_truy_van": 1,
+        "ho": "mang_rung",
+        "nhan_A": {
+          "kick": 4,
+          "conga": 1
+        },
+        "cung_ho_A": 1.0,
+        "nhan_B": {
+          "tom": 4,
+          "kick": 1
+        },
+        "cung_ho_B": 1.0,
+        "nhan_C": {
+          "tom": 3,
+          "kick": 2
+        },
+        "cung_ho_C": 1.0
+      },
+      "triangle": {
+        "so_truy_van": 2,
+        "ho": "kim_loai",
+        "nhan_A": {
+          "hi_hat": 6,
+          "claves": 3,
+          "tambourine": 1
+        },
+        "cung_ho_A": 0.7,
+        "nhan_B": {
+          "hi_hat": 5,
+          "cymbal": 3,
+          "snare": 1,
+          "kick": 1
+        },
+        "cung_ho_B": 0.8,
+        "nhan_C": {
+          "cymbal": 5,
+          "hi_hat": 4,
+          "tambourine": 1
+        },
+        "cung_ho_C": 1.0
+      },
+      "vibraslap": {
+        "so_truy_van": 1,
+        "ho": null,
+        "nhan_A": {
+          "cymbal": 3,
+          "snare": 2
+        },
+        "nhan_B": {
+          "cymbal": 2,
+          "snare": 2,
+          "hi_hat": 1
+        },
+        "nhan_C": {
+          "cymbal": 3,
+          "snare": 2
+        }
+      },
+      "woodblock": {
+        "so_truy_van": 4,
+        "ho": "go",
+        "nhan_A": {
+          "cowbell": 11,
+          "claves": 5,
+          "conga": 2,
+          "snare": 2
+        },
+        "cung_ho_A": 0.25,
+        "nhan_B": {
+          "snare": 7,
+          "kick": 5,
+          "hi_hat": 5,
+          "cymbal": 2,
+          "tambourine": 1
+        },
+        "cung_ho_B": 0.0,
+        "nhan_C": {
+          "snare": 8,
+          "kick": 4,
+          "tom": 3,
+          "cowbell": 2,
+          "cymbal": 1,
+          "conga": 1,
+          "claves": 1
+        },
+        "cung_ho_C": 0.05
+      }
+    }
+  },
+  "thoi_gian_trung_vi_ms": {
+    "trich_dac_trung": 1.03,
+    "pgvector": 1.81,
+    "cay_kd": 1.15,
+    "vet_can": 0.08
   }
 }

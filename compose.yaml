@@ -1,0 +1,19 @@
+# PostgreSQL + pgvector cho CSDL đặc trưng (Yêu cầu 3-4). Chạy: docker compose up -d
+services:
+  csdl:
+    image: pgvector/pgvector:0.8.0-pg17
+    environment:
+      POSTGRES_USER: bogo
+      POSTGRES_PASSWORD: bogo
+      POSTGRES_DB: csdl_bo_go
+    ports:
+      - "127.0.0.1:5433:5432"  # 5433 để không đụng PostgreSQL cài sẵn trên máy
+    volumes:
+      - du_lieu_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bogo -d csdl_bo_go"]
+      interval: 2s
+      retries: 30
+
+volumes:
+  du_lieu_pg:

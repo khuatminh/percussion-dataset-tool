@@ -1,0 +1,78 @@
+﻿nhom,duong_dan,nhan_metadata,ma_freesound,ten_goc,dat_muc_2,clap_top3,nhan_trong_clap_top3
+ngoai_kho,ngoai_kho/bongo/fs219154.wav,bongo,219154,Bongo04.wav,co,conga / bongo / tabla,co
+ngoai_kho,ngoai_kho/bongo/fs219155.wav,bongo,219155,Bongo03.wav,co,bongo / conga / tenor_drum,co
+ngoai_kho,ngoai_kho/bongo/fs219156.wav,bongo,219156,Bongo02.wav,co,conga / bongo / tabla,co
+ngoai_kho,ngoai_kho/bongo/fs219157.wav,bongo,219157,Bongo01.wav,co,conga / bongo / tabla,co
+ngoai_kho,ngoai_kho/bongo/fs455504.wav,bongo,455504,LP Bongos Low.wav,co,bongo / conga / tom,co
+ngoai_kho,ngoai_kho/bongo/fs455505.wav,bongo,455505,LP Bongos Hi.wav,co,bongo / conga / djembe,co
+ngoai_kho,ngoai_kho/bongo/fs455506.wav,bongo,455506,LP Bongos Hi Slap.wav,co,conga / bongo / woodblock,co
+ngoai_kho,ngoai_kho/cabasa/fs75834.wav,cabasa,75834,LM1 Cabasa.wav,"Không đạt điều kiện chất lượng (Mục 2): dài 0.077 s < 0,1 s",shaker / cabasa / maracas,co
+ngoai_kho,ngoai_kho/cajon/fs197312.wav,cajon,197312,Cajon_Thump.wav,co,cajon / tenor_drum / surdo,co
+ngoai_kho,ngoai_kho/cajon/fs197313.wav,cajon,197313,Cajon_Thud.wav,co,tenor_drum / cajon / door_knock,co
+ngoai_kho,ngoai_kho/cajon/fs197315.wav,cajon,197315,Cajon_Rimshot.wav,co,conga / object_impact / bongo,khong
+ngoai_kho,ngoai_kho/castanets/fs57113.wav,castanets,57113,CASTANET 001.wav,co,object_impact / woodblock / castanets,co
+ngoai_kho,ngoai_kho/castanets/fs57114.wav,castanets,57114,CASTANET 002.wav,co,woodblock / object_impact / castanets,co
+ngoai_kho,ngoai_kho/castanets/fs57115.wav,castanets,57115,CASTANET 003.wav,co,woodblock / object_impact / claves,khong
+ngoai_kho,ngoai_kho/castanets/fs57116.wav,castanets,57116,CASTANET 004.wav,co,woodblock / object_impact / castanets,co
+ngoai_kho,ngoai_kho/castanets/fs57117.wav,castanets,57117,CASTANET 005.wav,co,woodblock / castanets / claves,co
+ngoai_kho,ngoai_kho/castanets/fs57118.wav,castanets,57118,CASTANET 006.wav,co,woodblock / castanets / object_impact,co
+ngoai_kho,ngoai_kho/castanets/fs57119.wav,castanets,57119,CASTANET 007.wav,co,woodblock / claves / object_impact,khong
+ngoai_kho,ngoai_kho/castanets/fs57120.wav,castanets,57120,CASTANET 008.wav,co,woodblock / object_impact / claves,khong
+ngoai_kho,ngoai_kho/castanets/fs57121.wav,castanets,57121,CASTANET 009.wav,co,object_impact / woodblock / castanets,co
+ngoai_kho,ngoai_kho/castanets/fs57122.wav,castanets,57122,CASTANET 010.wav,co,woodblock / object_impact / claves,khong
+ngoai_kho,ngoai_kho/castanets/fs57123.wav,castanets,57123,CASTANET 011.wav,co,woodblock / claves / castanets,co
+ngoai_kho,ngoai_kho/castanets/fs57124.wav,castanets,57124,CASTANET 012.wav,co,woodblock / claves / castanets,co
+ngoai_kho,ngoai_kho/castanets/fs57125.wav,castanets,57125,CASTANET 013.wav,co,woodblock / claves / object_impact,khong
+ngoai_kho,ngoai_kho/castanets/fs57126.wav,castanets,57126,CASTANET 014.wav,co,woodblock / claves / castanets,co
+ngoai_kho,ngoai_kho/castanets/fs347128.wav,castanets,347128,Nova Analog Castanets.wav,co,castanets / object_impact / cabasa,co
+ngoai_kho,ngoai_kho/djembe/fs54014.wav,djembe,54014,DJEMBE_HI_1.wav,co,conga / tenor_drum / tabla,khong
+ngoai_kho,ngoai_kho/djembe/fs54015.wav,djembe,54015,DJEMBE_HI_2.wav,co,tenor_drum / conga / tom,khong
+ngoai_kho,ngoai_kho/djembe/fs54016.wav,djembe,54016,DJEMBE_HI_3.wav,co,tenor_drum / conga / djembe,co
+ngoai_kho,ngoai_kho/djembe/fs54017.wav,djembe,54017,DJEMBE_LO_1.wav,co,cajon / tabla / conga,khong
+ngoai_kho,ngoai_kho/djembe/fs54018.wav,djembe,54018,DJEMBE_LO_2.wav,co,tabla / conga / cajon,khong
+ngoai_kho,ngoai_kho/djembe/fs54019.wav,djembe,54019,DJEMBE_LO_3.wav,co,tabla / cajon / surdo,khong
+ngoai_kho,ngoai_kho/djembe/fs54020.wav,djembe,54020,DJEMBE_LO_KING.wav,co,dunun / cajon / conga,khong
+ngoai_kho,ngoai_kho/djembe/fs54021.wav,djembe,54021,DJEMBE_MID_1.wav,co,conga / tabla / tenor_drum,khong
+ngoai_kho,ngoai_kho/djembe/fs54022.wav,djembe,54022,DJEMBE_MID_2.wav,co,conga / tenor_drum / bongo,khong
+ngoai_kho,ngoai_kho/djembe/fs54023.wav,djembe,54023,DJEMBE_MID_3.wav,co,conga / tabla / bongo,khong
+ngoai_kho,ngoai_kho/djembe/fs54024.wav,djembe,54024,DJEMBE_MID_4.wav,co,tenor_drum / conga / tom,khong
+ngoai_kho,ngoai_kho/djembe/fs54025.wav,djembe,54025,DJEMBE_TICK.wav,co,conga / tabla / bongo,khong
+ngoai_kho,ngoai_kho/djembe/fs158957.wav,djembe,158957,Djembe Hit 13 Hi Rim.wav,co,conga / bongo / tabla,khong
+ngoai_kho,ngoai_kho/djembe/fs158958.wav,djembe,158958,Djembe Hit 2 Hi Rim.wav,co,conga / bongo / tenor_drum,khong
+ngoai_kho,ngoai_kho/djembe/fs158959.wav,djembe,158959,Djembe Hit 2 Center.wav,co,conga / bongo / cajon,khong
+ngoai_kho,ngoai_kho/djembe/fs158960.wav,djembe,158960,Djembe Hit 7 Center.wav,co,conga / bongo / tenor_drum,khong
+ngoai_kho,ngoai_kho/djembe/fs158961.wav,djembe,158961,Djembe Hit 7 Center closed .wav,co,object_impact / cajon / tenor_drum,khong
+ngoai_kho,ngoai_kho/djembe/fs158962.wav,djembe,158962,Djembe Hit 5 Center.wav,co,conga / bongo / tabla,khong
+ngoai_kho,ngoai_kho/djembe/fs158963.wav,djembe,158963,Djembe Hit 5 Center closed .wav,co,conga / tenor_drum / cajon,khong
+ngoai_kho,ngoai_kho/djembe/fs158964.wav,djembe,158964,Djembe Hit 5 Rim.wav,co,conga / bongo / tabla,khong
+ngoai_kho,ngoai_kho/djembe/fs158965.wav,djembe,158965,Djembe Hit 5 Hi Rim.wav,co,conga / bongo / tabla,khong
+ngoai_kho,ngoai_kho/djembe/fs158966.wav,djembe,158966,Djembe Hit 6 Center.wav,co,conga / bongo / tenor_drum,khong
+ngoai_kho,ngoai_kho/djembe/fs158967.wav,djembe,158967,Djembe Hit 6 Center closed .wav,co,conga / tenor_drum / cajon,khong
+ngoai_kho,ngoai_kho/djembe/fs158969.wav,djembe,158969,Djembe Hit 6 Hi Rim.wav,co,conga / bongo / tabla,khong
+ngoai_kho,ngoai_kho/gong/fs56241.wav,gong,56241,Gong_Center_Mute.wav,co,cowbell / conga / woodblock,khong
+ngoai_kho,ngoai_kho/gong/fs56242.wav,gong,56242,Gong_Side_Clear.wav,co,gong / agogo / cowbell,co
+ngoai_kho,ngoai_kho/gong/fs249381.wav,gong,249381,Bwana Kumala Gong 07.flac,co,gong / cowbell / agogo,co
+ngoai_kho,ngoai_kho/gong/fs249386.wav,gong,249386,Bwana Kumala Gong 08.flac,co,cowbell / agogo / gong,co
+ngoai_kho,ngoai_kho/gong/fs257163.wav,gong,257163,Gong - percussion 06,co,agogo / gong / cowbell,co
+ngoai_kho,ngoai_kho/gong/fs257167.wav,gong,257167,Gong - percussion 05,co,agogo / cowbell / gong,co
+ngoai_kho,ngoai_kho/gong/fs257194.wav,gong,257194,Gong - percussion 04,co,agogo / triangle / cowbell,khong
+ngoai_kho,ngoai_kho/gong/fs257198.wav,gong,257198,Gong - percussion 03,co,cowbell / agogo / gong,co
+ngoai_kho,ngoai_kho/maracas/fs9697.wav,maracas,9697,A43-808 maraca.aif,"Không đạt điều kiện chất lượng (Mục 2): dài 0.036 s < 0,1 s; phần có tiếng 0.030 s < 0,05 s",shaker / cabasa / maracas,co
+ngoai_kho,ngoai_kho/maracas/fs204650.wav,maracas,204650,Maraca Dry Hit Mid,co,shaker / maracas / cabasa,co
+ngoai_kho,ngoai_kho/maracas/fs204651.wav,maracas,204651,Maraca Dry Hit Low,co,maracas / shaker / cabasa,co
+ngoai_kho,ngoai_kho/maracas/fs204652.wav,maracas,204652,Maraca Dry Hit Intense,co,cabasa / shaker / maracas,co
+ngoai_kho,ngoai_kho/maracas/fs388443.wav,maracas,388443,Maraca,"Không đạt điều kiện chất lượng (Mục 2): dài 0.070 s < 0,1 s",shaker / maracas / cabasa,co
+ngoai_kho,ngoai_kho/shaker/fs4350.wav,shaker,4350,linn shaker.wav,"Không đạt điều kiện chất lượng (Mục 2): dài 0.052 s < 0,1 s",maracas / shaker / cabasa,co
+ngoai_kho,ngoai_kho/shaker/fs199821.wav,shaker,199821,Egg Shaker - 3 Accent,co,finger_snap / object_impact / castanets,khong
+ngoai_kho,ngoai_kho/tabla/fs23340.wav,tabla,23340,tabla.wav,co,tabla / tom / conga,co
+ngoai_kho,ngoai_kho/triangle/fs22783.wav,triangle,22783,80 Mute Triangle.wav,co,cymbal / hi_hat / gong,khong
+ngoai_kho,ngoai_kho/triangle/fs412453.wav,triangle,412453,Winter Open Triangle.wav,co,triangle / crotales / agogo,co
+ngoai_kho,ngoai_kho/vibraslap/fs191374.wav,vibraslap,191374,Vibraslap Very Short.aif,co,vibraslap / ratchet / guiro,co
+ngoai_kho,ngoai_kho/woodblock/fs53387.wav,woodblock,53387,Dodgy_C_Wood_Block.wav,co,claves / finger_snap / castanets,khong
+ngoai_kho,ngoai_kho/woodblock/fs53403.wav,woodblock,53403,wood block.wav,co,woodblock / claves / cowbell,co
+ngoai_kho,ngoai_kho/woodblock/fs218461.wav,woodblock,218461,wood block,co,bongo / conga / tenor_drum,khong
+ngoai_kho,ngoai_kho/woodblock/fs317273.wav,woodblock,317273,Wood Block Hit,co,woodblock / claves / guiro,co
+trong_lop,trong_lop/hi_hat/fs44971.wav,hi_hat,44971,Hihat Op2 C3000B-10.wav,co,hi_hat / cymbal / drum_kit,co
+trong_lop,trong_lop/kick/fs185294.wav,kick,185294,Definition Of Dirt (kickdrum),co,kick / cajon / surdo,co
+trong_lop,trong_lop/snare/fs143443.wav,snare,143443,"SD14x08Tama-MLP,TSn-CS-v10.wav",co,snare / tenor_drum / conga,co
+trong_lop,trong_lop/xylophone/fs204634.wav,xylophone,204634,Xylophone E3.wav,co,xylophone / marimba / vibraphone,co

@@ -1,0 +1,36 @@
+@startuml Hinh-5 Hoạt động xử lý một truy vấn
+|Người dùng|
+start
+:Chọn tệp âm thanh và bộ đặc trưng (mặc định C);
+|Hệ thống|
+:Đọc tệp thành ma trận mẫu số thực 64 bit;
+if (Đọc được tệp?) then (có)
+  :Đo sáu đại lượng kiểm tra tín hiệu;
+  if (Đạt cả sáu điều kiện?) then (có)
+    :Đưa về một kênh, 16 kHz và tính mã băm PCM;
+    |Cơ sở dữ liệu|
+    :Tra các tệp có cùng mã băm PCM;
+    |Hệ thống|
+    :Trích 21 giá trị A và 39 giá trị B;
+    |Cơ sở dữ liệu|
+    :Trả tham số chuẩn hóa μ, s đã lưu;
+    |Hệ thống|
+    :Chuẩn hóa và tạo vector u_S;
+    |Cơ sở dữ liệu|
+    :Chọn 10 ứng viên gần nhất, loại tệp trùng;
+    |Hệ thống|
+    :Tính lại khoảng cách bằng số thực 64 bit, giữ 5 tệp;
+    :Tính độ tương đồng s = 1/(1 + d) và phần giải thích;
+    |Người dùng|
+    :Xem 5 kết quả xếp theo độ tương đồng giảm dần;
+  else (không)
+    |Hệ thống|
+    :Từ chối, liệt kê điều kiện không đạt kèm số đo;
+  endif
+else (không)
+  |Hệ thống|
+  :Báo không đọc được tệp âm thanh;
+endif
+|Người dùng|
+stop
+@enduml
