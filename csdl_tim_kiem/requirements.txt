@@ -2,3 +2,5 @@ numpy==2.4.6
 scipy==1.17.1
 soundfile==0.13.1
 pytest>=8
+psycopg[binary]==3.3.9
+matplotlib==3.11.2  # chỉ để vẽ hình báo cáo (minh_hoa.py)

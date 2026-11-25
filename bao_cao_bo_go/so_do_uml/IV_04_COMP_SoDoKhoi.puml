@@ -1,0 +1,28 @@
+@startuml Hinh-4 Sơ đồ khối của hệ thống
+component "M1. Nhận truy vấn (dòng lệnh, web)" as M1
+component "M2. Đọc tệp, kiểm tra tín hiệu" as M2
+component "M3. Đưa về mono 16 kHz" as M3
+component "M4. Trích đặc trưng" as M4
+component "M5. Chuẩn hóa, tạo u_A, u_B, u_C" as M5
+component "M6. Kiểm tra trùng kho" as M6
+component "M7. Tìm 5 tệp gần nhất (SQL)" as M7
+component "M8. Xếp hạng, giải thích" as M8
+component "M9. Hiển thị kết quả" as M9
+component "X1. 655 tệp WAV, danh mục, kiểm kê" as X1
+component "X2. Trích đặc trưng 655 tệp, tính μ, s, u" as X2
+database "PostgreSQL + pgvector" as DB
+M1 --> M2 : tệp
+M2 --> M3 : x, fs
+M3 --> M4 : y
+M3 --> M6 : mã băm
+M4 --> M5 : a, b
+M5 --> M7 : u_S
+M6 --> M7 : mã trùng
+M7 --> M8 : (mã, d)
+M8 --> M9 : 5 kết quả
+M7 ..> DB : SQL
+DB ..> M5 : μ, s
+DB ..> M8 : nhãn, giá trị gốc
+X1 --> X2 : 655 tệp
+X2 --> DB : ghi
+@enduml

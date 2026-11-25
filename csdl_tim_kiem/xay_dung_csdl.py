@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Yêu cầu 3: trích đặc trưng A/B/C cho 655 tệp và ghi vào CSDL SQLite.
+"""Yêu cầu 3: trích đặc trưng A/B/C cho 655 tệp và ghi vào CSDL PostgreSQL + pgvector.
 
-Chạy từ thư mục gốc repo:  python csdl_tim_kiem/xay_dung_csdl.py
+Chạy từ thư mục gốc repo (sau `docker compose up -d`):  python csdl_tim_kiem/xay_dung_csdl.py
 """
 import argparse
 import csv
@@ -16,7 +16,7 @@ import numpy as np
 import scipy
 import soundfile as sf
 
-from csdl import DB_MAC_DINH, ghi_csdl
+from csdl import URL_MAC_DINH, ghi_csdl
 from dac_trung import REPO, doc_am_thanh, ma_bam_pcm, tinh_dac_trung
 
 DU_LIEU = REPO / 'filtered_output'
@@ -55,7 +55,8 @@ def trich_xuat(tep, du_lieu=DU_LIEU):
         assert hashlib.sha256(p.read_bytes()).hexdigest() == t['sha256'], 'Âm thanh đã bị sửa: ' + t['duong_dan']
         info = sf.info(str(p))
         assert info.samplerate == 16000 and info.channels == 1
-        y = doc_am_thanh(p)
+        y, t['kiem_ke'] = doc_am_thanh(p)  # cùng điều kiện Mục 2 như truy vấn
+        assert t['kiem_ke']['thoi_luong_s'] == t.pop('thoi_luong_s'), 'Thời lượng khác hồ sơ kiểm kê'
         t['pcm16_sha256'] = ma_bam_pcm(y)
         a, b = tinh_dac_trung(y)
         A.append(a)
@@ -65,7 +66,7 @@ def trich_xuat(tep, du_lieu=DU_LIEU):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--db', type=Path, default=DB_MAC_DINH)
+    ap.add_argument('--db', default=URL_MAC_DINH, help='chuỗi kết nối PostgreSQL (hoặc biến môi trường CSDL_URL)')
     args = ap.parse_args()
     t0 = time.perf_counter()
     tep = doc_danh_sach()
@@ -77,9 +78,9 @@ def main():
                  'so_chieu': json.dumps({'A': 21, 'B': 39, 'C': 60}),
                  'thu_vien': json.dumps({'numpy': np.__version__, 'scipy': scipy.__version__,
                                          'soundfile': sf.__version__})}
-    ghi_csdl(args.db, tep, A, B, thong_tin)
-    print(f'Đã ghi {len(tep)} tệp, {thong_tin["so_lop"]} lớp vào {args.db} '
-          f'({args.db.stat().st_size / 1024:.0f} KB) trong {time.perf_counter() - t0:.1f} s')
+    kich_thuoc = ghi_csdl(args.db, tep, A, B, thong_tin)
+    print(f'Đã ghi {len(tep)} tệp, {thong_tin["so_lop"]} lớp vào PostgreSQL '
+          f'(CSDL {kich_thuoc}) trong {time.perf_counter() - t0:.1f} s')
 
 
 if __name__ == '__main__':

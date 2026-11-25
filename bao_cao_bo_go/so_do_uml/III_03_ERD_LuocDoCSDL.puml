@@ -1,0 +1,59 @@
+@startuml Hinh-3 Lược đồ cơ sở dữ liệu đặc trưng
+skinparam linetype ortho
+entity audio_files {
+  * file_id : INT <<PK>>
+  --
+  * path : VARCHAR(255) <<UNIQUE>>
+  * label : VARCHAR(20)
+  * source : VARCHAR(10)
+  original_name : VARCHAR(255)
+  uploader : VARCHAR(100)
+  * recording_group : VARCHAR(100)
+  * sha256 : CHAR(64)
+  * pcm16_sha256 : CHAR(64)
+}
+entity signal_checks {
+  * file_id : INT <<PK>> <<FK:audio_files>>
+  --
+  * duration_s : DOUBLE
+  * active_duration_s : DOUBLE
+  * peak_dbfs : DOUBLE
+  * first_sample_ratio : DOUBLE
+  * tail_rms_ratio : DOUBLE
+  * clipping_ratio : DOUBLE
+}
+entity raw_features {
+  * file_id : INT <<PK>> <<FK:audio_files>>
+  --
+  * log1p_active_s : DOUBLE
+  * centroid_hz_mean : DOUBLE
+  * flux_std : DOUBLE
+  * mfcc01_mean : DOUBLE
+  * mfcc13_delta_std : DOUBLE
+}
+entity feature_vectors {
+  * file_id : INT <<PK>> <<FK:audio_files>>
+  --
+  * u_a : BLOB
+  * u_b : BLOB
+  * u_c : BLOB
+}
+entity normalization_params {
+  * feature_set : CHAR(1) <<PK>>
+  * dim : INT <<PK>>
+  --
+  * feature_name : VARCHAR(50)
+  * mean : DOUBLE
+  * std : DOUBLE
+}
+entity db_info {
+  * key : VARCHAR(50) <<PK>>
+  --
+  * value : VARCHAR(255)
+}
+audio_files ||--|| signal_checks : file_id
+audio_files ||--|| raw_features : file_id
+audio_files ||--|| feature_vectors : file_id
+raw_features -[hidden]down- normalization_params
+feature_vectors -[hidden]down- db_info
+@enduml

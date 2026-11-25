@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nghe & tìm · Bộ gõ</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><div class="eyebrow">PHÒNG THỬ ÂM THANH / BỘ GÕ</div><span id="inventory">Đang nạp kho âm thanh…</span></header>
+    <h1>Nghe. Tìm. So sánh.</h1>
+    <p class="intro">Chọn một tiếng gõ, tìm những âm gần nhất và nghe để tự đối chiếu.</p>
+    <div class="workspace">
+      <section class="query" aria-labelledby="query-heading">
+        <h2 id="query-heading"><span class="step">01</span> Âm thanh truy vấn</h2>
+        <fieldset id="controls" disabled>
+          <label class="upload" id="dropzone" for="upload"><strong>Chọn hoặc kéo file vào đây</strong><span>WAV, MP3, FLAC, OGG, AIFF · tối đa 30 MB / 120 giây</span><input id="upload" type="file" accept="audio/*,.wav,.mp3,.flac,.ogg,.aiff,.aif"></label>
+          <details class="local-file"><summary>Không mở được cửa sổ chọn file?</summary><p>Trong Finder, chọn file rồi nhấn ⌥⌘C để sao chép đường dẫn. Dán vào ô dưới và bấm “Mở và tìm”.</p><label for="local-path">Đường dẫn file trên máy</label><input id="local-path" type="text" placeholder="/Users/…/Downloads/tieng-trong.wav"><button id="local-open" type="button" class="secondary">Mở và tìm</button></details>
+          <div class="divider">hoặc thử âm thanh trong kho</div>
+          <label for="label-filter">Nhạc cụ</label>
+          <select id="label-filter"><option value="">Tất cả nhạc cụ</option></select>
+          <label for="sample">Tệp âm thanh</label>
+          <select id="sample"></select>
+          <button id="random" type="button" class="secondary">Chọn ngẫu nhiên</button>
+          <div class="preview"><div class="eyebrow">ĐANG CHỌN</div><strong id="query-name">Chưa chọn tệp</strong><span id="query-meta"></span><audio id="query-audio" controls preload="metadata" aria-label="Nghe âm thanh truy vấn"></audio></div>
+          <label for="feature">Bộ đặc trưng</label>
+          <select id="feature"><option value="C">C · Kết hợp (60 chiều)</option><option value="A">A · Âm sắc & thời gian (21 chiều)</option><option value="B">B · MFCC (39 chiều)</option></select>
+          <button id="search" type="button" class="primary">Tìm 5 âm tương đồng</button>
+        </fieldset>
+        <p class="local-note">Xử lý trên máy của bạn. File tải lên chỉ dùng cho lần tìm kiếm này.</p>
+      </section>
+      <section class="results" aria-labelledby="results-heading">
+        <div class="results-head"><h2 id="results-heading"><span class="step">02</span> Kết quả gần nhất</h2><span id="result-count"></span></div>
+        <p id="status" role="status" aria-live="polite">Chọn âm thanh và bấm tìm kiếm để bắt đầu.</p>
+        <div id="error" role="alert" hidden></div>
+        <div id="results"><div class="empty"><span class="empty-mark">♪</span><h3>Nghe bằng tai, đối chiếu bằng dữ liệu.</h3><p>Mỗi kết quả có nút phát riêng để bạn so sánh với âm thanh gốc.</p></div></div>
+        <details id="intermediate" hidden><summary>Xem đặc trưng và phép tính trung gian</summary><div id="intermediate-values"></div></details>
+        <p class="footnote">Điểm tương đồng = 1 / (1 + khoảng cách), không phải xác suất. Hệ thống luôn lấy 5 tệp gần nhất; chúng có thể khác nhạc cụ hoặc chưa thực sự giống khi nghe.</p>
+      </section>
+    </div>
+    <footer>Yêu cầu 5 · Demo tìm kiếm âm thanh tương đồng <span>PostgreSQL + pgvector / A · B · C</span></footer>
+  </main>
+</body>
+</html>
