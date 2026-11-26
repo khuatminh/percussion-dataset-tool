@@ -1,0 +1,60 @@
+% ======================================================================
+% BẢN NHÁP: các tiểu mục bổ sung cho Mục "Đánh giá kết quả" (sec:danhgia)
+% Số liệu lấy từ csdl_tim_kiem/ket_qua_danh_gia/bo_sung.json
+% (chạy: python csdl_tim_kiem/danh_gia_bo_sung.py).
+% Gợi ý vị trí chèn trong bao_cao_mmdb_yeu_cau_3_4.tex và bao_cao_mmdb.tex:
+%   - Khối (1) chèn vào cuối \subsection{Phương pháp đánh giá}, sau danh sách P@5 / Hạng 1 / Bỏ phiếu.
+%   - Khối (2), (3) chèn ngay sau đoạn "Theo nguồn, P@5 của bộ C là ..." (trước \subsection{Lựa chọn bộ ...}).
+%   - Khối (4) chèn vào cuối \subsection{Truy vấn bằng nhạc cụ ngoài kho}.
+%   - Khối (5) chèn trước \subsection{Tính đúng đắn và thời gian xử lý}.
+% Nhớ sửa tương ứng word/input.md nếu dùng bản Word.
+% ======================================================================
+
+% ---------- (1) Bổ sung vào "Phương pháp đánh giá" ----------
+Ngoài ba chỉ số trên, nhóm dùng thêm các chỉ số xếp hạng thường gặp trong truy hồi thông tin, vì đề bài yêu cầu kết quả \emph{xếp theo thứ tự} tương đồng giảm dần:
+\begin{itemize}
+\item \textbf{mAP@5:} với mỗi truy vấn, $\mathrm{AP@5}=\frac{1}{\min(5,R)}\sum_{k=1}^{5}\mathrm{P@}k\cdot \mathrm{rel}_k$, trong đó $\mathrm{rel}_k=1$ nếu kết quả hạng $k$ cùng nhãn và $R$ là số tệp cùng nhãn còn trong kho. AP@5 thưởng cho kết quả đúng nằm ở hạng cao;
+\item \textbf{MRR:} trung bình của $1/r$, với $r$ là hạng của tệp cùng nhãn đầu tiên khi xếp toàn bộ kho;
+\item \textbf{nDCG@5 phân mức:} mức liên quan bằng 2 nếu cùng nhạc cụ, 1 nếu khác nhạc cụ nhưng cùng họ (Bảng~1), 0 nếu khác họ; $\mathrm{DCG@5}=\sum_{k=1}^{5}\frac{2^{g_k}-1}{\log_2(k+1)}$, chia cho DCG của thứ tự lý tưởng;
+\item \textbf{P@5 theo họ:} tỷ lệ kết quả cùng họ nhạc cụ với truy vấn.
+\end{itemize}
+
+% ---------- (2) Chỉ số xếp hạng ----------
+\subsection{Chỉ số xếp hạng bổ sung}\label{sec:xephang}
+\begin{table}[htbp]
+\centering\small
+\caption{Các chỉ số xếp hạng (trung bình trên mọi truy vấn).}\label{tab:xephang}
+\begin{tabular}{llrrrrr}
+\toprule
+Đánh giá & Bộ & P@5 & mAP@5 & MRR & nDCG@5 & P@5 theo họ\\\midrule
+Bỏ-một-ra & A & 0,799 & 0,763 & 0,906 & 0,849 & 0,914\\
+(655 truy vấn) & B & 0,730 & 0,682 & 0,873 & 0,798 & 0,882\\
+& C & \textbf{0,832} & \textbf{0,802} & \textbf{0,932} & \textbf{0,878} & \textbf{0,932}\\\midrule
+Theo nhóm bản thu & A & 0,621 & 0,579 & 0,764 & 0,699 & 0,804\\
+(639 truy vấn) & B & 0,571 & 0,511 & 0,743 & 0,672 & 0,805\\
+& C & \textbf{0,666} & \textbf{0,627} & \textbf{0,801} & \textbf{0,746} & \textbf{0,844}\\\bottomrule
+\end{tabular}
+\end{table}
+Thứ tự giữa ba bộ không đổi khi dùng các chỉ số xếp hạng: C cao nhất ở mọi chỉ số (Bảng~\ref{tab:xephang}), nên kết luận chọn C ở Mục~\ref{sec:chonbo} không phụ thuộc vào việc chọn P@5. mAP@5 chỉ thấp hơn P@5 khoảng 0,03--0,06, nghĩa là các kết quả đúng thường nằm ở những hạng đầu. MRR của bộ C bằng 0,801 khi tách theo nhóm bản thu; trung vị hạng của tệp cùng nhãn đầu tiên bằng 1 ở cả hai cách đánh giá. P@5 theo họ (0,844) cao hơn rõ P@5 theo nhạc cụ (0,666): khi hệ thống trả sai nhạc cụ, kết quả phần lớn vẫn là nhạc cụ cùng họ, tức gần về nội dung âm thanh.
+
+% ---------- (3) Ma trận nhầm lẫn ----------
+\subsection{Ma trận nhầm lẫn}\label{sec:nhamlan}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.8\textwidth]{hinh7_ma_tran_nham_lan.pdf}
+\caption{Phân bố nhãn của 5 kết quả theo nhãn truy vấn (bộ C, chia theo nhóm bản thu; mỗi hàng cộng bằng 1, chỉ ghi các ô từ 0,05).}\label{fig:nhamlan}
+\end{figure}
+Hình~\ref{fig:nhamlan} cho biết các kết quả sai rơi vào lớp nào khi truy vấn đến từ một nguồn thu khác. Các cặp nhầm lớn nhất là conga $\to$ tom (0,71), vibraphone $\to$ marimba (0,55), tambourine $\to$ hi-hat (0,45) và cymbal $\to$ snare (0,36). Các cặp này đều cùng họ hoặc cùng nhóm phổ phân tán, khớp với các cặp có khoảng cách tâm nhỏ đã nêu ở Phần I. Tambourine đạt P@5 cao khi bỏ-một-ra nhưng chỉ 0,25 khi tách nhóm bản thu, vì 12 tệp của lớp này đến từ ít nguồn: bỏ-một-ra chủ yếu tìm lại tệp cùng buổi thu.
+
+% ---------- (4) Bổ sung vào "Truy vấn bằng nhạc cụ ngoài kho" ----------
+\paragraph{Khoảng cách tới kết quả gần nhất.} Hệ thống luôn trả 5 tệp, kể cả khi nhạc cụ chưa có trong kho. Để xem khoảng cách có cho biết điều đó hay không, nhóm so sánh khoảng cách $d_1$ tới kết quả hạng 1 của hai loại truy vấn: 655 tệp trong kho (mỗi truy vấn bỏ ra cả nhóm bản thu của nó, để giống một bản thu mới) và 69 tệp nhạc cụ ngoài kho.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.85\textwidth]{hinh8_phan_bo_khoang_cach.pdf}
+\caption{Phân bố khoảng cách tới kết quả hạng 1 (bộ C).}\label{fig:phanbo}
+\end{figure}
+Với bộ C, trung vị $d_1$ là 0,558 với nhạc cụ đã có và 0,707 với nhạc cụ ngoài kho (Hình~\ref{fig:phanbo}); xác suất một truy vấn ngoài kho có $d_1$ lớn hơn một truy vấn đã có (AUC) là 0,72 (bộ A: 0,53; bộ B: 0,76). Nếu đặt ngưỡng cảnh báo ở phân vị 95 của $d_1$ của nhạc cụ đã có ($d_1>1{,}054$), chỉ 7\% truy vấn ngoài kho bị cảnh báo. Hai phân bố chồng lên nhau nhiều, nên khoảng cách chỉ là dấu hiệu tham khảo: hệ thống không tự kết luận được ``nhạc cụ này chưa có trong kho''. Điều này phù hợp với mục tiêu của đề bài là tìm tệp \emph{tương đồng}, không phải phân loại nhạc cụ.
+
+% ---------- (5) Tệp mới của lớp đã có ----------
+\subsection{Tệp mới của nhạc cụ đã có}\label{sec:tepmoi}
+Bốn tệp \texttt{truy\_van\_thu/trong\_lop} không thuộc kho được dùng làm truy vấn với bộ C. Kết quả: hi-hat 5/5 hi-hat; snare 5/5 snare; kick 4/5 kick (một tom ở hạng 3); xylophone 3/5 xylophone ở ba hạng đầu, hai kết quả còn lại là cowbell và cymbal. Bốn truy vấn quá ít để tính độ chính xác, nên nhóm chỉ dùng chúng để minh họa; các số đo chính vẫn là Bảng~\ref{tab:ketqua} và Bảng~\ref{tab:xephang}.
