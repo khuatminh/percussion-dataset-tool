@@ -1,0 +1,62 @@
+% ======================================================================
+% BẢN NHÁP: tiểu mục "Kiểm thử trên giao diện" cho Mục Đánh giá kết quả (sec:danhgia)
+% Nguồn: 6 truy vấn chạy trên giao_dien.py (bộ C) ngày 26/11/2026 và nhận xét nghe của nhóm.
+% Hình: hinh/hinh9_giao_dien_*.png (ảnh chụp màn hình, đã cắt).
+% Gợi ý chèn: ngay trước \subsection{Tính đúng đắn và thời gian xử lý}
+%   trong bao_cao_mmdb_yeu_cau_3_4.tex và bao_cao_mmdb.tex (và word/input.md nếu dùng bản Word).
+% Chỉ dùng các gói đã có trong phần mở đầu (graphicx, booktabs, tabularx, caption).
+% ======================================================================
+
+\subsection{Kiểm thử trên giao diện}\label{sec:kiemthugd}
+Để kiểm tra hệ thống như một người dùng, nhóm chạy 6 truy vấn trên giao diện web (bộ C). Năm tệp được tải lên từ \texttt{truy\_van\_thu/}, không thuộc kho 655 tệp: ba nhạc cụ chưa có trong kho, hai tệp mới của nhạc cụ đã có. Tệp thứ sáu là một tệp lỗi để kiểm tra bước từ chối. Với mỗi truy vấn, nhóm nghe tệp truy vấn rồi nghe lần lượt 5 kết quả, chú ý tới chất liệu âm, khởi âm (attack), độ ngân và cao độ. Kết quả trên giao diện trùng hoàn toàn (tệp, thứ tự và khoảng cách) với kết quả tìm vét cạn của kịch bản đánh giá.
+
+\begin{table}[htbp]
+\centering\footnotesize
+\caption{Kết quả kiểm thử trên giao diện (bộ C).}\label{tab:kiemthugd}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright}p{1.6cm}>{\raggedright}p{1.7cm}>{\raggedright}p{3.9cm}p{1.45cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Truy vấn & Loại & Nhãn của 5 kết quả (hạng 1 $\to$ 5) & $d$ & Nhận xét\\\midrule
+djembe & ngoài kho & cowbell, conga, cowbell, cowbell, kick & 0,92--0,99 & Kết quả đều là một cú đánh đơn, khởi âm khá giống truy vấn; chỉ 2/5 cùng họ màng rung.\\
+triangle & ngoài kho & cymbal, cymbal, tambourine, cymbal, cymbal & 0,75--0,80 & Cả 5 kết quả thuộc họ kim loại, âm ngân dài như truy vấn.\\
+castanets & ngoài kho & claves, snare, claves, snare, claves & 0,63--0,69 & Kết quả đều là một cú đánh; chất liệu âm và khởi âm khá giống truy vấn dù khác nhãn; 3/5 là claves, nhạc cụ gỗ duy nhất trong kho.\\
+snare & tệp mới, lớp đã có & 5 $\times$ snare & 0,54--0,58 & 5/5 đúng nhạc cụ.\\
+xylophone & tệp mới, lớp đã có & xylophone $\times$ 3, cowbell, cymbal & 0,86--1,06 & 3 kết quả đúng nhạc cụ nằm ở 3 hạng đầu.\\
+maracas (0,036 s) & tệp lỗi & --- & --- & Bị từ chối: dài 0,036 s $<$ 0,1 s và phần có tiếng 0,030 s $<$ 0,05 s (Mục~2).\\\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth]{hinh9_giao_dien_djembe.png}\\[-2pt]
+{\small (a) djembe (ngoài kho)}
+\end{minipage}\hfill
+\begin{minipage}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth]{hinh9_giao_dien_castanets.png}\\[-2pt]
+{\small (b) castanets (ngoài kho)}
+\end{minipage}\\[8pt]
+\begin{minipage}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth]{hinh9_giao_dien_triangle.png}\\[-2pt]
+{\small (c) triangle (ngoài kho)}
+\end{minipage}\hfill
+\begin{minipage}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth]{hinh9_giao_dien_xylophone.png}\\[-2pt]
+{\small (d) xylophone (tệp mới, lớp đã có)}
+\end{minipage}
+\caption{Kết quả trên giao diện web cho một số truy vấn; cột phải là độ tương đồng $s=1/(1+d)$ và khoảng cách $d$.}\label{fig:giaodien}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\textwidth]{hinh9_giao_dien_tu_choi.png}
+\caption{Giao diện từ chối một tệp không đạt điều kiện chất lượng của Mục~2.}\label{fig:tuchoi}
+\end{figure}
+
+Bảng~\ref{tab:kiemthugd} và Hình~\ref{fig:giaodien} cho thấy:
+\begin{itemize}
+\item \textbf{Nhạc cụ đã có:} hệ thống trả đúng nhạc cụ và xếp các kết quả đúng lên đầu (snare 5/5; xylophone 3/5 ở hạng 1--3). Khoảng cách của truy vấn snare (0,54--0,58) nhỏ, ứng với độ tương đồng cao nhất trong các phép thử.
+\item \textbf{Nhạc cụ chưa có:} hệ thống vẫn trả đủ 5 tệp. Khi nghe, các kết quả giống truy vấn về kiểu đánh (một cú đánh đơn), khởi âm và chất liệu, dù khác nhãn. Đây là sự tương đồng về \emph{nội dung âm thanh} mà đề bài yêu cầu. Triangle được ghép với cymbal và tambourine (cùng họ kim loại); castanets được ghép với claves, nhạc cụ gỗ duy nhất trong kho.
+\item \textbf{Giới hạn:} với djembe, 3/5 kết quả là cowbell và khoảng cách lớn ($d \approx 0{,}92$--$0{,}99$, độ tương đồng $\approx 0{,}50$), vì kho không có trống tay âm cao giống djembe. Độ tương đồng thấp phản ánh đúng việc không có tệp thật sự gần, nhưng chưa đủ để hệ thống tự kết luận nhạc cụ không có trong kho (Mục~\ref{sec:ngoaikho}).
+\item \textbf{Kiểm tra đầu vào:} tệp quá ngắn bị từ chối kèm lý do cụ thể (Hình~\ref{fig:tuchoi}), đúng điều kiện của Mục~2.
+\end{itemize}
+Nhận xét khi nghe là đánh giá chủ quan của nhóm trên một số ít truy vấn, dùng để minh họa và bổ sung cho các số đo tự động ở Bảng~\ref{tab:ketqua}.

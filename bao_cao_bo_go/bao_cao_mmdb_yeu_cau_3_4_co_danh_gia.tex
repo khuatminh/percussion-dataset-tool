@@ -1,0 +1,666 @@
+% !TeX program = xelatex
+% Báo cáo Yêu cầu 3-4 (Phần III-IV), tách từ bao_cao_mmdb.tex. Mục 1-13, Bảng 1-11, Hình 1-2 thuộc bản Yêu cầu 1-2;
+% các số tham chiếu tới bản đó được ghi trực tiếp. Hình 3-6: csdl_tim_kiem/minh_hoa.py; số liệu: csdl_tim_kiem/ket_qua_danh_gia/.
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{texgyretermes-regular.otf}[BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
+\setsansfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf]
+\setmonofont{lmmono10-regular.otf}[Scale=0.85]
+\usepackage[vietnamese]{babel}
+\addto\captionsvietnamese{\renewcommand{\refname}{Tài liệu tham khảo}\renewcommand{\figurename}{Hình}\renewcommand{\tablename}{Bảng}}
+\usepackage[margin=2.2cm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,array,longtable,multirow}
+\usepackage{graphicx,xcolor,tikz}
+\usetikzlibrary{positioning,arrows.meta,fit,calc}
+\graphicspath{{hinh/}{bao_cao_bo_go/hinh/}}
+\usepackage{enumitem,fancyhdr,titlesec,titletoc,caption,float,needspace}
+\usepackage{placeins}
+\usepackage[unicode,hidelinks]{hyperref}
+\usepackage{xurl}
+\titleformat{\part}[block]{\LARGE\sffamily\bfseries}{Phần \thepart.}{.5em}{}
+\titlespacing*{\part}{0pt}{0pt}{14pt}
+\titleformat{\section}{\Large\sffamily\bfseries}{\thesection.}{.5em}{}
+\titleformat{\subsection}{\large\sffamily\bfseries}{\thesubsection}{.5em}{}
+\titlespacing*{\section}{0pt}{10pt}{8pt}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\baselinestretch}{1.08}
+\setlist{nosep,leftmargin=1.5em,topsep=3pt}
+\renewcommand{\arraystretch}{1.18}
+\captionsetup{font=small,labelfont=bf}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily BỘ DỮ LIỆU ÂM THANH BỘ GÕ}
+\fancyhead[R]{\small\sffamily Yêu cầu 3 và 4}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\newcommand{\note}[1]{\par\noindent\textit{#1}\par}
+\hypersetup{pdftitle={Báo cáo bài tập lớn Hệ cơ sở dữ liệu đa phương tiện: tiếng nhạc cụ bộ gõ},pdfauthor={Nhóm 07}}
+
+\setlength{\emergencystretch}{2em}
+% Đặt bảng, hình ở đầu trang cùng phần chữ thay vì dồn ra trang riêng.
+\renewcommand{\topfraction}{.85}\renewcommand{\textfraction}{.1}\renewcommand{\floatpagefraction}{.8}
+\setcounter{tocdepth}{1}
+% Phần: tiêu đề "Phần I. ..."; mục lục in hoa toàn dòng.
+\newcommand{\phan}[1]{\clearpage\refstepcounter{part}\part*{Phần \thepart.\texorpdfstring{\enspace}{ }#1}}
+\titlecontents{part}[0pt]{\addvspace{22pt}\sffamily\bfseries}{PHẦN \thecontentslabel.\enspace\MakeUppercase}{\MakeUppercase}{\hfill\contentspage}[\addvspace{6pt}]
+\titlecontents{section}[3em]{\addvspace{8pt}}{\contentslabel[\thecontentslabel.]{1.8em}}{\hspace*{-1.8em}}{\titlerule*[.65pc]{.}\contentspage}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\begin{tikzpicture}[remember picture,overlay]
+\draw[black,line width=2pt] ([xshift=1.3cm,yshift=-1.3cm]current page.north west) rectangle ([xshift=-1.3cm,yshift=1.3cm]current page.south east);
+\draw[black,line width=.6pt] ([xshift=1.5cm,yshift=-1.5cm]current page.north west) rectangle ([xshift=-1.5cm,yshift=1.5cm]current page.south east);
+\end{tikzpicture}
+\centering
+{\large\bfseries HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG}\par
+\vspace{3pt}
+{\large\bfseries KHOA CÔNG NGHỆ THÔNG TIN 1}\par
+\vspace{2pt}{\rule{6cm}{.6pt}}\par
+\vspace{1.2cm}
+\includegraphics[height=4.4cm]{logo_ptit.png}\par
+\vspace{1.3cm}
+{\LARGE\bfseries BÁO CÁO BÀI TẬP LỚN}\par
+\vspace{8pt}
+{\LARGE\bfseries HỆ CƠ SỞ DỮ LIỆU ĐA PHƯƠNG TIỆN}\par
+\vspace{1.2cm}
+{\large\bfseries Đề tài:}\par
+\vspace{6pt}
+{\Large\bfseries XÂY DỰNG HỆ CƠ SỞ DỮ LIỆU LƯU TRỮ\\[5pt]VÀ TÌM KIẾM TIẾNG NHẠC CỤ BỘ GÕ}\par
+\vspace{1.6cm}
+{\large
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}l@{\hspace{1.5em}}l@{\hspace{2em}}l@{}}
+\textbf{Lớp:} & \multicolumn{2}{l}{D23 - Lớp 04}\\
+\textbf{Nhóm:} & \multicolumn{2}{l}{07}\\
+\textbf{Giảng viên hướng dẫn:} & \multicolumn{2}{l}{TS. Nguyễn Đình Hóa}\\
+\textbf{Thành viên nhóm:} & Hoàng Đình Kiên & B23DCCN457\\
+ & Khuất Quang Minh & B23DCCN547\\
+ & Nguyễn Hữu Việt & B23DCCN919\\
+\end{tabular}\par}
+\vfill
+{\large\bfseries Hà Nội, tháng 11 năm 2026}\par
+\vspace{.4cm}
+\end{titlepage}
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\section*{Lời nói đầu}
+\pdfbookmark[1]{Lời nói đầu}{loinoidau}
+Nhóm 07 thực hiện đề tài \emph{Xây dựng hệ cơ sở dữ liệu lưu trữ và tìm kiếm tiếng nhạc cụ bộ gõ}. Báo cáo này trình bày kết quả của Yêu cầu 3 và 4, tiếp nối báo cáo Yêu cầu 1--2 đã nộp. Bản trước gồm Phần I (bộ dữ liệu 655 tệp âm thanh thuộc 13 nhóm nhạc cụ bộ gõ) và Phần II (ba bộ đặc trưng A, B, C dùng để nhận diện và tìm kiếm âm thanh tương đồng).
+
+Phần III trình bày công cụ trích rút đặc trưng và hệ cơ sở dữ liệu PostgreSQL quản lý đặc trưng của toàn bộ 655 tệp. Phần IV trình bày hệ thống tìm 5 tệp tương đồng nhất với một tệp âm thanh mới: sơ đồ khối, kết quả trung gian của quá trình truy vấn và đánh giá.
+
+Để thống nhất với bản trước, báo cáo giữ cách đánh số tiếp theo: Mục 1--13, Bảng 1--11 và Hình 1--2 thuộc báo cáo Yêu cầu 1--2. Khi báo cáo này nhắc tới các mục, bảng đó, người đọc có thể tra trong bản đã nộp.
+
+Nhóm xin chân thành cảm ơn TS. Nguyễn Đình Hóa đã hướng dẫn nhóm trong suốt học phần. Do thời gian và kiến thức còn hạn chế, báo cáo khó tránh khỏi thiếu sót. Nhóm rất mong nhận được góp ý để hoàn thiện đề tài.
+
+\vspace{1cm}
+\hfill\begin{tabular}{c}
+\textit{Hà Nội, tháng 11 năm 2026}\\
+\textbf{Nhóm 07}
+\end{tabular}
+\clearpage
+
+
+\section*{Đề bài}
+\pdfbookmark[1]{Đề bài}{debai}
+\textbf{Xây dựng hệ CSDL lưu trữ và tìm kiếm tiếng nhạc cụ bộ gõ.}
+\begin{enumerate}[leftmargin=1.8em,itemsep=6pt,topsep=8pt]
+\item Hãy xây dựng/sưu tầm một bộ dữ liệu âm thanh gồm ít nhất 500 files âm thanh của các nhạc cụ khác nhau thuộc bộ gõ. Các file âm thanh có độ dài phù hợp để chứa đựng đủ các đặc tính cần thiết để nhận diện tiếng nhạc cụ. Mỗi file âm thanh chỉ gồm tiếng của một nhạc cụ. Sinh viên tùy chọn định dạng file âm thanh để lưu trữ. Hãy mô tả các đặc điểm giống và khác nhau của tiếng các nhạc cụ trong các files trong bộ dữ liệu.
+\item Hãy xây dựng một hoặc vài bộ đặc trưng để nhận diện âm thanh các nhạc cụ từ bộ dữ liệu đã thu thập. Các bộ thuộc tính phải bao gồm các đặc trưng giúp tìm sự tương đồng và tìm sự khác biệt giữa các âm thanh nhạc cụ trong các files dữ liệu. Hãy trình bày rõ về các đặc trưng đó và nêu giá trị thông tin của các đặc trưng được sử dụng.
+\item Triển khai các thuật toán/công cụ trích rút các đặc trưng đã được xác định trong bước 2. Hãy xây dựng hệ CSDL để quản trị các đặc trưng âm thanh cho tất cả các files dữ liệu.
+\item Triển khai hệ thống tìm kiếm âm thanh tương đồng với đầu vào là một file âm thanh mới về một nhạc cụ nào đó thuộc bộ gõ (nhạc cụ thuộc loại đã có và không có trong dữ liệu), đầu ra là 5 files âm thanh giống nhất, xếp thứ tự giảm dần về độ tương đồng nội dung với âm thanh đầu vào.
+\begin{enumerate}[label=\alph*.,leftmargin=1.6em,itemsep=3pt,topsep=4pt]
+\item Trình bày sơ đồ khối của hệ thống, chức năng của từng khối/module của hệ thống cùng các dữ liệu vào/ra cho từng khối. Mô tả quy trình thực hiện yêu cầu của đề bài.
+\item Hãy minh họa các kết quả trung gian (các giá trị đặc trưng, tính toán độ tương đồng) của quá trình truy vấn âm thanh.
+\item Đánh giá các kết quả đã đạt được.
+\end{enumerate}
+\item Demo hệ thống.
+\end{enumerate}
+\clearpage
+
+\pdfbookmark[1]{Mục lục}{mucluc}
+{\centering\sffamily\bfseries\LARGE MỤC LỤC\par}
+\vspace{18pt}
+\makeatletter\@starttoc{toc}\makeatother
+\clearpage
+\pagenumbering{arabic}
+
+\setcounter{part}{2}\setcounter{section}{13}\setcounter{table}{11}\setcounter{figure}{2}
+\phan{Trích rút đặc trưng và hệ cơ sở dữ liệu}
+Phần này trình bày công cụ trích rút các đặc trưng đã xác định ở Phần II và hệ cơ sở dữ liệu quản trị đặc trưng của 655 tệp.
+
+\section{Công cụ trích rút đặc trưng}\label{sec:congcu}
+Công cụ viết bằng Python 3, dùng NumPy và SciPy để tính toán, SoundFile (thư viện libsndfile) để đọc tệp âm thanh. Thuật toán ở Mục~6--9 chỉ có một bản cài đặt, dùng chung lúc xây dựng cơ sở dữ liệu và lúc xử lý truy vấn, nên đặc trưng của tệp trong kho và của tệp truy vấn tính theo cùng định nghĩa, cùng tham số.
+
+\subsection{Các bước xử lý một tệp âm thanh}\label{sec:buocxuly}
+Mỗi tệp, dù trong kho hay là truy vấn, đi qua cùng sáu bước:
+\begin{enumerate}
+\item \textbf{Đọc tệp} ở các định dạng libsndfile hỗ trợ (WAV, FLAC, OGG, MP3\ldots) thành ma trận mẫu số thực 64 bit kèm tần số lấy mẫu $f_s$. Tệp không đọc được bị từ chối.
+\item \textbf{Kiểm tra tín hiệu} trên mẫu gốc theo sáu điều kiện ở Bảng~\ref{tab:kiemtra} (Mục~\ref{sec:kiemtratinhieu}).
+\item \textbf{Đưa về một kênh, 16 kHz:} trộn các kênh bằng trung bình cộng; nếu $f_s\ne16.000$ Hz thì lấy mẫu lại bằng bộ lọc đa pha của SciPy. Các tệp trong kho đã ở dạng này.
+\item \textbf{Tính mã băm PCM:} SHA-256 của tín hiệu đã lượng tử về số nguyên 16 bit, dùng để nhận ra truy vấn trùng một tệp trong kho.
+\item \textbf{Trích đặc trưng} theo Mục~6 với thiết lập ở Bảng~6, được 21 giá trị gốc $a$ của bộ A và 39 giá trị gốc $b$ của bộ B.
+\item \textbf{Chuẩn hóa} $z_j=(x_j-\mu_j)/s_j$ bằng 60 cặp tham số lưu trong cơ sở dữ liệu, rồi ghép thành $u_A$, $u_B$, $u_C$ (Mục~10.1). Riêng tệp truy vấn thì dùng $\mu_j, s_j$ đã lưu, không tính lại.
+\end{enumerate}
+
+\subsection{Kiểm tra tín hiệu}\label{sec:kiemtratinhieu}
+Bước 2 đo sáu đại lượng ở Bảng~\ref{tab:kiemtra} theo đúng định nghĩa đã dùng khi tuyển chọn bộ dữ liệu (Mục~2), và cả 655 tệp trong kho đều đạt. Tệp rỗng, có mẫu NaN hoặc vô hạn, không đạt ít nhất một điều kiện trong bảng, hoặc sau chuẩn hóa đỉnh không có khối 10 ms nào có RMS lớn hơn 0,01 thì bị từ chối; thông báo liệt kê mọi điều kiện không đạt kèm số đo, ví dụ ``đỉnh $-48{,}0$ dBFS $<-40$ dBFS''. Tệp có tín hiệu nhưng không có khung phổ hợp lệ thì xử lý như ở Mục~10.3.
+\begin{table}[htbp]
+\centering\small
+\caption{Các đại lượng kiểm tra tín hiệu.}\label{tab:kiemtra}
+\begin{tabularx}{\textwidth}{p{.22\textwidth}Xl}
+\toprule
+Đại lượng & Định nghĩa & Điều kiện\\\midrule
+Thời lượng & Số mẫu chia tần số lấy mẫu & $\ge 0{,}1$ s\\
+Thời gian có tiếng & Tổng thời lượng các khối 10 ms có RMS lớn hơn $\max(-70\ \text{dBFS};\ 1\%\ \text{đỉnh})$ & $\ge 0{,}05$ s\\
+Biên độ đỉnh & Biên độ lớn nhất của tín hiệu, tính theo dBFS & $\ge -40$\\
+Mức mẫu đầu & Biên độ mẫu đầu tiên so với biên độ đỉnh & $\le 0{,}1$\\
+Mức phần cuối & RMS của khối 10 ms cuối cùng so với biên độ đỉnh & $\le 0{,}3$\\
+Tỷ lệ cắt đỉnh & Tỷ lệ mẫu có $|x|\ge0{,}999$ & $\le 0{,}01$\\\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Kiểm chứng giá trị trích rút}
+Giá trị gốc của 60 thuộc tính A, B và vector $u_C$ trong cơ sở dữ liệu trùng các bảng đặc trưng dùng ở Phần II (sai số lớn nhất bằng 0); thời lượng và SHA-256 của từng tệp khớp bảng kiểm kê. Chuyển một tệp trong kho sang hai kênh, 44,1 kHz rồi dùng làm truy vấn thì hệ thống vẫn tìm lại đúng tệp gốc ở hạng 1.
+
+\section{Hệ cơ sở dữ liệu đặc trưng}\label{sec:csdl}
+\subsection{Hệ quản trị}
+Nhóm dùng PostgreSQL 17.6 với phần mở rộng pgvector 0.8.0, chạy trong Docker. Dữ liệu mô tả và tham số chuẩn hóa có cấu trúc bảng, nên đặt trong hệ quản trị quan hệ để dùng khóa, ràng buộc và giao dịch giữ toàn vẹn dữ liệu. Vector đặc trưng lưu bằng kiểu \texttt{vector($n$)} của pgvector; toán tử \texttt{<->} là khoảng cách Euclid, trùng với $d_S$ ở Mục~10, nên phép tìm 5 tệp gần nhất viết được bằng một câu lệnh SQL và có thể dùng chỉ mục HNSW khi kho lớn.
+
+\subsection{Lược đồ}\label{sec:luocdo}
+Lược đồ gồm sáu bảng (Hình~\ref{fig:luocdo}, Bảng~\ref{tab:bang}). Dữ liệu của mỗi tệp được tách thành bốn bảng theo vai trò, cùng khóa \texttt{file\_id} và quan hệ 1--1: thông tin mô tả (\texttt{audio\_files}), số đo kiểm tra tín hiệu (\texttt{signal\_checks}), giá trị đặc trưng gốc (\texttt{raw\_features}) và vector đã chuẩn hóa (\texttt{feature\_vectors}). Tham số chuẩn hóa thuộc về cả kho nên nằm ở bảng riêng \texttt{normalization\_params}; \texttt{db\_info} ghi thông tin về cơ sở dữ liệu. Hình~\ref{fig:luocdo} chỉ vẽ 5 trong 60 cột của \texttt{raw\_features}; Visual Paradigm không có kiểu \texttt{vector} nên ghi các cột vector là blob.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{III_03_ERD_LuocDoCSDL.png}
+\caption{Lược đồ cơ sở dữ liệu.}\label{fig:luocdo}
+\end{figure}
+\begin{table}[htbp]
+\centering\small
+\caption{Các bảng trong cơ sở dữ liệu.}\label{tab:bang}
+\begin{tabularx}{\textwidth}{p{.23\textwidth}rX}
+\toprule
+Bảng & Số dòng & Nội dung\\\midrule
+\texttt{audio\_files} & 655 & Bảng danh mục (Mục~1.3): mã tệp, đường dẫn, nhãn, nguồn, tên gốc, người tải lên, nhóm bản thu, SHA-256 của tệp và của chuỗi mẫu PCM 16-bit.\\
+\texttt{signal\_checks} & 655 & Sáu số đo ở Bảng~\ref{tab:kiemtra}.\\
+\texttt{raw\_features} & 655 & Giá trị gốc của 21 thuộc tính A và 39 thuộc tính B, kiểu \texttt{DOUBLE PRECISION}, cột đặt theo tên thuộc tính và thứ tự ở Phụ lục.\\
+\texttt{normalization\_params} & 60 & $\mu_j$, $s_j$ của 60 thuộc tính, tính một lần trên 655 tệp (Mục~10.1).\\
+\texttt{feature\_vectors} & 655 & $u_A$, $u_B$, $u_C$ lưu sẵn để tìm kiếm.\\
+\texttt{db\_info} & 6 & Phiên bản dữ liệu, thời điểm tạo, số tệp, số lớp, số chiều, phiên bản thư viện.\\\bottomrule
+\end{tabularx}
+\end{table}
+
+Cơ sở dữ liệu lưu cả giá trị gốc lẫn vector đã chuẩn hóa. Giá trị gốc là dữ liệu chuẩn: khi đổi cách chuẩn hóa hay trọng số của C thì chỉ cần tính lại \texttt{feature\_vectors}, không phải trích đặc trưng lại từ tệp âm thanh; còn \texttt{feature\_vectors} có sẵn để câu lệnh SQL so sánh trực tiếp trên cột vector. Nhãn nhạc cụ chỉ nằm trong \texttt{audio\_files}, không có trong các bảng đặc trưng, nên phép tìm kiếm chỉ dựa vào âm thanh; nhãn dùng để hiển thị và đánh giá.
+
+\subsection{Ràng buộc toàn vẹn và chỉ mục}
+\begin{itemize}
+\item \textbf{Khóa:} \texttt{file\_id} là khóa chính của bốn bảng theo tệp; ba bảng phụ tham chiếu \texttt{audio\_files} bằng khóa ngoại. \texttt{path} là duy nhất. Khóa chính của \texttt{normalization\_params} là cặp (\texttt{feature\_set}, \texttt{dim}).
+\item \textbf{Ràng buộc \texttt{CHECK}:} các cột của \texttt{signal\_checks} đặt đúng các ngưỡng ở Bảng~\ref{tab:kiemtra}, nên hệ quản trị không nhận tệp không đạt điều kiện chất lượng; ngoài ra $s_j>0$, \texttt{source} và \texttt{feature\_set} chỉ nhận các giá trị hợp lệ.
+\item \textbf{Chỉ mục:} B-tree trên \texttt{label} và \texttt{pcm16\_sha256} (nhận ra truy vấn trùng tệp bằng một phép tra cứu); HNSW trên \texttt{u\_a}, \texttt{u\_b}, \texttt{u\_c} theo khoảng cách Euclid (Mục~\ref{sec:cachtim}).
+\end{itemize}
+
+\subsection{Ví dụ dữ liệu của một tệp}
+Xét tệp kick mã 217 (Freesound, tên gốc ``Kick Fx - Marker \#183.wav''). Trong \texttt{signal\_checks}, tệp dài 0,451 s, đỉnh $-1{,}90$ dBFS, mẫu đầu bằng 4,9\% đỉnh và không có mẫu bị cắt đỉnh. Bảng~\ref{tab:vidu217} theo dõi năm thuộc tính của tệp qua ba bảng đặc trưng.
+\begin{table}[htbp]
+\centering\small
+\caption{Dữ liệu đặc trưng của tệp 217.}\label{tab:vidu217}
+\begin{tabular}{llrrrrr}
+\toprule
+Chiều & Thuộc tính & $x$ & $\mu$ & $s$ & $z$ & $u_C$\\\midrule
+A1 & Thời gian có tín hiệu (log) & 0,372 & 0,476 & 0,459 & $-0{,}226$ & $-0{,}0349$\\
+A6 & TB trọng tâm phổ (Hz) & 65,8 & 1530,6 & 1698,3 & $-0{,}862$ & $-0{,}1331$\\
+A18 & TB tỷ lệ năng lượng dưới 500 Hz & 1,000 & 0,535 & 0,416 & 1,117 & 0,1723\\
+B1 & TB MFCC 1 & 29,86 & 9,66 & 12,78 & 1,580 & 0,1789\\
+B27 & ĐLC delta MFCC 1 & 0,728 & 0,651 & 0,362 & 0,214 & 0,0242\\\bottomrule
+\end{tabular}
+\end{table}
+Thuộc tính bộ A có $u_C=z/\sqrt{42}$, bộ B có $u_C=z/\sqrt{78}$. Chẳng hạn ở A6, $z=(65{,}8-1530{,}6)/1698{,}3=-0{,}862$ và $u_C=-0{,}862/\sqrt{42}=-0{,}1331$, đúng giá trị lưu trong cột \texttt{u\_c}. Trọng tâm phổ 65,8 Hz và gần 100\% năng lượng dưới 500 Hz là đặc điểm điển hình của kick (Bảng~5).
+
+\section{Xây dựng và truy vấn cơ sở dữ liệu}\label{sec:xaydung}
+\subsection{Quy trình xây dựng}\label{sec:quytrinhxd}
+\begin{enumerate}
+\item \textbf{Đọc danh sách tệp} từ bảng kiểm kê và bảng danh mục nguồn; dừng nếu tập tệp WAV thực có khác hai bảng này.
+\item \textbf{Gán nhóm bản thu}, gom các tệp có thể đến từ cùng một buổi thu: cùng người tải lên (Freesound), cùng bộ trống (IDMT), cùng nhạc cụ, cách đánh và độ to (Iowa). Kết quả có 136 nhóm, dùng khi đánh giá ở Mục~\ref{sec:danhgia}.
+\item \textbf{Trích đặc trưng từng tệp} bằng bước 1--5 ở Mục~\ref{sec:buocxuly}.
+\item \textbf{Tính tham số chuẩn hóa} $\mu_j$, $s_j$ trên 655 tệp, rồi tính $u_A$, $u_B$, $u_C$ cho từng tệp.
+\item \textbf{Ghi vào cơ sở dữ liệu} trong một giao dịch: tạo lại sáu bảng, ghi dữ liệu và tạo chỉ mục. Lỗi ở bất kỳ bước nào làm giao dịch bị hủy, cơ sở dữ liệu giữ nguyên trạng thái cũ.
+\end{enumerate}
+Toàn bộ quá trình mất khoảng 2--3 giây; cơ sở dữ liệu chiếm khoảng 11 MB.
+
+\Needspace{12\baselineskip}
+\subsection{Truy vấn đặc trưng}
+Câu lệnh tìm 5 tệp gần nhất theo bộ C, loại các tệp trùng truy vấn (\texttt{:q} là vector $u_C$ của truy vấn, \texttt{:excluded} là danh sách mã tệp trùng):
+\begin{verbatim}
+SELECT t.file_id, t.label, v.u_c <-> :q AS d
+FROM feature_vectors v JOIN audio_files t USING (file_id)
+WHERE v.file_id <> ALL(:excluded) ORDER BY v.u_c <-> :q LIMIT 5;
+\end{verbatim}
+Danh sách \texttt{:excluded} lấy từ câu \texttt{SELECT file\_id FROM audio\_files WHERE pcm16\_sha256 = :pcm\_hash}.
+
+pgvector lưu mỗi thành phần vector bằng số thực 32 bit, lệch dưới $10^{-6}$ so với giá trị 64 bit mà Bảng~6 quy định. Vì vậy PostgreSQL chỉ chọn ra 10 ứng viên theo cột vector; chương trình tính lại khoảng cách của 10 ứng viên này bằng số thực 64 bit từ \texttt{raw\_features} và \texttt{normalization\_params} rồi lấy 5 tệp đầu, tệp nào cách đều truy vấn thì tệp có mã nhỏ hơn đứng trước. Kết quả trùng với phép tính 64 bit trên toàn kho (Mục~\ref{sec:dungdan}).
+\clearpage
+
+\phan{Tìm kiếm âm thanh tương đồng}
+\section{Sơ đồ khối và quy trình}\label{sec:sodokhoi}
+\subsection{Sơ đồ khối}
+Hệ thống gồm hai luồng (Hình~\ref{fig:sodokhoi}). Luồng xây dựng chạy một lần để đưa 655 tệp vào cơ sở dữ liệu (Phần III). Luồng truy vấn chạy với mỗi tệp âm thanh mới; hai luồng dùng chung các khối M2, M3, M4 và tham số chuẩn hóa $\mu_j, s_j$ lưu trong cơ sở dữ liệu.
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=.62\textheight]{IV_04_COMP_SoDoKhoi.png}
+\caption{Sơ đồ khối của hệ thống.}\label{fig:sodokhoi}
+\end{figure}
+
+\subsection{Chức năng và dữ liệu vào, ra của từng khối}
+Bảng~\ref{tab:khoi} mô tả chức năng, dữ liệu vào và dữ liệu ra của từng khối trong Hình~\ref{fig:sodokhoi}. Các khối M2--M5 cài đặt đúng các bước 1--7 của Mục~6; khối M7 là bước 8.
+\begin{table}[htbp]
+\centering\footnotesize
+\caption{Chức năng và dữ liệu vào, ra của các khối.}\label{tab:khoi}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{.15\textwidth}>{\raggedright}X>{\raggedright}p{.22\textwidth}>{\raggedright\arraybackslash}p{.22\textwidth}}
+\toprule
+Khối & Chức năng & Đầu vào & Đầu ra\\\midrule
+M1. Nhận truy vấn & Nhận tệp từ dòng lệnh hoặc trang web; chọn bộ đặc trưng (mặc định C) & Tệp WAV, MP3, FLAC, OGG, AIFF\ldots; bộ $S$ & Đường dẫn tệp, $S$\\
+M2. Đọc và kiểm tra & Đọc mẫu số thực 64 bit; đo sáu đại lượng ở Bảng~\ref{tab:kiemtra} & Tệp âm thanh & Ma trận mẫu $x$ (mẫu $\times$ kênh), $f_s$, sáu số đo; hoặc thông báo từ chối\\
+M3. Chuẩn hóa định dạng & Trộn kênh bằng trung bình; lấy mẫu lại về 16 kHz; tính SHA-256 của PCM 16-bit & $x$, $f_s$ & Tín hiệu mono $y$; mã băm PCM\\
+M4. Trích đặc trưng & Bước 2--6 của Mục~6 với thiết lập ở Bảng~6 & $y$ & $a\in\mathbb R^{21}$, $b\in\mathbb R^{39}$\\
+M5. Chuẩn hóa & Bước 7: $z_j=(x_j-\mu_j)/s_j$ với $\mu_j, s_j$ đọc từ cơ sở dữ liệu; tạo $u_A,u_B,u_C$ & $a$, $b$, $\mu$, $s$ & $z\in\mathbb R^{60}$; $u_S$\\
+M6. Kiểm tra trùng & Tìm tệp trong kho có cùng mã băm PCM & Mã băm & Danh sách mã tệp cần loại\\
+M7. Tìm kiếm & Bước 8: câu lệnh SQL \texttt{ORDER BY u <-> q LIMIT 10}; tính lại $d_S$ bằng số thực 64 bit, lấy 5 tệp & $u_S$, mã cần loại & 5 cặp (mã tệp, $d_S$) tăng dần\\
+M8. Xếp hạng & Tính $s=1/(1+d)$; lấy nhãn, đường dẫn; tính $d_A,d_B,d_C$ và các thuộc tính A giống, khác nhất theo $|\Delta z|$ & 5 cặp (mã, $d$); danh mục tệp và giá trị đặc trưng gốc & 5 kết quả xếp theo độ tương đồng giảm dần\\
+M9. Hiển thị & In ra màn hình, xuất JSON hoặc hiển thị trên web kèm trình phát âm thanh & 5 kết quả, số liệu trung gian & Kết quả cho người dùng\\\midrule
+X1, X2. Xây dựng & Chạy M2--M4 cho 655 tệp; tính $\mu,s,u$; ghi vào cơ sở dữ liệu & 655 tệp, bảng danh mục và kiểm kê & Sáu bảng ở Bảng~\ref{tab:bang}\\\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Quy trình thực hiện một truy vấn}
+\begin{enumerate}
+\item Người dùng đưa vào một tệp âm thanh và chọn bộ đặc trưng (mặc định C).
+\item M2 kiểm tra tín hiệu. Tệp không đạt điều kiện Mục~2 bị từ chối và quá trình dừng.
+\item M3 đưa tín hiệu về mono 16 kHz; M6 dùng mã băm PCM để nhận ra truy vấn trùng một tệp trong kho.
+\item M4 tính 21 giá trị A và 39 giá trị B; M5 chuẩn hóa bằng $\mu_j, s_j$ đã lưu, không tính lại trên truy vấn.
+\item M7 gửi câu lệnh SQL đến PostgreSQL, nhận 10 ứng viên, tính lại khoảng cách và giữ 5 tệp gần nhất, đã loại tệp trùng.
+\item M8 tính độ tương đồng $s=1/(1+d)$, xếp giảm dần và kèm phần giải thích; M9 trả kết quả.
+\end{enumerate}
+Với nhạc cụ chưa có trong kho, quy trình vẫn như trên và hệ thống trả 5 tệp có đặc trưng gần nhất. Hình~\ref{fig:hoatdong} là sơ đồ hoạt động của quy trình này.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{IV_05_ACT_XuLyTruyVan.png}
+\caption{Sơ đồ hoạt động xử lý truy vấn.}\label{fig:hoatdong}
+\end{figure}
+
+\subsection{Cách tìm 5 tệp gần nhất}\label{sec:cachtim}
+Bước 8 có thể thực hiện theo ba cách cho cùng một kết quả:
+\begin{itemize}
+\item \textbf{pgvector} (mặc định): PostgreSQL thực hiện câu lệnh SQL ở Mục~\ref{sec:xaydung}.
+\item \textbf{Cây k-d}: chương trình dựng một cây k-d trong bộ nhớ cho mỗi bộ đặc trưng. Ở mỗi nút, chiều chia là chiều có độ trải lớn nhất trong nhánh, điểm chia là trung vị theo chiều đó. Khi tìm, nhánh bên kia chỉ được xét nếu khoảng cách từ truy vấn đến siêu phẳng chia nhỏ hơn khoảng cách đến láng giềng thứ 5 đang giữ.
+\item \textbf{Vét cạn}: tính khoảng cách đến mọi tệp rồi sắp xếp; dùng để kiểm chứng hai cách trên.
+\end{itemize}
+Bảng~\ref{tab:cachtim} so sánh các cách trên 655 truy vấn bỏ-một-ra. Cây k-d bỏ qua được khoảng một nửa số tệp ở bộ A (21 chiều), nhưng ở B và C vẫn phải tính khoảng cách tới khoảng 98\% số tệp. Đây là hiện tượng đã biết của các cấu trúc phân hoạch không gian khi số chiều lớn: các điểm có khoảng cách xấp xỉ nhau nên hầu hết các nhánh đều không bị loại.
+
+Chỉ mục HNSW là phương pháp tìm \emph{xấp xỉ}. Khi bắt buộc dùng chỉ mục, 5 kết quả trùng với kết quả vét cạn ở 99,85--100\% các vị trí. Với 655 dòng, bộ tối ưu truy vấn của PostgreSQL tự chọn quét tuần tự vì rẻ hơn dùng chỉ mục, nên kết quả mặc định vẫn chính xác.
+\begin{table}[htbp]
+\centering\small
+\caption{So sánh ba cách tìm 5 tệp gần nhất.}\label{tab:cachtim}
+\begin{tabular}{lrrrr}
+\toprule
+Bộ & Số chiều & Cây k-d: số tệp phải tính TB & Tỷ lệ so với 654 & HNSW bắt buộc: trùng vét cạn\\\midrule
+A & 21 & 357,6 & 54,7\% & 100,00\%\\
+B & 39 & 640,5 & 97,9\% & 99,91\%\\
+C & 60 & 640,8 & 98,0\% & 99,85\%\\\bottomrule
+\end{tabular}
+\end{table}
+Hệ thống chọn pgvector làm cách mặc định vì phép tìm được thực hiện ngay trong hệ quản trị cơ sở dữ liệu, kết quả chính xác và có sẵn chỉ mục khi kho mở rộng. Cây k-d và vét cạn dùng để đối chiếu.
+
+\section{Minh họa kết quả trung gian}\label{sec:minhhoa}
+Mục này minh họa ba truy vấn với các tệp nằm ngoài kho, lấy từ tập Freesound One-Shot Percussive Sounds: một nhạc cụ đã có lớp trong kho, một nhạc cụ chưa có và một tệp bị từ chối. Nhãn của các tệp này lấy theo thông tin mô tả của nguồn. Các số liệu dưới đây đều dùng bộ C (mặc định).
+
+\subsection{Truy vấn nhạc cụ đã có: một tiếng kick mới}
+Tệp truy vấn là một tiếng kick (mã Freesound 185294), dài 0,395 s. Mã băm PCM không trùng tệp nào trong kho.
+
+Ở bước kiểm tra tín hiệu, thời gian có tiếng 0,170 s, đỉnh $-1{,}92$ dBFS, mẫu đầu bằng 0,6\% đỉnh và RMS khối cuối bằng 0,2\% đỉnh. Không có mẫu nào chạm $|x|\ge0{,}999$. Tệp đạt cả sáu điều kiện ở Bảng~\ref{tab:kiemtra}.
+
+Ở bước trích đặc trưng và chuẩn hóa, Bảng~\ref{tab:vd_dactrung} trích 8 trong 60 thuộc tính: giá trị gốc $x$, tham số $\mu, s$ đọc từ cơ sở dữ liệu, giá trị chuẩn hóa $z$ và thành phần tương ứng của $u_C$ ($z/\sqrt{42}$ với A, $z/\sqrt{78}$ với B). Tệp có trọng tâm phổ 72 Hz và 99,9\% năng lượng dưới 500 Hz, đúng đặc điểm của kick ở Bảng~5. Hình~\ref{fig:hoso} vẽ $z$ của cả 60 chiều.
+\begin{table}[htbp]
+\centering\small
+\caption{Giá trị trung gian của truy vấn kick.}\label{tab:vd_dactrung}
+\begin{tabular}{llrrrrrr}
+\toprule
+& & \multicolumn{4}{c}{Truy vấn} & \multicolumn{2}{c}{Kết quả hạng 1}\\
+\cmidrule(lr){3-6}\cmidrule(lr){7-8}
+Chiều & Thuộc tính & $x$ & $\mu$ & $s$ & $z$ & $z$ & $(\Delta u)^2$\\\midrule
+A1 & Thời gian có tín hiệu (log) & 0,157 & 0,476 & 0,459 & $-0{,}695$ & $-0{,}658$ & 0,00003\\
+A3 & Hệ số đỉnh (dB) & 12,442 & 15,712 & 3,820 & $-0{,}856$ & $-0{,}333$ & 0,00652\\
+A6 & TB trọng tâm phổ (Hz) & 72,2 & 1.530,6 & 1.698,3 & $-0{,}859$ & $-0{,}837$ & 0,00001\\
+A12 & TB độ phẳng phổ & 0,000002 & 0,0844 & 0,1230 & $-0{,}686$ & $-0{,}683$ & 0,00000\\
+A18 & TB tỷ lệ năng lượng dưới 500 Hz & 0,9993 & 0,5348 & 0,4164 & 1,116 & 1,112 & 0,00000\\
+A20 & TB thông lượng phổ & 0,282 & 0,238 & 0,132 & 0,334 & 0,624 & 0,00199\\
+B1 & TB MFCC 1 & 37,026 & 9,663 & 12,781 & 2,141 & 1,004 & 0,01657\\
+B2 & TB MFCC 2 & 7,652 & 2,563 & 7,077 & 0,719 & 0,592 & 0,00021\\\bottomrule
+\end{tabular}
+\end{table}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{hinh4_ho_so_z.pdf}
+\caption{Giá trị chuẩn hóa $z$ của truy vấn kick và hai kết quả.}\label{fig:hoso}
+\end{figure}
+
+Ở bước tìm kiếm, sau khi PostgreSQL trả về các ứng viên, chương trình tính lại khoảng cách và giữ 5 tệp gần nhất (Bảng~\ref{tab:vd_ketqua}).
+\begin{table}[htbp]
+\centering\small
+\caption{Kết quả truy vấn kick.}\label{tab:vd_ketqua}
+\begin{tabular}{rrllrrrr}
+\toprule
+Hạng & Mã tệp & Nguồn & Nhãn & $d_A$ & $d_B$ & $d_C$ & $s=1/(1+d_C)$\\\midrule
+1 & 248 & Freesound 35656 & kick & 0,2875 & 0,5971 & 0,4686 & 0,6809\\
+2 & 256 & Freesound 88627 & kick & 0,3123 & 0,6397 & 0,5034 & 0,6652\\
+3 & 573 & Freesound 33169 & tom & 0,3702 & 0,6189 & 0,5099 & 0,6623\\
+4 & 332 & Freesound 35650 & kick & 0,2396 & 0,7125 & 0,5315 & 0,6529\\
+5 & 270 & Freesound 35664 & kick & 0,3604 & 0,6770 & 0,5423 & 0,6484\\\bottomrule
+\end{tabular}
+\end{table}
+
+Độ tương đồng của kết quả hạng 1 được tính như sau. Cộng $(\Delta u)^2$ trên 21 chiều A được $0{,}04133=\tfrac12d_A^2$, trên 39 chiều B được $0{,}17829=\tfrac12d_B^2$. Do đó
+\[
+d_C=\sqrt{\tfrac12\cdot0{,}2875^2+\tfrac12\cdot0{,}5971^2}=\sqrt{0{,}04133+0{,}17829}=0{,}4686,\qquad s=\frac{1}{1+0{,}4686}=0{,}6809.
+\]
+Chiều đóng góp nhiều nhất vào $d_C^2$ là ĐLC thông lượng phổ (A21, 0,0250), tiếp theo là ĐLC MFCC 2 (B15, 0,0198). Phần giải thích của hệ thống so sánh $|\Delta z|$ trên bộ A: hai tệp gần như trùng nhau ở tỷ lệ năng lượng dưới 500 Hz, độ phẳng phổ và tần số cắt ($|\Delta z|<0{,}02$), và khác nhau nhiều nhất ở ĐLC thông lượng phổ ($1{,}03\sigma$) và hệ số đỉnh ($0{,}52\sigma$).
+
+Bốn trong năm kết quả là kick; kết quả hạng 3 là tom, có $d_A$ và $d_B$ đều gần kết quả hạng 2. Kết quả này khớp với nhận xét ở Mục~11.3: kick và tom cùng là trống màng rung có năng lượng dồn ở dải thấp. Hình~\ref{fig:vd_pho} cho thấy cả năm kết quả đều có khởi âm ngắn và năng lượng tập trung dưới 1 kHz như truy vấn.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{hinh3_vi_du_truy_van.pdf}
+\caption{Phổ đồ truy vấn kick và 5 kết quả.}\label{fig:vd_pho}
+\end{figure}
+
+\subsection{Truy vấn nhạc cụ chưa có trong kho: djembe}
+Djembe là trống màng rung không thuộc 13 lớp của kho. Tệp truy vấn (mã Freesound 54015) dài 0,255 s, đạt cả sáu điều kiện kiểm tra tín hiệu. Hệ thống trả về bốn tom và một conga, đều là trống màng rung (Bảng~\ref{tab:vd_ngoai}, Hình~\ref{fig:vd_ngoai}).
+\begin{table}[htbp]
+\centering\small
+\caption{Kết quả truy vấn djembe.}\label{tab:vd_ngoai}
+\begin{tabular}{rrllrrrr}
+\toprule
+Hạng & Mã tệp & Nguồn & Nhãn & $d_A$ & $d_B$ & $d_C$ & $s$\\\midrule
+1 & 583 & Freesound 193508 & tom & 0,4524 & 1,0096 & 0,7823 & 0,5611\\
+2 & 630 & Freesound 33174 & tom & 0,4938 & 1,0509 & 0,8210 & 0,5491\\
+3 & 45 & Freesound 455509 & conga & 0,4293 & 1,0838 & 0,8243 & 0,5482\\
+4 & 619 & Freesound 16318 & tom & 0,4183 & 1,0988 & 0,8313 & 0,5460\\
+5 & 566 & Freesound 171235 & tom & 0,4814 & 1,0846 & 0,8391 & 0,5437\\\bottomrule
+\end{tabular}
+\end{table}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{hinh6_vi_du_ngoai_kho.pdf}
+\caption{Phổ đồ truy vấn djembe và 5 kết quả.}\label{fig:vd_ngoai}
+\end{figure}
+Khoảng cách $d_C$ của các kết quả (0,78--0,84) lớn hơn hẳn so với truy vấn kick (0,47--0,54), chủ yếu do $d_B$: hình dạng bao phổ của djembe khác các trống trong kho. Độ tương đồng vì vậy thấp hơn (0,54--0,56). Phần giải thích cho thấy kết quả hạng 1 gần truy vấn về độ phẳng phổ và tần số cắt, nhưng khác ở tỷ lệ năng lượng dưới 500 Hz ($1{,}05\sigma$): djembe có 48,6\% năng lượng dưới 500 Hz, so với khoảng 92\% của tom này.
+
+\subsection{Truy vấn bị từ chối và truy vấn trùng kho}
+Một tiếng maracas (mã Freesound 9697) chỉ dài 0,036 s, phần có tiếng 0,030 s. Hệ thống từ chối với thông báo: ``Không đạt điều kiện chất lượng (Mục 2): dài 0,036 s $<$ 0,1 s; phần có tiếng 0,030 s $<$ 0,05 s''. Khi truy vấn là một tệp trong kho, khối M6 tìm được mã tệp có cùng mã băm PCM và loại tệp đó; 5 kết quả là 5 tệp khác gần nhất.
+
+\section{Đánh giá kết quả}\label{sec:danhgia}
+\subsection{Phương pháp đánh giá}
+Đề bài yêu cầu sắp xếp theo độ tương đồng nội dung, nhưng bộ dữ liệu không có nhãn đánh giá tương đồng do người nghe gán. Vì vậy nhóm dùng \emph{nhãn nhạc cụ} làm tiêu chí gián tiếp: một kết quả được coi là phù hợp khi cùng nhãn với truy vấn. Các chỉ số gồm:
+\begin{itemize}
+\item \textbf{P@5:} tỷ lệ kết quả cùng nhãn trong 5 kết quả;
+\item \textbf{Hạng 1 đúng:} kết quả đầu tiên cùng nhãn;
+\item \textbf{Bỏ phiếu:} nhãn xuất hiện nhiều nhất trong 5 kết quả trùng nhãn truy vấn.
+\end{itemize}
+Ngoài ba chỉ số trên, nhóm dùng thêm các chỉ số xếp hạng thường gặp trong truy hồi thông tin, vì đề bài yêu cầu kết quả \emph{xếp theo thứ tự} tương đồng giảm dần:
+\begin{itemize}
+\item \textbf{mAP@5:} với mỗi truy vấn, $\mathrm{AP@5}=\frac{1}{\min(5,R)}\sum_{k=1}^{5}\mathrm{P@}k\cdot \mathrm{rel}_k$, trong đó $\mathrm{rel}_k=1$ nếu kết quả hạng $k$ cùng nhãn và $R$ là số tệp cùng nhãn còn trong kho. AP@5 thưởng cho kết quả đúng nằm ở hạng cao;
+\item \textbf{MRR:} trung bình của $1/r$, với $r$ là hạng của tệp cùng nhãn đầu tiên khi xếp toàn bộ kho;
+\item \textbf{nDCG@5 phân mức:} mức liên quan bằng 2 nếu cùng nhạc cụ, 1 nếu khác nhạc cụ nhưng cùng họ (Bảng~1), 0 nếu khác họ; $\mathrm{DCG@5}=\sum_{k=1}^{5}\frac{2^{g_k}-1}{\log_2(k+1)}$, chia cho DCG của thứ tự lý tưởng;
+\item \textbf{P@5 theo họ:} tỷ lệ kết quả cùng họ nhạc cụ với truy vấn.
+\end{itemize}
+
+Mỗi chỉ số được tính theo hai cách: trung bình trên mọi truy vấn (TV) và trung bình đều trên 13 lớp (Lớp), để lớp nhỏ không bị kick, snare lấn át.
+
+Các phép đánh giá được thực hiện trên kho 655 tệp:
+\begin{enumerate}
+\item \textbf{Bỏ-một-ra:} lần lượt dùng từng tệp làm truy vấn, tìm trong 654 tệp còn lại.
+\item \textbf{Chia theo nhóm bản thu:} 136 nhóm bản thu được chia vào 5 phần, mỗi phần 131 tệp. Tệp của một phần làm truy vấn, tìm trong 4 phần còn lại; $\mu_j, s_j$ chỉ tính trên 4 phần đó. Truy vấn và kho không bao giờ cùng nhóm bản thu. 16 truy vấn agogo bị bỏ vì cả lớp nằm trong một nhóm, nên còn 639 truy vấn.
+\item \textbf{Độ bền:} truy vấn là bản biến đổi của từng tệp trong kho; kiểm tra bản gốc có được tìm lại hay không.
+\item \textbf{Nhạc cụ ngoài kho:} mô tả nhãn của các kết quả khi truy vấn là nhạc cụ chưa có.
+\item \textbf{Tính đúng đắn và thời gian.}
+\end{enumerate}
+
+\subsection{Kết quả theo bộ đặc trưng}
+\begin{table}[htbp]
+\centering\small
+\caption{Kết quả tìm kiếm của ba bộ đặc trưng.}\label{tab:ketqua}
+\begin{tabular}{llrrrrrr}
+\toprule
+& & \multicolumn{2}{c}{P@5} & \multicolumn{2}{c}{Hạng 1 đúng} & \multicolumn{2}{c}{Bỏ phiếu}\\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Đánh giá & Bộ & TV & Lớp & TV & Lớp & TV & Lớp\\\midrule
+Bỏ-một-ra & A & 0,799 & 0,674 & 0,863 & 0,805 & 0,843 & 0,717\\
+(655 truy vấn) & B & 0,730 & 0,622 & 0,815 & 0,766 & 0,795 & 0,670\\
+& C & \textbf{0,832} & \textbf{0,741} & \textbf{0,896} & \textbf{0,869} & \textbf{0,866} & \textbf{0,778}\\\midrule
+Theo nhóm bản thu & A & 0,621 & 0,446 & 0,684 & 0,562 & 0,656 & 0,441\\
+(639 truy vấn) & B & 0,571 & 0,424 & 0,649 & 0,560 & 0,610 & 0,461\\
+& C & \textbf{0,666} & \textbf{0,521} & \textbf{0,728} & \textbf{0,654} & \textbf{0,695} & \textbf{0,535}\\\bottomrule
+\end{tabular}
+\end{table}
+Bộ C đạt cao nhất ở mọi chỉ số của cả hai cách đánh giá (Bảng~\ref{tab:ketqua}). Ghép MFCC vào A làm $Q$ giảm (Bảng~7) nhưng làm P@5 tăng. $Q$ đo khoảng cách trung bình trên toàn bộ các cặp tệp, còn tìm kiếm chỉ xét 5 láng giềng gần nhất. Thông tin bao phổ của B giúp phân biệt các tệp ở gần nhau, dù trung bình toàn cục kém tách hơn.
+
+Các chỉ số khi chia theo nhóm bản thu thấp hơn cách bỏ-một-ra khoảng 0,17 điểm P@5. Trong bỏ-một-ra, kho thường còn các tệp khác của cùng người tải lên hoặc cùng bộ trống với truy vấn; khi tách theo nhóm, hệ thống phải tìm tệp cùng nhạc cụ từ nguồn thu khác, nên chỉ số này phản ánh sát hơn trường hợp truy vấn là một bản thu mới.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{hinh5_p5_theo_lop.pdf}
+\caption{P@5 theo từng lớp.}\label{fig:p5lop}
+\end{figure}
+Hình~\ref{fig:p5lop} cho thấy tambourine, agogo, kick, hi-hat, snare đạt P@5 từ 0,88 trở lên với bộ C. Các lớp thấp nhất trùng với những cặp gần nhau đã nêu ở Phần I:
+\begin{itemize}
+\item conga (0,49): 41 trong 90 vị trí kết quả là tom; conga/tom có khoảng cách tâm nhỏ nhất ở Bảng~9;
+\item vibraphone (0,35): 36 trong 60 vị trí là marimba; marimba (0,64) nhầm chủ yếu sang kick và vibraphone, do năng lượng tập trung ở dải thấp (Bảng~5);
+\item xylophone (0,38): nhầm sang cowbell, kick, snare; lớp chỉ có 11 tệp;
+\item cymbal (0,69): nhầm sang snare, cùng nhóm phổ phân tán.
+\end{itemize}
+Theo nguồn, P@5 của bộ C là 0,917 với IDMT, 0,841 với Freesound và 0,571 với Iowa; các lớp của Iowa (marimba, vibraphone) chịu ảnh hưởng của nốt được chơi như đã nêu ở Mục~11.3.
+
+\subsection{Chỉ số xếp hạng bổ sung}\label{sec:xephang}
+\begin{table}[htbp]
+\centering\small
+\caption{Các chỉ số xếp hạng (trung bình trên mọi truy vấn).}\label{tab:xephang}
+\begin{tabular}{llrrrrr}
+\toprule
+Đánh giá & Bộ & P@5 & mAP@5 & MRR & nDCG@5 & P@5 theo họ\\\midrule
+Bỏ-một-ra & A & 0,799 & 0,763 & 0,906 & 0,849 & 0,914\\
+(655 truy vấn) & B & 0,730 & 0,682 & 0,873 & 0,798 & 0,882\\
+& C & \textbf{0,832} & \textbf{0,802} & \textbf{0,932} & \textbf{0,878} & \textbf{0,932}\\\midrule
+Theo nhóm bản thu & A & 0,621 & 0,579 & 0,764 & 0,699 & 0,804\\
+(639 truy vấn) & B & 0,571 & 0,511 & 0,743 & 0,672 & 0,805\\
+& C & \textbf{0,666} & \textbf{0,627} & \textbf{0,801} & \textbf{0,746} & \textbf{0,844}\\\bottomrule
+\end{tabular}
+\end{table}
+Thứ tự giữa ba bộ không đổi khi dùng các chỉ số xếp hạng: C cao nhất ở mọi chỉ số (Bảng~\ref{tab:xephang}), nên kết luận chọn C ở Mục~\ref{sec:chonbo} không phụ thuộc vào việc chọn P@5. mAP@5 chỉ thấp hơn P@5 khoảng 0,03--0,06, nghĩa là các kết quả đúng thường nằm ở những hạng đầu. MRR của bộ C bằng 0,801 khi tách theo nhóm bản thu; trung vị hạng của tệp cùng nhãn đầu tiên bằng 1 ở cả hai cách đánh giá. P@5 theo họ (0,844) cao hơn rõ P@5 theo nhạc cụ (0,666): khi hệ thống trả sai nhạc cụ, kết quả phần lớn vẫn là nhạc cụ cùng họ, tức gần về nội dung âm thanh.
+
+\subsection{Ma trận nhầm lẫn}\label{sec:nhamlan}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.8\textwidth]{hinh7_ma_tran_nham_lan.pdf}
+\caption{Phân bố nhãn của 5 kết quả theo nhãn truy vấn (bộ C, chia theo nhóm bản thu; mỗi hàng cộng bằng 1, chỉ ghi các ô từ 0,05).}\label{fig:nhamlan}
+\end{figure}
+Hình~\ref{fig:nhamlan} cho biết các kết quả sai rơi vào lớp nào khi truy vấn đến từ một nguồn thu khác. Các cặp nhầm lớn nhất là conga $\to$ tom (0,71), vibraphone $\to$ marimba (0,55), tambourine $\to$ hi-hat (0,45) và cymbal $\to$ snare (0,36). Các cặp này đều cùng họ hoặc cùng nhóm phổ phân tán, khớp với các cặp có khoảng cách tâm nhỏ đã nêu ở Phần I. Tambourine đạt P@5 cao khi bỏ-một-ra nhưng chỉ 0,25 khi tách nhóm bản thu, vì 12 tệp của lớp này đến từ ít nguồn: bỏ-một-ra chủ yếu tìm lại tệp cùng buổi thu.
+
+\subsection{Lựa chọn bộ đặc trưng mặc định}\label{sec:chonbo}
+Mục~10.3 chọn A làm bộ mặc định ban đầu dựa trên $Q$ và để kết quả tìm kiếm quyết định bộ cuối cùng. Theo Bảng~\ref{tab:ketqua}, C có P@5, tỷ lệ hạng 1 đúng và tỷ lệ bỏ phiếu đúng cao nhất ở cả bỏ-một-ra lẫn chia theo nhóm bản thu, tính theo truy vấn và theo lớp, nên hệ thống dùng bộ C làm mặc định; A và B vẫn chọn được khi truy vấn. B nhạy với nén MP3 (Mục~\ref{sec:doben}), nên với truy vấn MP3 bộ A tìm lại bản gốc tốt hơn C.
+
+\subsection{Độ bền với biến đổi tín hiệu}\label{sec:doben}
+Mỗi tệp trong kho được biến đổi rồi dùng làm truy vấn; bản gốc vẫn ở trong kho. Bảng~\ref{tab:doben} cho tỷ lệ bản gốc xuất hiện ở hạng 1 và P@5 tính trên 5 kết quả còn lại sau khi bỏ bản gốc.
+\begin{table}[htbp]
+\centering\small
+\caption{Độ bền với biến đổi tín hiệu.}\label{tab:doben}
+\begin{tabular}{lrrrrrrr}
+\toprule
+& & \multicolumn{3}{c}{Bản gốc ở hạng 1} & \multicolumn{3}{c}{P@5 không tính bản gốc}\\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Biến đổi & Số truy vấn & A & B & C & A & B & C\\\midrule
+Stereo, 44,1 kHz & 655 & 0,994 & 0,998 & 0,997 & 0,795 & 0,729 & 0,832\\
+Giảm âm lượng 20 dB & 624 & 0,997 & 0,973 & 0,990 & 0,802 & 0,736 & 0,840\\
+Nén MP3, 44,1 kHz & 655 & 0,973 & 0,792 & 0,849 & 0,794 & 0,697 & 0,809\\
+Thêm nhiễu trắng, SNR 30 dB & 654 & 0,528 & 0,581 & 0,642 & 0,601 & 0,623 & 0,683\\\bottomrule
+\end{tabular}
+\end{table}
+\begin{itemize}
+\item \textbf{Stereo 44,1 kHz:} sau khi đưa về mono 16 kHz, bản gốc gần như luôn ở hạng 1.
+\item \textbf{Giảm âm lượng:} đặc trưng không phụ thuộc độ to nhờ chuẩn hóa đỉnh (Mục~6). 31 truy vấn bị từ chối vì tệp gốc có đỉnh dưới $-20$ dBFS, nên sau khi giảm 20 dB thì dưới ngưỡng $-40$ dBFS của Mục~2.
+\item \textbf{Nén MP3:} bộ A ít bị ảnh hưởng; MFCC (B) nhạy với phần phổ bị bộ mã hóa thay đổi.
+\item \textbf{Nhiễu trắng:} ảnh hưởng mạnh nhất, vì nhiễu làm tăng độ phẳng phổ, ZCR và năng lượng ở các đoạn im lặng, đúng những thuộc tính có $J_j$ cao ở Bảng~10. Một truy vấn bị từ chối vì mẫu đầu vượt 10\% đỉnh.
+\end{itemize}
+
+\subsection{Truy vấn bằng nhạc cụ ngoài kho}\label{sec:ngoaikho}
+Nhóm dùng 73 tệp thuộc 12 loại nhạc cụ không có trong kho, lấy từ cùng tập Freesound. Nhãn của các tệp lấy theo thông tin mô tả của nguồn nên chỉ mang tính tham khảo. 4 tệp (một cabasa, hai maracas, một shaker) bị từ chối vì dài dưới 0,1 s, còn 69 tệp đều nhận đủ 5 kết quả. Không có đáp án ``đúng'' cho các truy vấn này, nên Bảng~\ref{tab:ngoaikho} chỉ mô tả kết quả: nhãn thường gặp nhất và tỷ lệ kết quả cùng họ nhạc cụ theo Bảng~1, không phải số đo độ chính xác.
+\begin{table}[htbp]
+\centering\small
+\caption{Kết quả với nhạc cụ ngoài kho.}\label{tab:ngoaikho}
+\begin{tabularx}{\textwidth}{lrlXrrr}
+\toprule
+& & & & \multicolumn{3}{c}{Cùng họ}\\\cmidrule(lr){5-7}
+Nhạc cụ & Số tệp & Họ & Nhãn kết quả thường gặp (bộ C) & A & B & C\\\midrule
+djembe & 24 & màng rung & tom 60, kick 41, cowbell 9, conga 5 & 0,76 & 0,85 & 0,92\\
+bongo & 7 & màng rung & conga 11, snare 11, tom 10 & 0,71 & 0,71 & 0,97\\
+tabla & 1 & màng rung & tom 3, kick 2 & 1,00 & 1,00 & 1,00\\
+gong & 8 & kim loại & cowbell 15, snare 8, tom 7, cymbal 5 & 0,47 & 0,68 & 0,50\\
+triangle & 2 & kim loại & cymbal 5, hi-hat 4, tambourine 1 & 0,70 & 0,80 & 1,00\\
+castanets & 15 & gỗ & snare 44, claves 20, cymbal 10 & 0,13 & 0,08 & 0,27\\
+woodblock & 4 & gỗ & snare 8, kick 4, tom 3, cowbell 2 & 0,25 & 0,00 & 0,05\\
+cajon & 3 & gỗ & tom 8, kick 5 & 0,00 & 0,00 & 0,00\\
+maracas, shaker, vibraslap & 5 & -- & hi-hat 9, snare 9, cymbal 5, tambourine 2 & -- & -- & --\\\bottomrule
+\end{tabularx}
+\end{table}
+Các trống màng rung (djembe, bongo, tabla) được ghép với tom, conga, kick; triangle được ghép với cymbal và hi-hat. Các nhạc cụ gỗ ít khi nhận kết quả cùng họ vì họ này trong kho chỉ có claves (13 tệp). Castanets vẫn nhận claves ở 20 trong 75 vị trí. Cajon là hộp gỗ nhưng được chơi như trống trầm, nên kết quả là tom và kick; các nhạc cụ lắc nhận các lớp phổ phân tán như hi-hat, snare.
+
+\paragraph{Khoảng cách tới kết quả gần nhất.} Hệ thống luôn trả 5 tệp, kể cả khi nhạc cụ chưa có trong kho. Để xem khoảng cách có cho biết điều đó hay không, nhóm so sánh khoảng cách $d_1$ tới kết quả hạng 1 của hai loại truy vấn: 655 tệp trong kho (mỗi truy vấn bỏ ra cả nhóm bản thu của nó, để giống một bản thu mới) và 69 tệp nhạc cụ ngoài kho.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.85\textwidth]{hinh8_phan_bo_khoang_cach.pdf}
+\caption{Phân bố khoảng cách tới kết quả hạng 1 (bộ C).}\label{fig:phanbo}
+\end{figure}
+Với bộ C, trung vị $d_1$ là 0,558 với nhạc cụ đã có và 0,707 với nhạc cụ ngoài kho (Hình~\ref{fig:phanbo}); xác suất một truy vấn ngoài kho có $d_1$ lớn hơn một truy vấn đã có (AUC) là 0,72 (bộ A: 0,53; bộ B: 0,76). Nếu đặt ngưỡng cảnh báo ở phân vị 95 của $d_1$ của nhạc cụ đã có ($d_1>1{,}054$), chỉ 7\% truy vấn ngoài kho bị cảnh báo. Hai phân bố chồng lên nhau nhiều, nên khoảng cách chỉ là dấu hiệu tham khảo: hệ thống không tự kết luận được ``nhạc cụ này chưa có trong kho''. Điều này phù hợp với mục tiêu của đề bài là tìm tệp \emph{tương đồng}, không phải phân loại nhạc cụ.
+
+\subsection{Tệp mới của nhạc cụ đã có}\label{sec:tepmoi}
+Bốn tệp \texttt{truy\_van\_thu/trong\_lop} không thuộc kho được dùng làm truy vấn với bộ C. Kết quả: hi-hat 5/5 hi-hat; snare 5/5 snare; kick 4/5 kick (một tom ở hạng 3); xylophone 3/5 xylophone ở ba hạng đầu, hai kết quả còn lại là cowbell và cymbal. Bốn truy vấn quá ít để tính độ chính xác, nên nhóm chỉ dùng chúng để minh họa; các số đo chính vẫn là Bảng~\ref{tab:ketqua} và Bảng~\ref{tab:xephang}.
+
+\subsection{Kiểm thử trên giao diện}\label{sec:kiemthugd}
+Để kiểm tra hệ thống như một người dùng, nhóm chạy 6 truy vấn trên giao diện web (bộ C). Năm tệp được tải lên từ \texttt{truy\_van\_thu/}, không thuộc kho 655 tệp: ba nhạc cụ chưa có trong kho, hai tệp mới của nhạc cụ đã có. Tệp thứ sáu là một tệp lỗi để kiểm tra bước từ chối. Với mỗi truy vấn, nhóm nghe tệp truy vấn rồi nghe lần lượt 5 kết quả, chú ý tới chất liệu âm, khởi âm (attack), độ ngân và cao độ. Kết quả trên giao diện trùng hoàn toàn (tệp, thứ tự và khoảng cách) với kết quả tìm vét cạn của kịch bản đánh giá.
+
+\begin{table}[htbp]
+\centering\footnotesize
+\caption{Kết quả kiểm thử trên giao diện (bộ C).}\label{tab:kiemthugd}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright}p{1.6cm}>{\raggedright}p{1.7cm}>{\raggedright}p{3.9cm}p{1.45cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Truy vấn & Loại & Nhãn của 5 kết quả (hạng 1 $\to$ 5) & $d$ & Nhận xét\\\midrule
+djembe & ngoài kho & cowbell, conga, cowbell, cowbell, kick & 0,92--0,99 & Kết quả đều là một cú đánh đơn, khởi âm khá giống truy vấn; chỉ 2/5 cùng họ màng rung.\\
+triangle & ngoài kho & cymbal, cymbal, tambourine, cymbal, cymbal & 0,75--0,80 & Cả 5 kết quả thuộc họ kim loại, âm ngân dài như truy vấn.\\
+castanets & ngoài kho & claves, snare, claves, snare, claves & 0,63--0,69 & Kết quả đều là một cú đánh; chất liệu âm và khởi âm khá giống truy vấn dù khác nhãn; 3/5 là claves, nhạc cụ gỗ duy nhất trong kho.\\
+snare & tệp mới, lớp đã có & 5 $\times$ snare & 0,54--0,58 & 5/5 đúng nhạc cụ.\\
+xylophone & tệp mới, lớp đã có & xylophone $\times$ 3, cowbell, cymbal & 0,86--1,06 & 3 kết quả đúng nhạc cụ nằm ở 3 hạng đầu.\\
+maracas (0,036 s) & tệp lỗi & --- & --- & Bị từ chối: dài 0,036 s $<$ 0,1 s và phần có tiếng 0,030 s $<$ 0,05 s (Mục~2).\\\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth]{hinh9_giao_dien_djembe.png}\\[-2pt]
+{\small (a) djembe (ngoài kho)}
+\end{minipage}\hfill
+\begin{minipage}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth]{hinh9_giao_dien_castanets.png}\\[-2pt]
+{\small (b) castanets (ngoài kho)}
+\end{minipage}\\[8pt]
+\begin{minipage}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth]{hinh9_giao_dien_triangle.png}\\[-2pt]
+{\small (c) triangle (ngoài kho)}
+\end{minipage}\hfill
+\begin{minipage}[t]{.48\textwidth}\centering
+\includegraphics[width=\linewidth]{hinh9_giao_dien_xylophone.png}\\[-2pt]
+{\small (d) xylophone (tệp mới, lớp đã có)}
+\end{minipage}
+\caption{Kết quả trên giao diện web cho một số truy vấn; cột phải là độ tương đồng $s=1/(1+d)$ và khoảng cách $d$.}\label{fig:giaodien}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\textwidth]{hinh9_giao_dien_tu_choi.png}
+\caption{Giao diện từ chối một tệp không đạt điều kiện chất lượng của Mục~2.}\label{fig:tuchoi}
+\end{figure}
+
+Bảng~\ref{tab:kiemthugd} và Hình~\ref{fig:giaodien} cho thấy:
+\begin{itemize}
+\item \textbf{Nhạc cụ đã có:} hệ thống trả đúng nhạc cụ và xếp các kết quả đúng lên đầu (snare 5/5; xylophone 3/5 ở hạng 1--3). Khoảng cách của truy vấn snare (0,54--0,58) nhỏ, ứng với độ tương đồng cao nhất trong các phép thử.
+\item \textbf{Nhạc cụ chưa có:} hệ thống vẫn trả đủ 5 tệp. Khi nghe, các kết quả giống truy vấn về kiểu đánh (một cú đánh đơn), khởi âm và chất liệu, dù khác nhãn. Đây là sự tương đồng về \emph{nội dung âm thanh} mà đề bài yêu cầu. Triangle được ghép với cymbal và tambourine (cùng họ kim loại); castanets được ghép với claves, nhạc cụ gỗ duy nhất trong kho.
+\item \textbf{Giới hạn:} với djembe, 3/5 kết quả là cowbell và khoảng cách lớn ($d \approx 0{,}92$--$0{,}99$, độ tương đồng $\approx 0{,}50$), vì kho không có trống tay âm cao giống djembe. Độ tương đồng thấp phản ánh đúng việc không có tệp thật sự gần, nhưng chưa đủ để hệ thống tự kết luận nhạc cụ không có trong kho (Mục~\ref{sec:ngoaikho}).
+\item \textbf{Kiểm tra đầu vào:} tệp quá ngắn bị từ chối kèm lý do cụ thể (Hình~\ref{fig:tuchoi}), đúng điều kiện của Mục~2.
+\end{itemize}
+Nhận xét khi nghe là đánh giá chủ quan của nhóm trên một số ít truy vấn, dùng để minh họa và bổ sung cho các số đo tự động ở Bảng~\ref{tab:ketqua}.
+
+\subsection{Tính đúng đắn và thời gian xử lý}\label{sec:dungdan}
+\begin{itemize}
+\item Ba cách tìm (pgvector, cây k-d, vét cạn) cho kết quả trùng nhau ở 655/655 truy vấn bỏ-một-ra của cả ba bộ, cả thứ tự lẫn khoảng cách.
+\item 17 phép kiểm thử tự động đều đạt. Các phép kiểm thử gồm: cây k-d trùng vét cạn khi có điểm trùng nhau; vector trong PostgreSQL khớp giá trị 64 bit; truy vấn trùng kho bị loại; bản stereo 44,1 kHz tìm lại bản gốc; tệp im lặng, hỏng, quá nhỏ, mất khởi âm, cắt đuôi hoặc cắt đỉnh bị từ chối; ràng buộc \texttt{CHECK} hoạt động; giao diện web xử lý đúng tệp tải lên và yêu cầu sai.
+\end{itemize}
+Trên máy tính của nhóm, trung vị thời gian trên 100 truy vấn là khoảng 1 ms cho đọc tệp, kiểm tra và trích đặc trưng. Phần tìm 5 tệp gần nhất với bộ C mất khoảng 1--2 ms qua PostgreSQL, 1,2 ms với cây k-d và 0,1 ms với vét cạn bằng NumPy. Thời gian qua PostgreSQL chủ yếu là chi phí gửi nhận câu lệnh.
+
+\subsection{Nhận xét chung}
+\enlargethispage{2\baselineskip}
+Hệ thống nhận tệp mới ở nhiều định dạng và trả đúng 5 tệp xếp theo độ tương đồng giảm dần, kể cả với nhạc cụ chưa có trong kho. Với bộ C, trung bình 4,2/5 kết quả cùng nhạc cụ với truy vấn (bỏ-một-ra) và 3,3/5 khi truy vấn khác nhóm bản thu. Kết quả kém nhất ở các cặp lớp gần nhau (conga/tom, marimba/vibraphone) và các lớp ít tệp. P@5 dựa trên nhãn nhạc cụ, chưa phải đánh giá của người nghe.
+\clearpage
+
+\section*{Kết luận}
+\phantomsection\addcontentsline{toc}{part}{Kết luận}
+Nhóm đã thực hiện Yêu cầu 3 và 4 của đề tài:
+\begin{enumerate}
+\item Công cụ trích rút đặc trưng dùng chung một mã nguồn cho kho và truy vấn. Hệ cơ sở dữ liệu PostgreSQL + pgvector gồm sáu bảng, có ràng buộc theo đúng các điều kiện chất lượng; giá trị lưu trữ trùng bảng đặc trưng của báo cáo Yêu cầu 1--2 (Phần III).
+\item Hệ thống tìm 5 tệp tương đồng nhất cho tệp âm thanh mới, kể cả nhạc cụ chưa có trong kho. Hệ thống được mô tả bằng sơ đồ khối, minh họa các giá trị trung gian và được đánh giá bằng nhiều phép thử. Bộ C đạt P@5 bằng 0,832 khi bỏ-một-ra và 0,666 khi tách theo nhóm bản thu, cao nhất trong ba bộ, nên được chọn làm mặc định (Phần IV).
+\end{enumerate}
+Cơ sở dữ liệu và các kết quả đánh giá đều có thể tạo lại từ mã nguồn kèm theo.
+\clearpage
+
+\section*{Phụ lục: danh sách thuộc tính của các bộ đặc trưng}
+\phantomsection\addcontentsline{toc}{part}{Phụ lục: danh sách thuộc tính của các bộ đặc trưng}
+Bảng~\ref{tab:thuoctinh} liệt kê thứ tự các chiều dùng trong vector và trong cơ sở dữ liệu. ``TB'' và ``ĐLC'' lần lượt là trung bình và độ lệch chuẩn trên khung hợp lệ. Trong A, mỗi cặp thuộc tính theo khung được xếp TB trước, ĐLC sau. Cách ghép và trọng số của C được quy định ở Mục~10.
+\begin{table}[htbp]
+\centering\small
+\caption{Thuộc tính của bộ A và bộ B.}\label{tab:thuoctinh}
+\begin{tabularx}{\textwidth}{clccX}
+\toprule
+Chiều & Thuộc tính & Ký hiệu & Đơn vị & Định nghĩa\\\midrule
+\multicolumn{5}{l}{\textbf{Bộ A: 5 thuộc tính thời gian}}\\
+A1 & Thời gian có tín hiệu (log) & $a_1$ & -- & $\ln(1+T_a)$, Mục~7\\
+A2 & Khoảng chứa 90\% năng lượng (log) & $a_2$ & -- & $\ln(1+D_{90})$\\
+A3 & Hệ số đỉnh & $a_3$ & dB & Đỉnh so với RMS vùng có tín hiệu\\
+A4 & Tỷ lệ có tín hiệu & $a_4$ & -- & $T_a/T_s$\\
+A5 & Vị trí đỉnh bao RMS & $a_5$ & -- & Vị trí tương đối trong vùng có tín hiệu\\\midrule
+\multicolumn{5}{l}{\textbf{Bộ A: 16 thuộc tính phổ (TB và ĐLC của 8 đại lượng)}}\\
+A6--A7 & Trọng tâm phổ & $C$ & Hz & Mục~8\\
+A8--A9 & Độ rộng phổ & $W$ & Hz & \\
+A10--A11 & Tần số cắt 85\% & $R$ & Hz & \\
+A12--A13 & Độ phẳng phổ & $F$ & -- & \\
+A14--A15 & Entropy phổ & $H$ & -- & \\
+A16--A17 & Tỷ lệ đổi dấu & $Z$ & -- & \\
+A18--A19 & Tỷ lệ năng lượng dưới 500 Hz & $L$ & -- & \\
+A20--A21 & Thông lượng phổ dương & $\Phi$ & -- & \\\midrule
+\multicolumn{5}{l}{\textbf{Bộ B: 39 thuộc tính MFCC}}\\
+B1--B13 & TB của MFCC 1 đến 13 & $c[1..13]$ & -- & Mục~9\\
+B14--B26 & ĐLC của MFCC 1 đến 13 & $c[1..13]$ & -- & \\
+B27--B39 & ĐLC của delta MFCC 1 đến 13 & $\Delta c[1..13]$ & -- & \\\bottomrule
+\end{tabularx}
+\end{table}
+\clearpage
+
+\begin{thebibliography}{99}
+\phantomsection\addcontentsline{toc}{part}{Tài liệu tham khảo}
+\bibitem{freesound} A. Ramires, P. Chandna, X. Favory, E. Gómez và X. Serra. \emph{Freesound One-Shot Percussive Sounds}, Version 1.0, Zenodo. DOI: 10.5281/zenodo.4687854. \url{https://zenodo.org/records/4687854}.
+\bibitem{postgres} PostgreSQL Global Development Group. \emph{PostgreSQL 17 Documentation}. \url{https://www.postgresql.org/docs/17/}.
+\bibitem{pgvector} A. Kane và cộng sự. \emph{pgvector: Open-source vector similarity search for Postgres}, phiên bản 0.8.0. \url{https://github.com/pgvector/pgvector}.
+\bibitem{hnsw} Y. A. Malkov và D. A. Yashunin. Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs. \emph{IEEE Transactions on Pattern Analysis and Machine Intelligence}, 42(4):824--836, 2020.
+\bibitem{kdtree} J. L. Bentley. Multidimensional binary search trees used for associative searching. \emph{Communications of the ACM}, 18(9):509--517, 1975.
+\bibitem{friedman} J. H. Friedman, J. L. Bentley và R. A. Finkel. An algorithm for finding best matches in logarithmic expected time. \emph{ACM Transactions on Mathematical Software}, 3(3):209--226, 1977.
+\bibitem{weber} R. Weber, H.-J. Schek và S. Blott. A quantitative analysis and performance study for similarity-search methods in high-dimensional spaces. \emph{Proceedings of the 24th VLDB Conference}, 194--205, 1998.
+\bibitem{manning} C. D. Manning, P. Raghavan và H. Schütze. \emph{Introduction to Information Retrieval}, chương 8. Cambridge University Press, 2008.
+\end{thebibliography}
+\end{document}

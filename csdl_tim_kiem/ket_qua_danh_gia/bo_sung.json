@@ -1,0 +1,265 @@
+{
+  "bo_mot_ra_A": {
+    "p5_moi_truy_van": 0.7990839694656489,
+    "p5_trung_binh_lop": 0.6740060013781901,
+    "ap5_moi_truy_van": 0.7627888040712468,
+    "ap5_trung_binh_lop": 0.627416123723243,
+    "rr_moi_truy_van": 0.9064713453300677,
+    "rr_trung_binh_lop": 0.8622814988620361,
+    "ndcg5_moi_truy_van": 0.8490298274637815,
+    "ndcg5_trung_binh_lop": 0.7566725055552739,
+    "p5_ho_moi_truy_van": 0.9135877862595422,
+    "p5_ho_trung_binh_lop": 0.8484854869187313,
+    "hang_dung_dau_trung_vi": 1.0,
+    "so_truy_van": 655
+  },
+  "theo_nhom_ban_thu_A": {
+    "p5_moi_truy_van": 0.621283255086072,
+    "p5_trung_binh_lop": 0.44608417949288376,
+    "ap5_moi_truy_van": 0.5790597287428274,
+    "ap5_trung_binh_lop": 0.4518915689182113,
+    "rr_moi_truy_van": 0.7637753502618807,
+    "rr_trung_binh_lop": 0.6516326758305305,
+    "ndcg5_moi_truy_van": 0.6993796941441784,
+    "ndcg5_trung_binh_lop": 0.5909534455972257,
+    "p5_ho_moi_truy_van": 0.8040688575899845,
+    "p5_ho_trung_binh_lop": 0.72260492757085,
+    "hang_dung_dau_trung_vi": 1.0,
+    "so_truy_van": 639
+  },
+  "bo_mot_ra_B": {
+    "p5_moi_truy_van": 0.730381679389313,
+    "p5_trung_binh_lop": 0.6219630047514979,
+    "ap5_moi_truy_van": 0.6824631043256997,
+    "ap5_trung_binh_lop": 0.577196356661225,
+    "rr_moi_truy_van": 0.8733628125025094,
+    "rr_trung_binh_lop": 0.8294032841181986,
+    "ndcg5_moi_truy_van": 0.7976111481228891,
+    "ndcg5_trung_binh_lop": 0.7243340824513715,
+    "p5_ho_moi_truy_van": 0.8821374045801526,
+    "p5_ho_trung_binh_lop": 0.8489495421720605,
+    "hang_dung_dau_trung_vi": 1.0,
+    "so_truy_van": 655
+  },
+  "theo_nhom_ban_thu_B": {
+    "p5_moi_truy_van": 0.5708920187793427,
+    "p5_trung_binh_lop": 0.42389708498914525,
+    "ap5_moi_truy_van": 0.5110889410537297,
+    "ap5_trung_binh_lop": 0.38894451446136014,
+    "rr_moi_truy_van": 0.7426557507428905,
+    "rr_trung_binh_lop": 0.6399076958554504,
+    "ndcg5_moi_truy_van": 0.672193685095902,
+    "ndcg5_trung_binh_lop": 0.5972436180483416,
+    "p5_ho_moi_truy_van": 0.8046948356807513,
+    "p5_ho_trung_binh_lop": 0.7667130457373882,
+    "hang_dung_dau_trung_vi": 1.0,
+    "so_truy_van": 639
+  },
+  "bo_mot_ra_C": {
+    "p5_moi_truy_van": 0.8317557251908396,
+    "p5_trung_binh_lop": 0.7414667904882573,
+    "ap5_moi_truy_van": 0.8021526717557254,
+    "ap5_trung_binh_lop": 0.7068958712750025,
+    "rr_moi_truy_van": 0.9321133164324091,
+    "rr_trung_binh_lop": 0.9156886295611147,
+    "ndcg5_moi_truy_van": 0.8777496500812606,
+    "ndcg5_trung_binh_lop": 0.8138123922169058,
+    "p5_ho_moi_truy_van": 0.9316030534351146,
+    "p5_ho_trung_binh_lop": 0.8814861090500103,
+    "hang_dung_dau_trung_vi": 1.0,
+    "so_truy_van": 655
+  },
+  "theo_nhom_ban_thu_C": {
+    "p5_moi_truy_van": 0.6663536776212832,
+    "p5_trung_binh_lop": 0.5213922819057202,
+    "ap5_moi_truy_van": 0.6270018257694314,
+    "ap5_trung_binh_lop": 0.521227857567372,
+    "rr_moi_truy_van": 0.8011303315543363,
+    "rr_trung_binh_lop": 0.7308826966750006,
+    "ndcg5_moi_truy_van": 0.7464561769316017,
+    "ndcg5_trung_binh_lop": 0.6733303787836435,
+    "p5_ho_moi_truy_van": 0.8435054773082942,
+    "p5_ho_trung_binh_lop": 0.7828432575527448,
+    "hang_dung_dau_trung_vi": 1.0,
+    "so_truy_van": 639
+  },
+  "nham_lan_lon_nhat_C": [
+    {
+      "truy_van": "conga",
+      "ket_qua": "tom",
+      "ty_le": 0.711
+    },
+    {
+      "truy_van": "vibraphone",
+      "ket_qua": "marimba",
+      "ty_le": 0.55
+    },
+    {
+      "truy_van": "tambourine",
+      "ket_qua": "hi_hat",
+      "ty_le": 0.45
+    },
+    {
+      "truy_van": "cymbal",
+      "ket_qua": "snare",
+      "ty_le": 0.358
+    },
+    {
+      "truy_van": "tambourine",
+      "ket_qua": "cymbal",
+      "ty_le": 0.3
+    },
+    {
+      "truy_van": "hi_hat",
+      "ket_qua": "cymbal",
+      "ty_le": 0.267
+    },
+    {
+      "truy_van": "xylophone",
+      "ket_qua": "snare",
+      "ty_le": 0.255
+    },
+    {
+      "truy_van": "snare",
+      "ket_qua": "cymbal",
+      "ty_le": 0.226
+    }
+  ],
+  "khoang_cach_ngoai_kho": {
+    "A": {
+      "d1_trung_vi_nhac_cu_da_co": 0.31439563038361357,
+      "d1_trung_vi_ngoai_kho": 0.33024928095342193,
+      "auc_phan_biet_ngoai_kho": 0.5270273260316407,
+      "nguong": {
+        "90": {
+          "gia_tri": 0.603803553961856,
+          "ty_le_ngoai_kho_bi_canh_bao": 0.057971014492753624,
+          "ty_le_da_co_bi_canh_bao": 0.10076335877862595
+        },
+        "95": {
+          "gia_tri": 0.7526477685102729,
+          "ty_le_ngoai_kho_bi_canh_bao": 0.014492753623188406,
+          "ty_le_da_co_bi_canh_bao": 0.050381679389312976
+        }
+      },
+      "so_truy_van_da_co": 655,
+      "so_truy_van_ngoai_kho": 69
+    },
+    "B": {
+      "d1_trung_vi_nhac_cu_da_co": 0.5422854693434718,
+      "d1_trung_vi_ngoai_kho": 0.7786077651806391,
+      "auc_phan_biet_ngoai_kho": 0.7605487332669543,
+      "nguong": {
+        "90": {
+          "gia_tri": 1.049147788809399,
+          "ty_le_ngoai_kho_bi_canh_bao": 0.21739130434782608,
+          "ty_le_da_co_bi_canh_bao": 0.10076335877862595
+        },
+        "95": {
+          "gia_tri": 1.2575216731182042,
+          "ty_le_ngoai_kho_bi_canh_bao": 0.10144927536231885,
+          "ty_le_da_co_bi_canh_bao": 0.050381679389312976
+        }
+      },
+      "so_truy_van_da_co": 655,
+      "so_truy_van_ngoai_kho": 69
+    },
+    "C": {
+      "d1_trung_vi_nhac_cu_da_co": 0.5584513075947244,
+      "d1_trung_vi_ngoai_kho": 0.7066955618335029,
+      "auc_phan_biet_ngoai_kho": 0.7225799314083416,
+      "nguong": {
+        "90": {
+          "gia_tri": 0.9111274197899463,
+          "ty_le_ngoai_kho_bi_canh_bao": 0.18840579710144928,
+          "ty_le_da_co_bi_canh_bao": 0.10076335877862595
+        },
+        "95": {
+          "gia_tri": 1.0543355666450476,
+          "ty_le_ngoai_kho_bi_canh_bao": 0.07246376811594203,
+          "ty_le_da_co_bi_canh_bao": 0.050381679389312976
+        }
+      },
+      "so_truy_van_da_co": 655,
+      "so_truy_van_ngoai_kho": 69
+    }
+  },
+  "tep_moi_lop_da_co": [
+    {
+      "tep": "trong_lop/hi_hat/fs44971.wav",
+      "nhan": "hi_hat",
+      "ket_qua": [
+        "hi_hat",
+        "hi_hat",
+        "hi_hat",
+        "hi_hat",
+        "hi_hat"
+      ],
+      "khoang_cach": [
+        0.2997,
+        0.3631,
+        0.3817,
+        0.4435,
+        0.4865
+      ],
+      "p5": 1.0
+    },
+    {
+      "tep": "trong_lop/kick/fs185294.wav",
+      "nhan": "kick",
+      "ket_qua": [
+        "kick",
+        "kick",
+        "tom",
+        "kick",
+        "kick"
+      ],
+      "khoang_cach": [
+        0.4686,
+        0.5034,
+        0.5099,
+        0.5315,
+        0.5423
+      ],
+      "p5": 0.8
+    },
+    {
+      "tep": "trong_lop/snare/fs143443.wav",
+      "nhan": "snare",
+      "ket_qua": [
+        "snare",
+        "snare",
+        "snare",
+        "snare",
+        "snare"
+      ],
+      "khoang_cach": [
+        0.5359,
+        0.5552,
+        0.5574,
+        0.5596,
+        0.5799
+      ],
+      "p5": 1.0
+    },
+    {
+      "tep": "trong_lop/xylophone/fs204634.wav",
+      "nhan": "xylophone",
+      "ket_qua": [
+        "xylophone",
+        "xylophone",
+        "xylophone",
+        "cowbell",
+        "cymbal"
+      ],
+      "khoang_cach": [
+        0.8572,
+        0.9316,
+        1.0007,
+        1.0096,
+        1.0594
+      ],
+      "p5": 0.6
+    }
+  ]
+}
